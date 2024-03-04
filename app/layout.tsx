@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./globalicons.css";
 import ServiceProvider from "@components/Providers/ServiceProvider";
+import Navbar from "@components/common/Navbar";
+import Footer from "@components/common/Footer";
 
 export const metadata: Metadata = {
   title: "Brun an one stop shop for latest fashion trends and styles.",
@@ -18,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-urbanist">
+        <Navbar/>
         <ServiceProvider>
           {children}
         </ServiceProvider>
+        <Footer/>
       </body>
     </html>
   );

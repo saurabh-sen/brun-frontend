@@ -34,3 +34,18 @@ input:focus ~ label {
   color: rgba(0, 0, 0, var(--tw-text-opacity));
   left: 0px;
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
