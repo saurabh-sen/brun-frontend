@@ -1,11 +1,12 @@
 import { ISignupValues } from "@enumsAndTypes/login/login.types";
 import * as Yup from "yup";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
 
 const getCharacterValidationError = (str: string) => {
   return `Your password must have at least 1 ${str} character`;
 };
 
-export const singupValidationSchema = Yup.object({
+const singupValidationSchema = Yup.object({
   firstName: Yup.string()
     .max(15, "Must be 3 characters or less")
     .required("First name is required"),
@@ -33,6 +34,25 @@ export const singupValidationSchema = Yup.object({
     .oneOf([true], "You must accept the privacy statement."),
 });
 
-export const handleSignupSubmit = (values: ISignupValues) => {
-  console.log("submit", values);
+const signupApi = createApi({
+  reducerPath: "signupApi",
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_BASE_URL }),
+  endpoints: (builder) => ({
+    fetchUser : builder.query<ISignupValues, void>({
+      query: () => "/user",
+    }),
+    signup: builder.mutation<ISignupValues, ISignupValues>({
+      query: (body) => ({
+        url: "/user/register",
+        method: "POST",
+        body,
+      }),
+    }),
+  }),
+});
+
+// const { useFetchUserQuery, useSignupMutation } = signupApi;
+
+export { singupValidationSchema, signupApi
+  // , useFetchUserQuery, useSignupMutation
 };

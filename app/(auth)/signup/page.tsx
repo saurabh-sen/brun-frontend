@@ -5,12 +5,28 @@ import Link from 'next/link'
 
 import MyTextInput from '@components/common/MyTextInput'
 import MyCheckBox from '@components/common/MyCheckBox'
-import { singupValidationSchema, handleSignupSubmit } from '@services'
+import { singupValidationSchema } from '@services'
 import { signupInitialValues } from '@contants/signupConstant'
 import MyButton from '@components/common/MyButton'
 import { ButtonType } from '@enumsAndTypes/common/common.types'
+import { ISignupValues } from '@enumsAndTypes/login/login.types'
+// import { signup } from '@services/signup/signupUtils'
 
 const Signup = () => {
+
+  const [error, setError] = React.useState(false);
+
+  const handleSignupSubmit = async (values : ISignupValues) => {
+    // try {
+    //   const response = await signup(values);
+    //   if (response.error) {
+    //     setError(response.error.message);
+    //   }
+    // } catch (error) {
+    //   console.error("An error occurred", error);
+    // }
+  };
+
   return (
     <main className='min-h-screen flex justify-center items-center'>
       <section className="login w-64 sm:w-80 md:w-[649px]" id='singup'>
@@ -20,6 +36,18 @@ const Signup = () => {
               arrow_back_ios_new
             </span>
           </Link>
+          {
+            error && (
+              <div className="error text-[#767676] text-sm flex gap-1 items-center">
+                <span className="material-symbols-outlined text-sm">
+                  info
+                </span>
+                <p>
+                  {error}
+                </p>
+              </div>
+            )
+          }
           <h5>CREATE AN ACCOUNT</h5>
           <p className="invisible">.</p>
         </legend>

@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from "./features/auth/authSlice"
+import { signupApi } from '@services'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       auth: authReducer,
+      [signupApi.reducerPath]: signupApi.reducer,
     },
   })
 }
