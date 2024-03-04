@@ -2,7 +2,7 @@ import React from 'react'
 
 function AboutPage() {
   return (
-    <section className="w-[79.375rem] flex flex-row flex-wrap justify-center py-[0rem] px-[1.25rem] gap-[0rem_11.063rem]  text-[1rem] text-black font-urbanist  m-auto mt-14">
+    <section className="w-[79.375rem] flex flex-row flex-wrap justify-center px-[1.25rem] gap-[0rem_11.063rem]  text-[1rem] text-black font-urbanist  m-auto mt-14">
     <div className="w-[15.875rem] flex flex-col items-start justify-start gap-[1.25rem_0rem]">
       <button className="cursor-pointer p-[0.375rem] bg-white w-[4.188rem] box-border flex flex-row items-center justify-center border-[1px] border-solid border-black hover:bg-gainsboro hover:box-border hover:border-[1px] hover:border-solid hover:border-darkslategray">
         <div className="relative text-[0.875rem] uppercase font-urbanist text-black text-left">
