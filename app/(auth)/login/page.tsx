@@ -4,14 +4,42 @@ import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
 import Link from 'next/link'
 import MyTextInput from '@components/common/MyTextInput'
-import { loginValidationSchema, handleLoginSubmit } from '@services'
+import { loginValidationSchema } from '@services'
 import { loginInitialValues } from '@contants/loginConstant'
 import MyButton from '@components/common/MyButton'
 import { ButtonType } from '@enumsAndTypes/common/common.types'
+import { useLoginMeMutation } from '@services/login/loginUtils'
+import { useRouter } from 'next/navigation'
+import { ILoginValues } from '@enumsAndTypes/login/login.types'
+import MyError from '@components/common/MyError'
 
 const Login = () => {
 
+  const router = useRouter();
   const [showError, setShowError] = useState(false);
+
+  const [loginMe, { isError }] = useLoginMeMutation();
+
+  const handleLoginSubmit = async (values : ILoginValues) => {
+    const payload = {
+      email: values.email,
+      password: values.password
+    }
+    try {
+      const response = await loginMe(payload).unwrap();
+      if ('error' in response) {
+        console.error("An error occurred", response.error);
+        setShowError(true);
+      } else {
+        router.push('/')
+      }6
+    } catch (error) {
+      console.error("An error occurred", error);
+    }
+    if (isError) {
+      setShowError(true);
+    }
+  }
 
   return (
     <main className='min-h-screen flex justify-center items-center'>
@@ -19,18 +47,11 @@ const Login = () => {
         <legend className='flex justify-center items-center mb-11 '>
           <h5>LOG IN INTO YOUR ACCOUNT</h5>
         </legend>
-        {showError && (
-          <div className="error text-[#767676] text-sm flex gap-1 items-center mb-6">
-            <span className="material-symbols-outlined text-sm">
-              info
-            </span>
-            <p>Incorrect combination of user name and password.</p>
-          </div>
-        )}
+        {showError && <MyError errorMessage='Incorrect combination of user name and password.' />}
         <Formik
           initialValues={loginInitialValues}
           validationSchema={loginValidationSchema}
-          onSubmit={handleLoginSubmit(setShowError)}
+          onSubmit={handleLoginSubmit}
         >
           <Form className='flex flex-col text-sm w-full'>
             <MyTextInput

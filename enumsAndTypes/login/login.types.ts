@@ -1,3 +1,5 @@
+import { RoleEnum } from "@enumsAndTypes/common/common.types";
+
 interface IMyTextInput {
   label: string;
   id: string;
@@ -22,9 +24,17 @@ interface ISignupValues {
   acceptedTerms: boolean;
 }
 
+interface ISignupValuesDB {
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+  role?: RoleEnum.ADMIN | RoleEnum.USER;
+}
+
 interface ILoginValues {
   email: string;
   password: string;
 }
 
-export type { IMyTextInput, IMyCheckBox, ISignupValues, ILoginValues }
+export type { IMyTextInput, IMyCheckBox, ISignupValues, ILoginValues, ISignupValuesDB }

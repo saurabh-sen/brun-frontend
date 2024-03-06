@@ -4,4 +4,9 @@ enum ButtonType {
     BUTTON = "button"
 }
 
-export { ButtonType }
+enum RoleEnum {
+    ADMIN = "admin",
+    USER = "user"
+}
+
+export { ButtonType, RoleEnum }

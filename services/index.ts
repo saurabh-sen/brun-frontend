@@ -1,4 +1,4 @@
-import { loginValidationSchema, handleLoginSubmit } from "./login/loginUtils"
+import { loginValidationSchema } from "./login/loginUtils"
 import { singupValidationSchema, signupApi } from "./signup/signupUtils";
 
-export { loginValidationSchema, handleLoginSubmit, singupValidationSchema, signupApi };
+export { loginValidationSchema, singupValidationSchema, signupApi };
