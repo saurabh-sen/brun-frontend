@@ -10,21 +10,34 @@ import { signupInitialValues } from '@contants/signupConstant'
 import MyButton from '@components/common/MyButton'
 import { ButtonType } from '@enumsAndTypes/common/common.types'
 import { ISignupValues } from '@enumsAndTypes/login/login.types'
-// import { signup } from '@services/signup/signupUtils'
+import { useSignMeUpMutation } from '@services/signup/signupUtils'
+import { useRouter } from 'next/navigation'
+import MyError from '@components/common/MyError'
 
 const Signup = () => {
 
+  const router = useRouter()
   const [error, setError] = React.useState(false);
+  const [mutation, {
+    isError: signupError
+  }] = useSignMeUpMutation();
 
-  const handleSignupSubmit = async (values : ISignupValues) => {
-    // try {
-    //   const response = await signup(values);
-    //   if (response.error) {
-    //     setError(response.error.message);
-    //   }
-    // } catch (error) {
-    //   console.error("An error occurred", error);
-    // }
+  const handleSignupSubmit = async (values: ISignupValues) => {
+    const data = {
+      first_name: values.firstName,
+      last_name: values.lastName,
+      email: values.email,
+      password: values.password
+    }
+    try {
+      await mutation(data);
+      router.push('/login')
+    } catch (error) {
+      console.error("An error occurred", signupError);
+    }
+    if (signupError) {
+      setError(true);
+    }
   };
 
   return (
@@ -37,16 +50,7 @@ const Signup = () => {
             </span>
           </Link>
           {
-            error && (
-              <div className="error text-[#767676] text-sm flex gap-1 items-center">
-                <span className="material-symbols-outlined text-sm">
-                  info
-                </span>
-                <p>
-                  {error}
-                </p>
-              </div>
-            )
+            error && <MyError errorMessage='Something went wrong!' />
           }
           <h5>CREATE AN ACCOUNT</h5>
           <p className="invisible">.</p>
