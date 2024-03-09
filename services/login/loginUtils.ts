@@ -8,16 +8,9 @@ const getCharacterValidationError = (str: string) => {
 
 export const loginValidationSchema = Yup.object({
   email: Yup.string()
-    .email("Invalid email addresss")
     .required("Email is required"),
   password: Yup.string()
     .required("Please enter a password")
-    // check minimum characters
-    .min(8, "Password must have at least 8 characters")
-    // different error messages for different requirements
-    .matches(/[0-9]/, getCharacterValidationError("digit"))
-    .matches(/[a-z]/, getCharacterValidationError("lowercase"))
-    .matches(/[A-Z]/, getCharacterValidationError("uppercase")),
 });
 
 const loginApi = createApi({

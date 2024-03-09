@@ -16,11 +16,11 @@ import MyError from '@components/common/MyError'
 const Login = () => {
 
   const router = useRouter();
-  const [showError, setShowError] = useState(false);
+  const [error, setError] = useState<null | string>(null);
 
-  const [loginMe, { isError }] = useLoginMeMutation();
+  const [loginMe, { data, isError }] = useLoginMeMutation();
 
-  const handleLoginSubmit = async (values : ILoginValues) => {
+  const handleLoginSubmit = async (values: ILoginValues) => {
     const payload = {
       email: values.email,
       password: values.password
@@ -29,25 +29,27 @@ const Login = () => {
       const response = await loginMe(payload).unwrap();
       if ('error' in response) {
         console.error("An error occurred", response.error);
-        setShowError(true);
+        setError('Incorrect combination of user name and password.');
       } else {
         router.push('/')
-      }6
-    } catch (error) {
-      console.error("An error occurred", error);
+      } 6
+    } catch (error: any) {
+      // Assuming error is of type unknown
+      const errorMessage = error['data']['message'] as string;
+      setError(errorMessage);
     }
     if (isError) {
-      setShowError(true);
+      setError('Something went wrong.');
     }
   }
 
   return (
     <main className='min-h-screen flex justify-center items-center'>
       <section className="login w-64 sm:w-80 md:w-[649px]" id='login'>
-        <legend className='flex justify-center items-center mb-11 '>
+        <legend className='flex flex-col justify-center items-center mb-11 '>
           <h5>LOG IN INTO YOUR ACCOUNT</h5>
+          {error && <MyError errorMessage={error} />}
         </legend>
-        {showError && <MyError errorMessage='Incorrect combination of user name and password.' />}
         <Formik
           initialValues={loginInitialValues}
           validationSchema={loginValidationSchema}
@@ -59,7 +61,7 @@ const Login = () => {
               label="Email Address"
               name="email"
               type="email"
-              onFocus={() => setShowError(false)}
+              onFocus={() => setError(null)}
             />
             <MyTextInput
               id='password'
@@ -67,7 +69,7 @@ const Login = () => {
               name="password"
               type="password"
               className='mt-8'
-              onFocus={() => setShowError(false)}
+              onFocus={() => setError(null)}
             />
             <Link href="/request-password-reset" className='underline decoration-1 mt-3'>FORGET YOUR PASSWORD?</Link>
 
