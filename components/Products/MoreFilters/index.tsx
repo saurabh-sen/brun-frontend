@@ -19,7 +19,7 @@ const MoreFilters = () => {
     }
 
     return (
-        <div className="more__filters border border-black p-8 absolute top-14 bg-white">
+        <div className="more__filters border border-black p-8 absolute top-14 right-0 bg-white">
             <div className="availability">
                 <h3>AVAILABILITY</h3>
                 <div className="flex gap-2 mt-2">

@@ -30,7 +30,7 @@ const ScollToTop = () => {
     }
 
     return (
-        <span className={`border border-black px-3 py-3 grid place-items-center fixed bottom-6 right-4 cursor-pointer ${!showScroll && 'hidden'}`} onClick={handleScrollToTop}>
+        <span className={`bg-white border border-black px-3 py-3 grid place-items-center fixed bottom-6 right-4 cursor-pointer ${!showScroll && 'hidden'}`} onClick={handleScrollToTop}>
             <span className="material-symbols-outlined">
                 arrow_upward
             </span>
