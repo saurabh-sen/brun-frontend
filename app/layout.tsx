@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./globalicons.css";
 import ServiceProvider from "@components/Providers/ServiceProvider";
+import ScollToTop from "@components/common/ScollToTop";
 
 export const metadata: Metadata = {
   title: "Brun an one stop shop for latest fashion trends and styles.",
@@ -21,6 +22,7 @@ export default function RootLayout({
         <ServiceProvider>
           {children}
         </ServiceProvider>
+        <ScollToTop />
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from "./features/auth/authSlice"
+import productListingReducer from "./features/productListing/productListingSlice"
 import { signupApi } from '@services';
 import { loginApi } from '@services/login/loginUtils';
 import { requestResetPasswordApi } from '@services/resetPassword/resetPassword';
@@ -11,6 +12,7 @@ export const makeStore = () => {
       [signupApi.reducerPath]: signupApi.reducer,
       [loginApi.reducerPath]: loginApi.reducer,
       [requestResetPasswordApi.reducerPath]: requestResetPasswordApi.reducer,
+      productListing: productListingReducer,
     },
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(signupApi.middleware, loginApi.middleware, requestResetPasswordApi.middleware),
