@@ -1,5 +1,5 @@
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
-import { PRODUCTSIZE, ProductAvailabilityEnum, ProductSizeEnum } from '@enumsAndTypes/productListing/productListing.types';
+import { PRODUCTSIZE, ProductAvailabilityEnum, ProductSizeEnum } from '@modals/productListing/productListing.types';
 import { setInStock, setSizeSelected } from '@libs/features/productListing/productListingSlice';
 import { RootState } from '@libs/store';
 import React from 'react'

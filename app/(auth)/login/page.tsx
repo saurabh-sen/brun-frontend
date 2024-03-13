@@ -7,10 +7,10 @@ import MyTextInput from '@components/common/MyTextInput'
 import { loginValidationSchema } from '@services'
 import { loginInitialValues } from '@contants/loginConstant'
 import MyButton from '@components/common/MyButton'
-import { ButtonType } from '@enumsAndTypes/common/common.types'
-import { useLoginMeMutation } from '@services/login/loginUtils'
+import { ButtonType } from '@modals/common/common.types'
+import { useLoginMeMutation } from '@services/login/login.service'
 import { useRouter } from 'next/navigation'
-import { ILoginValues } from '@enumsAndTypes/login/login.types'
+import { ILoginValues } from '@modals/login/login.types'
 import MyError from '@components/common/MyError'
 
 const Login = () => {

@@ -1,7 +1,7 @@
 "use client"
 import MyButton from '@components/common/MyButton'
 import MyTextInput from '@components/common/MyTextInput'
-import { ButtonType } from '@enumsAndTypes/common/common.types'
+import { ButtonType } from '@modals/common/common.types'
 import { Form, Formik } from 'formik'
 import React, { useState } from 'react'
 

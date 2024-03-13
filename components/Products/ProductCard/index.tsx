@@ -13,7 +13,7 @@ const ProductCard = ({ image, name, price, slug }: IProductCard) => {
     return (
         <Link href={`products/${slug}`} className='productlist__card flex flex-col items-center gap-1'>
             <div className="card__container">
-                <Image src={image} alt={name} width={500} height={698} />
+                <Image src={image} alt={name} width={460} height={644} />
                 <div className="card__text">
                     <p className='productlist__name'>{name}</p>
                     <p className='productlist__price'>₹{price}</p>

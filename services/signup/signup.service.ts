@@ -1,4 +1,4 @@
-import { ISignupValuesDB } from "@enumsAndTypes/login/login.types";
+import { ISignupValuesDB } from "@modals/login/login.types";
 import * as Yup from "yup";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 

@@ -1,4 +1,5 @@
-import { loginValidationSchema } from "./login/loginUtils"
-import { singupValidationSchema, signupApi } from "./signup/signupUtils";
+import { loginValidationSchema } from "./login/login.service"
+import { singupValidationSchema, signupApi } from "./signup/signup.service";
+import { useGetProductDetailsQuery } from "./productDetailedView/productDetailedView.service"
 
-export { loginValidationSchema, singupValidationSchema, signupApi };
+export { loginValidationSchema, singupValidationSchema, signupApi, useGetProductDetailsQuery };
