@@ -1,7 +1,9 @@
 "use client"
 import MyButton from '@components/common/MyButton'
+import MyError from '@components/common/MyError'
 import MyTextInput from '@components/common/MyTextInput'
 import { ButtonType } from '@enumsAndTypes/common/common.types'
+import { useRequestResetPasswordMutation } from '@services/resetPassword/resetPassword'
 import { Form, Formik } from 'formik'
 import React, { useState } from 'react'
 
@@ -17,11 +19,23 @@ const validationSchema = Yup.object({
 
 const RequestPasswordReset = () => {
 
-    const [showSuccess, setShowSuccess] = useState(false)
+    const [showSuccess, setShowSuccess] = useState(false);
+    const [requestPasswordReset, { isError }] = useRequestResetPasswordMutation();
 
-    const handleSubmit = (values: { email: string }) => {
-        if (values.email) setShowSuccess(true)
-        console.log(values)
+    const handleSubmit = async (values: { email: string }) => {
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+        const isValidEmail = emailRegex.test(values.email);
+        if (!isValidEmail) return;
+
+        try {
+            const response = await requestPasswordReset(values).unwrap();
+            if(response.statusCode === 200) {
+                setShowSuccess(true);
+            }
+        } catch (error) {
+            console.log('something went wrong while resetting password.', error)
+        }
     }
 
     return (
@@ -31,8 +45,11 @@ const RequestPasswordReset = () => {
                     <h5>REQUEST PASSWORD RESET</h5>
                     {
                         showSuccess && (
-                            <p className='text-[#767676] text-sm my-2'>RECOVERY EMAIL WILL BE SENT TO YOUR REGISTERED EMAIL ADDRESS.</p>
+                            <p className='text-[#767676] text-sm my-2 text-center'>RECOVERY EMAIL WILL BE SENT TO YOUR REGISTERED EMAIL ADDRESS.</p>
                         )
+                    }
+                    {
+                        isError && <MyError errorMessage='An error occurred. Please try again later.' />
                     }
                 </legend>
                 <Formik

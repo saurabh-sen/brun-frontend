@@ -1,6 +1,6 @@
-import { ISignupValues } from "@enumsAndTypes/login/login.types";
+import { ISignupValuesDB } from "@enumsAndTypes/login/login.types";
 import * as Yup from "yup";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const getCharacterValidationError = (str: string) => {
   return `Your password must have at least 1 ${str} character`;
@@ -38,10 +38,7 @@ const signupApi = createApi({
   reducerPath: "signupApi",
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_BASE_URL }),
   endpoints: (builder) => ({
-    fetchUser : builder.query<ISignupValues, void>({
-      query: () => "/user",
-    }),
-    signup: builder.mutation<ISignupValues, ISignupValues>({
+    signMeUp: builder.mutation<ISignupValuesDB, ISignupValuesDB>({
       query: (body) => ({
         url: "/user/register",
         method: "POST",
@@ -51,8 +48,6 @@ const signupApi = createApi({
   }),
 });
 
-// const { useFetchUserQuery, useSignupMutation } = signupApi;
+const { useSignMeUpMutation } = signupApi;
 
-export { singupValidationSchema, signupApi
-  // , useFetchUserQuery, useSignupMutation
-};
+export { singupValidationSchema, signupApi, useSignMeUpMutation };

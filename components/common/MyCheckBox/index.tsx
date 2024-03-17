@@ -1,4 +1,4 @@
-import { IMyCheckBox } from "components/enumsAndTypes/login/login.types";
+import { IMyCheckBox } from "@enumsAndTypes/login/login.types";
 import { useField } from "formik";
 
 const MyCheckBox = ({ className, children, ...props }: IMyCheckBox) => {

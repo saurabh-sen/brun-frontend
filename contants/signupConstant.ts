@@ -1,4 +1,4 @@
-import { ISignupValues } from "components/enumsAndTypes/login/login.types";
+import { ISignupValues } from "@enumsAndTypes/login/login.types";
 
 const signupInitialValues: ISignupValues = {
   firstName: "",
