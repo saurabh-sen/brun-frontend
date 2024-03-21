@@ -5,7 +5,7 @@ import React from 'react'
 
 const ProductDetails = ({ params }: { params: { slug: string } }) => {
   return (
-    <main className="product__details m-7">
+    <main className="product__details m-7 ">
       <ProductDetailedView productSlug={params.slug} />
       <ProductReviewAndLook />
       <ProductRecommendation />

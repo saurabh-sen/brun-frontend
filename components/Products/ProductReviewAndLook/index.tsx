@@ -19,7 +19,7 @@ const ProductReviewAndLook = () => {
   }
 
   return (
-    <section className='flex flex-col justify-center md:flex-row md:justify-between max-w-[980px]' id='ProductReviewAndLook'>
+    <section className='flex flex-col justify-center md:flex-row md:justify-between max-w-[980px] mx-auto mt-5 sm:mt-10' id='ProductReviewAndLook'>
       <div className="product__details__tab">
         <div className="tabs__header flex items-center gap-3 mb-3">
           <MyOutlinedButton active={activeTab === 0} handleClick={() => handleClick(0)}>DESCRIPTION</MyOutlinedButton>
@@ -38,7 +38,7 @@ const ProductReviewAndLook = () => {
           </TabsBody>
         </div>
       </div>
-      <div className="product__complete__look">
+      <div className="product__complete__look mt-4 md:mt-6">
         <h4 className='text-base'>COMPLETE THE LOOK</h4>
         <ProductCard image={product} name='SHADED JEANS' price={2900.00} slug='shaded-jeans' />
       </div>

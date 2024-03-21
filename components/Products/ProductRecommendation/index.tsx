@@ -9,7 +9,7 @@ const ProductRecommendation = () => {
   const { productListing } = useSelector((state: RootState) => state.productListing)
 
   return (
-    <section className='max-w-[980px]'>
+    <section className='max-w-[980px] mx-auto mt-5 sm:mt-10'>
       <h4 className="text-sm">YOU MAY ALSO LIKE</h4>
       <div className="products__card__container grid grid-cols-2 gap-8 sm:gap-20">
         {
