@@ -1,6 +1,6 @@
 'use client'
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
-import { PRODUCTCATEGORIES, ProductCategoryEnum, ProductListingLayoutEnum } from '@enumsAndTypes/productListing/productListing.types'
+import { PRODUCTCATEGORIES, ProductCategoryEnum, ProductListingLayoutEnum } from '@modals/productListing/productListing.types'
 import { setLayout, setProductCategory } from '@libs/features/productListing/productListingSlice'
 import { RootState } from '@libs/store'
 import React from 'react'

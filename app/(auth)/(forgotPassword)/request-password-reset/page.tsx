@@ -2,8 +2,8 @@
 import MyButton from '@components/common/MyButton'
 import MyError from '@components/common/MyError'
 import MyTextInput from '@components/common/MyTextInput'
-import { ButtonType } from '@enumsAndTypes/common/common.types'
-import { useRequestResetPasswordMutation } from '@services/resetPassword/resetPassword'
+import { ButtonType } from '@modals/common/common.types'
+import { useRequestResetPasswordMutation } from '@services/resetPassword/resetPassword.service'
 import { Form, Formik } from 'formik'
 import React, { useState } from 'react'
 

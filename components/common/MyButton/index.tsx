@@ -1,4 +1,4 @@
-import { ButtonType } from '@enumsAndTypes/common/common.types';
+import { ButtonType } from '@modals/common/common.types';
 import React from 'react'
 
 interface IMyButton {

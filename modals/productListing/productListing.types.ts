@@ -66,7 +66,7 @@ interface IProductListingState {
 
 interface IProductListing {
     image: StaticImageData | string;
-    id: number;
+    id: string;
     name: string;
     price: number;
     slug: string;

@@ -1,4 +1,7 @@
-import { loginValidationSchema } from "./login/loginUtils"
-import { singupValidationSchema, signupApi } from "./signup/signupUtils";
+import { loginValidationSchema } from "./login/login.service"
+import { singupValidationSchema, signupApi } from "./signup/signup.service";
+import { useGetProductDetailsQuery } from "./productDetailedView/productDetailedView.service"
 
-export { loginValidationSchema, singupValidationSchema, signupApi };
+import { deliveryInitialValues, deliveryValidationSchema, handleDeliverySubmit } from './deliveryAddress/deliveryAddress.service'
+
+export { loginValidationSchema, singupValidationSchema, signupApi, useGetProductDetailsQuery, deliveryInitialValues, deliveryValidationSchema, handleDeliverySubmit};

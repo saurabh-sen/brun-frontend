@@ -1,4 +1,4 @@
-import { ILoginValues } from "@enumsAndTypes/login/login.types";
+import { ILoginValues } from "@modals/login/login.types";
 
 const loginInitialValues: ILoginValues = {
   email: "",
