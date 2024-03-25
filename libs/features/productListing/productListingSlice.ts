@@ -5,7 +5,7 @@ import {
   ProductCategoryEnum,
   ProductListingLayoutEnum,
   ProductSizeEnum,
-} from "@enumsAndTypes/productListing/productListing.types";
+} from "@modals/productListing/productListing.types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: IProductListingState = {

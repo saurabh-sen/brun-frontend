@@ -1,4 +1,4 @@
-import { IMyTextInput } from "@enumsAndTypes/login/login.types";
+import { IMyTextInput } from "@modals/login/login.types";
 import { useField } from "formik";
 
 const MyTextInput = ({ label, id, name, type, className, onFocus }: IMyTextInput) => {

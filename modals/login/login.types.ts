@@ -1,4 +1,4 @@
-import { RoleEnum } from "@enumsAndTypes/common/common.types";
+import { RoleEnum } from "@modals/common/common.types";
 
 interface IMyTextInput {
   label: string;
