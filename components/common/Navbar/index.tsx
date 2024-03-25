@@ -1,18 +1,23 @@
 "use client";
 import React from "react";
+import SideNavbar from "./SideNav";
 import { useState, useEffect } from "react";
+import './navbar.css'
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
+  const [isSideNavbarOpen, setIsSideNavbarOpen] = useState(false);
+
+  const toggleSideNavbar = () => {
+    setIsSideNavbarOpen(!isSideNavbarOpen);
+  };
+
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsSticky(scrollPosition > 0);
     };
-
-    console.log(handleScroll);
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -21,19 +26,36 @@ const Navbar = () => {
   }, []);
   return (
     <header
-      className={`max-w-full self-stretch flex flex-row items-start justify-between py-[1.875rem] px-[3.75rem] box-border gap-[1.25rem] top-[0] z-[99] w-full ${
+      className={`max-w-full w-full md:w-aut self-stretch flex flex-row items-start justify-between pt-[1.875rem] pb-[1.875rem] pr-[3.75rem] box-border gap-[1.25rem] top-[0] z-[99] ${
         isSticky ? "sticky" : ""
       }`}
     >
-      <div className="h-[4.625rem] w-[19.9rem] relative flex items-center justify-center">
+      <div className="h-[4.625rem] w-[20.9rem] relative flex items-center justify-center">
         <img
-          className="h-full w-full object-contain absolute left-[0rem] top-[0rem] [transform:scale(2.459)]"
           loading="eager"
           alt=""
           src="/group-98.svg"
         />
       </div>
-      <nav className="m-0 h-[1.25rem] w-[25.375rem] flex flex-row items-end justify-start py-[0rem] pr-[1.813rem] pl-[0rem] box-border gap-[0rem_5.625rem] max-w-full text-left text-[1rem] text-black font-urbanist cursor-pointer">
+      <SideNavbar isOpen={isSideNavbarOpen} onClose={toggleSideNavbar} />
+     <div className="nav-responsive-icons">
+      <img
+       loading="eager"
+       alt=""
+       src="/Search_4.png"
+       width="100%"
+       height="100%" 
+      />
+       <img
+       loading="eager"
+       alt=""
+       src="/Search_4.svg"
+       width="100%"
+       height="100%" 
+       onClick={toggleSideNavbar}/>
+     
+     </div>
+      <nav className="m-0 h-[1.25rem] w-[25.375rem] flex flex-row items-end justify-start py-[0rem] pr-[1.813rem] pl-[0rem] box-border gap-[0rem_5.625rem] max-w-full text-left text-[1rem] text-black font-urbanist cursor-pointer links">
         <div className="w-[2.938rem] relative tracking-[0.1em] font-semibold inline-block [text-shadow:0px_4px_24px_rgba(0,_0,_0,_0.35)]">
           TOPS
         </div>
@@ -44,11 +66,11 @@ const Navbar = () => {
           ABOUT
         </div>
       </nav>
-      <div className="w-[18rem] flex flex-col items-start justify-start pt-[0.25rem] px-[0rem] pb-[0rem] box-border cursor-pointer">
+      <div className="w-[18rem] flex flex-col items-start justify-start pt-[0.25rem] px-[0rem] pb-[0rem] box-border cursor-pointer nav-icons">
         <div className="self-stretch h-[1.438rem] flex flex-row items-center justify-between gap-[1.25rem]">
           <div className="h-[1.094rem] w-[1.056rem] relative flex items-center justify-center">
             <img
-              className="h-full w-full object-contain absolute left-[0rem] top-[0.25rem] [transform:scale(3.959)]"
+              className="h-full w-full object-contain absolute left-[0rem] top-[0.25rem] [transform:scale(3.959)] text-white"
               loading="eager"
               alt=""
               src="/vector1.svg"
@@ -82,6 +104,8 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+     
     </header>
   );
 };

@@ -35,10 +35,10 @@ const PredictableSec1: React.FC<PredictableSec1Type> = ({
   };
 
   return (
-    <section className="w-[1200px] relative max-w-full text-left font-urbanist lg:pb-[65px]">
-      <div className="flex flex-row justify-between w-[1230px] mb-8">
+    <section className=" w-full relative max-w-full text-left font-urbanist lg:pb-[65px]">
+      <div className="flex flex-row justify-between  w-full mb-8">
         <div className="uppercase font-normal font-urbanist">{giftsJustForYou}</div>
-        <div className="flex flex-row gap-1 cursor-pointer">
+        <div className="justify-end flex flex-row gap-1 cursor-pointer">
           <img src="Frame 139.png" alt="backward" width="20%" onClick={handlePrev} />
           <img src="frame-99@2x.png" alt="forward" width="20%" onClick={handleNext} />
         </div>
@@ -64,7 +64,7 @@ const PredictableSec1: React.FC<PredictableSec1Type> = ({
               alt=""
               src={newArrivalsRectangle}
             />
-            <div className="w-[104px] h-[89px] flex flex-col items-start justify-start gap-[12px_0px]">
+            <div className="w-[108px] h-[89px] flex flex-col items-start justify-start gap-[12px_0px]">
               <div className="relative uppercase">FAUX FUR KNIT</div>
               <div className="relative uppercase whitespace-nowrap">₹ 3,290.00</div>
             </div>
@@ -78,7 +78,7 @@ const PredictableSec1: React.FC<PredictableSec1Type> = ({
               alt=""
               src={rectangle117}
             />
-            <div className="w-[105px] h-[49px] flex flex-col items-start justify-start gap-[12px_0px]">
+            <div className="w-[108px] h-[49px] flex flex-col items-start justify-start gap-[12px_0px]">
               <div className="relative uppercase">FAUX FUR KNIT</div>
               <div className="relative uppercase whitespace-nowrap">₹ 3,290.00</div>
             </div>
@@ -94,13 +94,13 @@ const PredictableSec1: React.FC<PredictableSec1Type> = ({
               alt=""
               src={topsBottomsAboutRectangle}
             />
-            <div className="w-[105px] h-[49px] flex flex-col items-start justify-start gap-[12px_0px]">
+            <div className="w-[108px] h-[49px] flex flex-col items-start justify-start gap-[12px_0px]">
               <div className="relative uppercase">FAUX FUR KNIT</div>
               <div className="relative uppercase whitespace-nowrap">₹ 3,290.00</div>
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide>  
           <div className="flex flex-col items-start justify-start gap-[20px_0px] max-w-full">
             <img
               className="relative max-w-full overflow-hidden max-h-full object-cover"

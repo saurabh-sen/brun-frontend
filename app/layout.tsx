@@ -4,12 +4,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./globalicons.css";
 import ServiceProvider from "@components/Providers/ServiceProvider";
-<<<<<<< HEAD
 import Navbar from "@components/common/Navbar";
 import Footer from "@components/common/Footer";
-=======
-import ScollToTop from "@components/common/ScollToTop";
->>>>>>> 8a709429b5ae8961a8e7f44d5b2575f5d566d538
 
 export const metadata: Metadata = {
   title: "Brun an one stop shop for latest fashion trends and styles.",
@@ -24,15 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-urbanist">
-        <Navbar/>
+        <section className="w-full h-[720px] flex-1 relative bg-[url('/group-36@2x.png')] bg-cover bg-no-repeat bg-[top] max-w-full">
+          <Navbar/>
+          <p className="max-w-lg h-[34px] absolute top-[510px] left-[60px] font-urbanist font-normal text-sm text-white">Experience clothing that transcends the predictable, offering styles that defy expectations and redefine fashion norms</p>
+        </section>
         <ServiceProvider>
           {children}
         </ServiceProvider>
-<<<<<<< HEAD
         <Footer/>
-=======
-        <ScollToTop />
->>>>>>> 8a709429b5ae8961a8e7f44d5b2575f5d566d538
       </body>
     </html>
   );

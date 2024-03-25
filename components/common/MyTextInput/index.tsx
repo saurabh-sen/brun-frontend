@@ -1,7 +1,7 @@
 import { IMyTextInput } from "@modals/login/login.types";
 import { useField } from "formik";
 
-const MyTextInput = ({ label, id, name, type, className, onFocus }: IMyTextInput) => {
+const MyTextInput = ({ label, id, name, type, className, onFocus  }: IMyTextInput) => {
 
     const [field, meta] = useField({ name, type });
 
