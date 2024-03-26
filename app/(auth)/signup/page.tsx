@@ -41,7 +41,7 @@ const Signup = () => {
   };
 
   return (
-    <main className='min-h-screen flex justify-center items-center'>
+    <main className='min-h-screen flex justify-center items-center text-sm'>
       <section className="login w-64 sm:w-80 md:w-[649px]" id='singup'>
         <legend className='flex justify-between items-center mb-9'>
           <Link href='/login'>

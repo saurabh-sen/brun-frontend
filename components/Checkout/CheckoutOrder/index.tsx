@@ -2,9 +2,16 @@ import React from 'react'
 import CheckoutOrderItem from '../CheckoutOrderItem'
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
 
-const CheckoutOrder = () => {
+interface ICheckoutOrder {
+    showThankyou: boolean
+}
+
+const CheckoutOrder = ({ showThankyou }: ICheckoutOrder) => {
     return (
-        <div className="checkout__items border border-[#767676] p-5 md:p-10 max-w-[430px] h-max flex flex-col gap-6">
+        <div className="checkout__items border border-[#767676] p-5 md:p-10 max-w-[430px] h-max hidden md:flex flex-col gap-6">
+            {
+                showThankyou && <p>YOUR ORDER</p> 
+            }
             <div className="items__container flex flex-col gap-6 ">
                 <CheckoutOrderItem />
                 <CheckoutOrderItem />
