@@ -32,9 +32,31 @@ const CheckoutForm = () => {
                     <MyOutlinedButton active={billingAddress === false} handleClick={() => setBillingAddress(false)}>BILLING ADDRESS SAME AS DELIVERY ADDRESS</MyOutlinedButton>
                     <MyOutlinedButton active={billingAddress === true} handleClick={() => setBillingAddress(true)}>USE A DIFFERENT BILLING ADDRESS</MyOutlinedButton>
                 </div>
+                {
+                    billingAddress && (
+                        <BillingAddressForm />
+                    )
+                }
                 <button className='border border-black text-black px-24 py-4 w-max'>PAY NOW</button>
             </Form>
         </Formik>
+    )
+}
+
+const BillingAddressForm = () => {
+    return (
+        <>
+            <MyTextInput id='country' label='COUNTRY/REGION*' name='country' type='text' />
+            <MyTextInput id='firstname' label='FIRST NAME*' name='firstname' type='text' />
+            <MyTextInput id='lastname' label='LAST NAME*' name='lastname' type='text' />
+            <MyTextInput id='company' label='COMPANY (OPTIONAL)' name='company' type='text' />
+            <MyTextInput id='phone' label='PHONE NUMBER*' name='phone' type='tel' />
+            <MyTextArea id='address' label='ADDRESS*' name='address' />
+            <MyTextInput id='locality' label='LOCALITY*' name='locality' type='text' />
+            <MyTextInput id='state' label='STATE*' name='state' type='text' />
+            <MyTextInput id='pincode' label='PINCODE*' name='pincode' type='text' />
+            <MyTextInput id='moreinfo' label='MORE INFO (OPTIONAL)' name='moreinfo' type='text' />
+        </>
     )
 }
 

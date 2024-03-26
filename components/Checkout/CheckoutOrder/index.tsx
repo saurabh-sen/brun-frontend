@@ -8,7 +8,7 @@ interface ICheckoutOrder {
 
 const CheckoutOrder = ({ showThankyou }: ICheckoutOrder) => {
     return (
-        <div className="checkout__items border border-[#767676] p-5 md:p-10 max-w-[430px] h-max hidden md:flex flex-col gap-6">
+        <div className="checkout__items border border-[#767676] p-5 md:p-10 max-w-[512px] h-max hidden md:flex flex-col gap-6 text-sm">
             {
                 showThankyou && <p>YOUR ORDER</p> 
             }

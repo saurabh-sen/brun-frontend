@@ -6,7 +6,7 @@ const ThanksForYourOrder = () => {
 
   return (
     <aside className='thanksforyouorder space-y-6'>
-      <h2 className="thanks__heading text-base md:text-xl">THANK YOU FOR YOUR ORDER!</h2>
+      <h2 className="thanks__heading text-base">THANK YOU FOR YOUR ORDER!</h2>
       <div className="delivery__address space-y-4 text-sm">
         <div className="delivery__address__email">
           <p className="thanks__subheading">WE SENT AN ORDER CONFIRMATION TO:</p>

@@ -7,12 +7,12 @@ import ThanksForYourOrder from '@components/Checkout/ThanksForYourOrder'
 
 const Checkout = () => {
 
-    const [showThankyou, setShowThankyou] = useState<boolean>(true);
+    const [showThankyou, setShowThankyou] = useState<boolean>(false);
 
     console.log('showThankyou', showThankyou)
 
     return (
-        <section id='checkout' className='flex flex-col-reverse md:flex-row gap-4 max-w-5xl my-3 px-4 mx-auto justify-between'>
+        <section id='checkout' className='flex flex-col-reverse md:flex-row gap-4 md:gap-16 my-3 px-4 mx-auto justify-center'>
             {
                 showThankyou
                     ? <ThanksForYourOrder />
