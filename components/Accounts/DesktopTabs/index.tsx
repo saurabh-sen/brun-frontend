@@ -3,7 +3,7 @@ import AccountsOrders from "../AccountsOrders";
 
 const DesktopTabs = () => {
     return (
-        <div className='accounts flex gap-10 mx-auto'>
+        <div className='accounts flex gap-16 mx-auto'>
             <div className="account__details">
                 <AccountsDetails />
             </div>

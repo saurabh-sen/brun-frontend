@@ -10,7 +10,7 @@ interface IMyOutlinedButton {
 
 const MyOutlinedButton = ({ active, handleClick, children, className }: IMyOutlinedButton) => {
   return (
-    <button className={`myoutlinedbutton flex justify-center items-center border border-black px-2 py-[2px] sm:px-2 sm:py-1 text-xs sm:text-sm ${active && 'text-white bg-black'} ${className} `} onClick={handleClick}>
+    <button className={`myoutlinedbutton flex justify-center items-center border border-black px-2 py-[2px] sm:px-2 sm:py-1 text-xs sm:text-sm ${active && 'text-white bg-black font-semibold'} ${className} `} onClick={handleClick}>
       {children}
     </button>
   )

@@ -14,9 +14,9 @@ const ProductCard = ({ image, name, price, slug }: IProductCard) => {
         <Link href={`products/${slug}`} className='productlist__card flex flex-col items-center gap-1'>
             <div className="card__container">
                 <Image src={image} alt={name} width={460} height={644} />
-                <div className="card__text">
-                    <p className='productlist__name'>{name}</p>
-                    <p className='productlist__price'>₹{price}</p>
+                <div className="card__text ">
+                    <p className='productlist__name mt-2'>{name}</p>
+                    <p className='productlist__price mt-2'>₹{price}</p>
                 </div>
             </div>
         </Link>
