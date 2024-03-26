@@ -1,13 +1,15 @@
+"use client"
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
 import MyTextInput from '@components/common/MyTextInput'
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
-import MyButton from '@components/common/MyButton'
-import { ButtonType } from '@modals/common/common.types'
 import { deliveryInitialValues, deliveryValidationSchema, handleDeliverySubmit } from '@services'
 import MyTextArea from '@components/common/MyTextArea'
 
 const CheckoutForm = () => {
+
+    const [billingAddress, setBillingAddress] = useState<boolean>(false)
+
     return (
         <Formik
             initialValues={deliveryInitialValues}
@@ -27,8 +29,8 @@ const CheckoutForm = () => {
                 <MyTextInput id='pincode' label='PINCODE*' name='pincode' type='text' />
                 <MyTextInput id='moreinfo' label='MORE INFO (OPTIONAL)' name='moreinfo' type='text' />
                 <div className="checkout__button__container flex gap-5 items-center">
-                    <MyOutlinedButton active handleClick={() => console.log('billing address will be same as shipping address')}>BILLING ADDRESS SAME AS DELIVERY ADDRESS</MyOutlinedButton>
-                    <MyOutlinedButton active={false} handleClick={() => console.log('you will be input a different billing address')}>USE A DIFFERENT BILLING ADDRESS</MyOutlinedButton>
+                    <MyOutlinedButton active={billingAddress === false} handleClick={() => setBillingAddress(false)}>BILLING ADDRESS SAME AS DELIVERY ADDRESS</MyOutlinedButton>
+                    <MyOutlinedButton active={billingAddress === true} handleClick={() => setBillingAddress(true)}>USE A DIFFERENT BILLING ADDRESS</MyOutlinedButton>
                 </div>
                 <button className='border border-black text-black px-24 py-4 w-max'>PAY NOW</button>
             </Form>

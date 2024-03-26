@@ -12,7 +12,7 @@ const AccountsDetails = () => {
                 <DetailsItem label='FIRST NAME' value='John' />
                 <DetailsItem label='LAST NAME' value='Doe' />
                 <DetailsItem label='EMAIL' value='john.doe@example.com' />
-                <MyOutlinedButton active={false} handleClick={() => alert('signed out')} className='!w-max !py-2 !px-8 md:!py-4 md:!px-16 m-auto md:m-0'>SIGN OUT</MyOutlinedButton>
+                <MyOutlinedButton active={false} handleClick={() => alert('signed out')} className='!w-max !py-2 !px-8 md:!py-4 md:!px-16 m-auto md:m-0 !font-semibold'>SIGN OUT</MyOutlinedButton>
             </form>
         </div>
     )
