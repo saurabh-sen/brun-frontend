@@ -1,7 +1,8 @@
+import SearchBox from "@components/common/SearchBox";
 import PredictableSec from "@components/home/predictable-sec";
 import PredictableSec1 from "@components/home/predictable-sec1";
 import PredictableSec2 from "@components/home/predictable-sec2";
-
+import PredictableSec3 from "@components/home/predictable-sec3";
 export default function Home() {
   return (
     <main className="w-full flex min-h-screen flex-col items-center justify-between p-10 max-w-full">
@@ -65,28 +66,13 @@ export default function Home() {
         propAlignSelf="unset"
         propWidth1="583px"
       />
-      <PredictableSec featured="New Arrivals" />
-     
-      <section className=" w-full flex flex-row flex-wrap items-start justify-start  box-border gap-[0px_40px] max-w-full mq825:gap-[0px_40px] pb-24">
-        
-      <img
-          className="self-stretch flex-1"
-          loading="eager"
-          alt=""
-          src="/frame-123@2x.png"
-          width="40%"
-          height="50%"
-        />
-        <img
-           className="self-stretch flex-1"
-          loading="eager"
-          alt=""
-          src="/frame-126@2x.png"
-          width="40%"
-          height="50%"
-  
-        />
-      </section>
+      
+      <PredictableSec3
+      newArrivalText="NEW ARRIVALS"
+      newArrivalsRectangle="/frame-123@2x.png"
+      rectangle117="/frame-126@2x.png"
+
+      />
       <PredictableSec1
         giftsJustForYou="Iconic Essentials"
         newArrivalsRectangle="/rectangle-102-2@2x.png"
