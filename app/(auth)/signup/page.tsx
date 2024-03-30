@@ -45,7 +45,7 @@ const Signup = () => {
       <section className="login w-64 sm:w-80 md:w-[649px]" id='singup'>
         <legend className='flex justify-between items-center mb-9'>
           <Link href='/login'>
-            <span className="material-symbols-outlined scale-75">
+            <span className="material-symbols-rounded scale-75">
               arrow_back_ios_new
             </span>
           </Link>

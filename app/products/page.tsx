@@ -1,12 +1,18 @@
+"use client";
+
 import LoadMoreProducts from '@components/Products/LoadMoreProducts'
 import ProductCategory from '@components/Products/ProductCategory'
 import ProductList from '@components/Products/ProductList'
+import { RootState } from '@libs/store';
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 const Products = () => {
+  
+  const { isSearchBarOpen } = useSelector((state: RootState) => state.homepage)
 
   return (
-    <main className='Products my-8 sm:my-24 text-xs sm:text-sm px-3 sm:px-0'>
+    <main className={`Products text-xs sm:text-sm px-3 sm:px-0 ${isSearchBarOpen ? 'my-6' : 'my-24'}`}>
       <ProductCategory />
       <ProductList />
       <LoadMoreProducts />

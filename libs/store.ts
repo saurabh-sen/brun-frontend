@@ -3,6 +3,7 @@ import authReducer from "./features/auth/authSlice";
 import productListingReducer from "./features/productListing/productListingSlice";
 import productDetailedViewReducer from "./features/productDetailedView/ProductDetailedViewSlice";
 import cartReducer from "./features/cart/cartSlice";
+import homepageReducer from "./features/homepage/homepageSlice";
 import tabsReducer from "./features/tabs/tabsSlice";
 import { signupApi } from "@services";
 import { loginApi } from "@services/login/login.service";
@@ -12,6 +13,7 @@ import { productDetailApi } from "@services/productDetailedView/productDetailedV
 export const makeStore = () => {
   return configureStore({
     reducer: {
+      homepage: homepageReducer,
       auth: authReducer,
       productListing: productListingReducer,
       productDetailedView: productDetailedViewReducer,

@@ -46,18 +46,3 @@ html, body {
   flex-direction: column;
   min-height: 100vh;
 }
-
-footer {
-  margin-top: auto;
-}
-header {
-  transition: background-color 0.3s ease;
-}
-
-header.sticky {
-  position: fixed;
-  top: 0;
-  background-color: #fff; 
-}
-
-

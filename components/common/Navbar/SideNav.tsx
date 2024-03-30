@@ -1,61 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
 import './navbar.css'
-const SideNavbar = ({ isOpen, onClose }) => {
+import Link from "next/link";
+import { SIDENAVBARITEMS } from "@contants/homepage";
+
+interface ISideNavbar {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const SideNavbar = ({ isOpen, onClose }: ISideNavbar) => {
   return (
-    <div className={ `side-navbar ${isOpen ? "open" : ""}`}>
-     <div className="absolute w-[342px] h-72 top-16 left-4">
-        <div className="flex flex-row  items-center gap-3 pb-16 cursor-pointer">
-           <img 
-            src="/close.svg"
-            alt="close"
-            onClick={onClose}
-           />
-           <span className="w-[2.938rem] relative tracking-[0.1em] font-semibold inline-block [text-shadow:0px_4px_24px_rgba(0,_0,_0,_0.35)]" onClick={onClose}>CLOSE</span>
-        </div>
+    <div className={`sidenavbar fixed top-0 -left-full w-full h-full bg-white transition-all duration-300 pt-14 px-4 ${isOpen && "left-0"}`}>
+      <div className="flex items-center gap-3 pb-16 cursor-pointer" onClick={onClose}>
+        <span className='material-symbols-rounded cursor-pointer'>
+          close
+        </span>
+        <span className="font-semibold">CLOSE</span>
+      </div>
 
-        <div className="flex flex-col gap-9 cursor-pointer">
-            <div className="flex flex-row justify-between gap">
-            <div className="w-[2.938rem] relative tracking-[0.1em] font-semibold inline-block [text-shadow:0px_4px_24px_rgba(0,_0,_0,_0.35)]">
-            TOPS
-           </div>
-           <img 
-           src="/transform.svg"
-           alt="transform"
-           />
-            </div>
-            <div className="flex flex-row justify-between">
-            <div className="w-[2.938rem] relative tracking-[0.1em] font-semibold inline-block [text-shadow:0px_4px_24px_rgba(0,_0,_0,_0.35)]">
-           BOTTOMS
-           </div>
-           <img 
-           src="/transform.svg"
-           alt="transform"
-           />
-            </div>
-            <div className="flex flex-row justify-between">
-            <div className="w-[2.938rem] relative tracking-[0.1em] font-semibold inline-block [text-shadow:0px_4px_24px_rgba(0,_0,_0,_0.35)]">
-            PROFILE
-           </div>
-           <img 
-           src="/transform.svg"
-           alt="transform"
-           />
-            </div>
-            <div className="flex flex-row justify-between ">
-            <div className="w-[2.938rem] relative tracking-[0.1em] font-semibold inline-block [text-shadow:0px_4px_24px_rgba(0,_0,_0,_0.35)]">
-            ABOUT
-           </div>
-           <img 
-           src="/transform.svg"
-           alt="transform"
-           />
-            </div>
-
-        </div>
-
-     </div>
+      <div className="flex flex-col gap-9 cursor-pointer">
+        {
+          SIDENAVBARITEMS.map((item, idx) => <SideNavbarItem key={idx} route={item.link} title={item.title} />)
+        }
+      </div>
     </div>
   );
 };
+
+interface ISideNavbarItem {
+  route: string;
+  title: string;
+}
+
+const SideNavbarItem = ({ route, title }: ISideNavbarItem) => {
+  return (
+    <Link href={route} className="flex justify-between font-semibold">
+      <div className="">
+        {title}
+      </div>
+      <span className="material-symbols-rounded cursor-pointer">
+        arrow_forward_ios
+      </span>
+    </Link>
+  )
+}
 
 export default SideNavbar;
