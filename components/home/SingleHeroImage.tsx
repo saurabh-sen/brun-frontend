@@ -10,9 +10,9 @@ interface ISingleHeroImage {
 const SingleHeroImage: NextPage<ISingleHeroImage> = ({ heading, image, route }) => {
   return (
     <section className="singleheroimage">
-      <p className="mb-12 text-3xl font-normal font-urbanist ">{heading}</p>
+      <p className="mb-5 md:mb-12 text-sm md:text-3xl font-normal font-urbanist ">{heading}</p>
       <Image
-        className="h-[720px] flex-1 !relative max-w-full overflow-hidden object-cover mb-12"
+        className="flex-1 !relative max-w-full overflow-hidden object-cover mb-12"
         loading="eager"
         alt=""
         src={image}

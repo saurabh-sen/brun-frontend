@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <main>
       <section className="w-full h-[720px] flex-1 relative bg-[url('/assets/hero-img.jpeg')] bg-cover bg-no-repeat bg-[top] max-w-full">
-        <p className="max-w-lg h-[34px] absolute top-[510px] left-[60px] font-urbanist font-normal text-sm text-white">EXPERIENCE CLOTHING THAT TRANSCENDS THE PREDICTABLE, OFFERING STYLES THAT DEFY EXPECTATIONS AND REDEFINE FASHION NORMS</p>
+        <p className="max-w-lg absolute top-[510px] left-9 md:left-14 pr-5 md:pr-0 font-urbanist font-normal text-xs md:text-sm text-white">EXPERIENCE CLOTHING THAT TRANSCENDS THE PREDICTABLE, OFFERING STYLES THAT DEFY EXPECTATIONS AND REDEFINE FASHION NORMS</p>
       </section>
-      <section className="flex flex-col justify-center gap-8 md:gap-16 p-10">
+      <section className="flex flex-col justify-center gap-12 md:gap-16 py-10 px-5 md:px-10">
         <HeroCTA
           heading="Beyond predictable"
           description="Experience clothing that transcends the predictable, offering styles that defy expectations and redefine fashion norms"

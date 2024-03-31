@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import product from "@public/assets/product.jpg"
-import Delete from '@public/icons/Delete'
+import Delete from '@public/icons/common/Delete'
 
 const CartItem = () => {
     return (

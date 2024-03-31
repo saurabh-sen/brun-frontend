@@ -12,7 +12,7 @@ const Products = () => {
   const { isSearchBarOpen } = useSelector((state: RootState) => state.homepage)
 
   return (
-    <main className={`Products text-xs sm:text-sm px-3 sm:px-0 ${isSearchBarOpen ? 'my-6' : 'my-24'}`}>
+    <main className={`Products text-xs sm:text-sm px-3 sm:px-0 ${isSearchBarOpen ? 'mt-52' : 'mt-28'}`}>
       <ProductCategory />
       <ProductList />
       <LoadMoreProducts />

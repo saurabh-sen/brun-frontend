@@ -1,5 +1,4 @@
 import React from "react";
-import './navbar.css'
 import Link from "next/link";
 import { SIDENAVBARITEMS } from "@contants/homepage";
 

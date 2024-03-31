@@ -1,9 +1,7 @@
 'use client'
 import { INewArrivals } from "@modals/home/home.types";
 import React, { useRef } from "react";
-import { useEffect } from "react";
 import SwiperCore from "swiper";
-import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import Image from "next/image";
@@ -28,11 +26,19 @@ const NewArrivals: React.FC<INewArrivals> = ({
 
   return (
     <section className=" w-full relative max-w-full text-left font-urbanist lg:pb-[65px]">
-      <div className="flex justify-between mb-8">
-        <div className="uppercase text-3xl font-normal font-urbanist">New Arrivals</div>
+      <div className="flex justify-between mb-3 md:mb-8">
+        <div className="uppercase text-sm md:text-3xl font-normal font-urbanist">New Arrivals</div>
         <div className="flex gap-1 cursor-pointer">
-          <Image src="/previcon.png" alt="backward" width={40} height={40} onClick={handlePrev} />
-          <Image src="/nexticon.png" alt="forward" width={40} height={40} onClick={handleNext} />
+          <div className="homepage__carousel__icon bg-[#F1F1F1] px-2 py-1 grid place-items-center" onClick={handlePrev}>
+            <span className="material-symbols-rounded opacity-75 text-sm md:text-base">
+              arrow_back_ios_new
+            </span>
+          </div>
+          <div className="homepage__carousel__icon bg-[#F1F1F1] px-2 py-1 grid place-items-center" onClick={handleNext}>
+            <span className="material-symbols-rounded opacity-75 text-sm md:text-base">
+              arrow_forward_ios
+            </span>
+          </div>
         </div>
       </div>
       <Swiper

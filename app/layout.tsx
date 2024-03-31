@@ -1,4 +1,3 @@
-"use client"
 import type { Metadata } from "next";
 import "./globals.css";
 import "./globalicons.css";
@@ -19,7 +18,7 @@ export default function RootLayout({
         <ServiceProvider>
           <Navbar />
             {children}
-          {/* <Footer /> */}
+          <Footer />
         </ServiceProvider>
       </body>
     </html>
