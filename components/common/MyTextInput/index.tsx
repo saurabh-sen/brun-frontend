@@ -1,7 +1,7 @@
 import { IMyTextInput } from "@modals/login/login.types";
 import { useField } from "formik";
 
-const MyTextInput = ({ label, id, name, type, className, onFocus }: IMyTextInput) => {
+const MyTextInput = ({ label, id, name, type, className, onFocus  }: IMyTextInput) => {
 
     const [field, meta] = useField({ name, type });
 
@@ -19,7 +19,7 @@ const MyTextInput = ({ label, id, name, type, className, onFocus }: IMyTextInput
             <label htmlFor={id} className="absolute duration-300 -top-1 -z-1 origin-0 text-gray-500">{label}</label>
             {meta.touched && meta.error ? (
                 <div className="error text-[#767676] text-sm flex gap-1 items-center">
-                    <span className="material-symbols-outlined text-sm">
+                    <span className="material-symbols-rounded text-sm">
                         info
                     </span>
                     <p>

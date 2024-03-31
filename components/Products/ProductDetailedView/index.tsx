@@ -114,7 +114,7 @@ const ProductDetailedView = ({ productSlug }: IProductDetailedView) => {
                     <div className="action__button flex gap-2 text-sm mb-2">
                         <button className='border-none outline-none bg-black text-white px-24 py-2'>ADD</button>
                         <button className='border-none outline-none px-5 py-2 bg-[#F1F1F1] grid place-items-center'>
-                            <span className="material-symbols-outlined">
+                            <span className="material-symbols-rounded">
                                 favorite
                             </span>
                         </button>

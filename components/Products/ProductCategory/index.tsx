@@ -44,20 +44,20 @@ const ProductCategory = () => {
                         showFilters && <MoreFilters />
                     }
                     <MyOutlinedButton handleClick={() => handleSetLayout(ProductListingLayoutEnum.TWO_COLUMN)} active={layout === 2}>
-                        <span className="material-symbols-outlined rotate-90 text-base leading-4 sm:text-lg sm:leading-5">
+                        <span className="material-symbols-rounded rotate-90 text-base leading-4 sm:text-lg sm:leading-5">
                             view_agenda
                         </span>
                     </MyOutlinedButton>
 
                     {/* for big screen hide below button during 0 - 420px */}
                     <MyOutlinedButton handleClick={() => handleSetLayout(ProductListingLayoutEnum.FIVE_COLUMN)} active={layout !== 2} className='hidden sm:flex'>
-                        <span className="material-symbols-outlined text-base leading-4 sm:text-lg sm:leading-5 ">
+                        <span className="material-symbols-rounded text-base leading-4 sm:text-lg sm:leading-5 ">
                             grid_view
                         </span>
                     </MyOutlinedButton>
                     {/* for small screen: hide below button during 420px - ~ */}
                     <MyOutlinedButton handleClick={() => handleSetLayout(ProductListingLayoutEnum.ONE_COLUMN)} active={layout !== 2} className='sm:hidden'>
-                        <span className="material-symbols-outlined text-base leading-4 sm:text-lg sm:leading-5 ">
+                        <span className="material-symbols-rounded text-base leading-4 sm:text-lg sm:leading-5 ">
                             grid_view
                         </span>
                     </MyOutlinedButton>
