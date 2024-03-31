@@ -1,10 +1,18 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+interface IAuthInitialState {
+  isPasswordResetRequested: boolean;
+  accessToken: string | null;
+}
+
+const initialState: IAuthInitialState = {
+  isPasswordResetRequested: false,
+  accessToken: null,
+}
+
 const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    isPasswordResetRequested: false,
-  },
+  initialState: initialState,
   reducers: {
     setIsPasswordResetRequested: (state, action: PayloadAction<boolean>) => {
       state.isPasswordResetRequested = action.payload;

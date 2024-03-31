@@ -2,6 +2,7 @@ import { ICartProduct, ICartState } from "@modals/cart/cart.types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState : ICartState = {
+  cartPageActiveTab: 1,
   productCustomization: {
     id: "",
     quantity: 0,
@@ -33,9 +34,12 @@ const productListingSlice = createSlice({
       const productIndex = state.cartProducts.findIndex((product) => product.id === action.payload.id);
       state.cartProducts[productIndex].quantity = action.payload.quantity;
     },
+    setCartPageActiveTab: (state, action: PayloadAction<1 | 2>) => {
+      state.cartPageActiveTab = action.payload;
+    }
   },
 });
 
-export const { addProductToCart, removeProductFromCart, updateProductQuantity, setProductCustomization } = productListingSlice.actions;
+export const { addProductToCart, removeProductFromCart, updateProductQuantity, setProductCustomization, setCartPageActiveTab } = productListingSlice.actions;
 
 export default productListingSlice.reducer;

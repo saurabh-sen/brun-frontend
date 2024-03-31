@@ -1,24 +1,22 @@
 "use client"
 
-import React, { useState } from 'react'
+import React from 'react'
 import { Formik, Form } from 'formik'
 import Link from 'next/link'
 import MyTextInput from '@components/common/MyTextInput'
-import { loginValidationSchema } from '@services'
+import { loginApi, loginValidationSchema, saveAccessTokenToStorage, saveRefreshTokenToStorage, useMakeUnauthenticatedAPICall } from '@services'
 import { loginInitialValues } from '@contants/loginConstant'
 import MyButton from '@components/common/MyButton'
 import { ButtonType } from '@modals/common/common.types'
-import { useLoginMeMutation } from '@services/login/login.service'
 import { useRouter } from 'next/navigation'
 import { ILoginValues } from '@modals/login/login.types'
 import MyError from '@components/common/MyError'
+import { IRefreshTokenResponse } from '@modals/tokens/tokens.types'
 
 const Login = () => {
 
   const router = useRouter();
-  const [error, setError] = useState<null | string>(null);
-
-  const [loginMe, { data, isError }] = useLoginMeMutation();
+  const { callApi, error } = useMakeUnauthenticatedAPICall();
 
   const handleLoginSubmit = async (values: ILoginValues) => {
     const payload = {
@@ -26,20 +24,13 @@ const Login = () => {
       password: values.password
     }
     try {
-      const response = await loginMe(payload).unwrap();
-      if ('error' in response) {
-        console.error("An error occurred", response.error);
-        setError('Incorrect combination of user name and password.');
-      } else {
-        router.push('/')
-      } 6
-    } catch (error: any) {
-      // Assuming error is of type unknown
-      const errorMessage = error['data']['message'] as string;
-      setError(errorMessage);
-    }
-    if (isError) {
-      setError('Something went wrong.');
+      const result: IRefreshTokenResponse = await callApi(loginApi(payload));
+      const { accessToken, refreshToken } = result.data;
+      saveAccessTokenToStorage(accessToken);
+      saveRefreshTokenToStorage(refreshToken);
+      router.push('/');
+    } catch (err) {
+      console.error(err, error);
     }
   }
 
@@ -48,7 +39,7 @@ const Login = () => {
       <section className="login w-64 sm:w-80 md:w-[649px]" id='login'>
         <legend className='flex flex-col justify-center items-center mb-11 '>
           <h5>LOG IN INTO YOUR ACCOUNT</h5>
-          {error && <MyError errorMessage={error} />}
+          {error.isError && <MyError errorMessage={error.message} />}
         </legend>
         <Formik
           initialValues={loginInitialValues}
@@ -61,7 +52,6 @@ const Login = () => {
               label="Email Address"
               name="email"
               type="email"
-              onFocus={() => setError(null)}
             />
             <MyTextInput
               id='password'
@@ -69,7 +59,6 @@ const Login = () => {
               name="password"
               type="password"
               className='mt-8'
-              onFocus={() => setError(null)}
             />
             <Link href="/request-password-reset" className='underline decoration-1 mt-3'>FORGET YOUR PASSWORD?</Link>
 

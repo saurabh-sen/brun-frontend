@@ -5,8 +5,6 @@ import productDetailedViewReducer from "./features/productDetailedView/ProductDe
 import cartReducer from "./features/cart/cartSlice";
 import homepageReducer from "./features/homepage/homepageSlice";
 import tabsReducer from "./features/tabs/tabsSlice";
-import { signupApi } from "@services";
-import { loginApi } from "@services/login/login.service";
 import { requestResetPasswordApi } from "@services/resetPassword/resetPassword.service";
 import { productDetailApi } from "@services/productDetailedView/productDetailedView.service";
 
@@ -19,15 +17,11 @@ export const makeStore = () => {
       productDetailedView: productDetailedViewReducer,
       cart: cartReducer,
       tabs: tabsReducer,
-      [signupApi.reducerPath]: signupApi.reducer,
-      [loginApi.reducerPath]: loginApi.reducer,
       [requestResetPasswordApi.reducerPath]: requestResetPasswordApi.reducer,
       [productDetailApi.reducerPath]: productDetailApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(
-        signupApi.middleware,
-        loginApi.middleware,
         requestResetPasswordApi.middleware,
         productDetailApi.middleware
       ),
