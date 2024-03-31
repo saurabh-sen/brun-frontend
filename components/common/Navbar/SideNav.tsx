@@ -1,6 +1,6 @@
 import React from "react";
-import Link from "next/link";
 import { SIDENAVBARITEMS } from "@contants/homepage";
+import SideNavbarItem from "./SideNavbarItem";
 
 interface ISideNavbar {
   isOpen: boolean;
@@ -9,7 +9,7 @@ interface ISideNavbar {
 
 const SideNavbar = ({ isOpen, onClose }: ISideNavbar) => {
   return (
-    <div className={`sidenavbar fixed top-0 -left-full w-full h-full bg-white transition-all duration-300 pt-14 px-4 ${isOpen && "left-0"}`}>
+    <div className={`sidenavbar fixed top-0 -left-full w-full h-screen bg-white transition-all duration-300 pt-14 px-4 ${isOpen && "left-0"}`}>
       <div className="flex items-center gap-3 pb-16 cursor-pointer" onClick={onClose}>
         <span className='material-symbols-rounded cursor-pointer'>
           close
@@ -25,23 +25,5 @@ const SideNavbar = ({ isOpen, onClose }: ISideNavbar) => {
     </div>
   );
 };
-
-interface ISideNavbarItem {
-  route: string;
-  title: string;
-}
-
-const SideNavbarItem = ({ route, title }: ISideNavbarItem) => {
-  return (
-    <Link href={route} className="flex justify-between font-semibold">
-      <div className="">
-        {title}
-      </div>
-      <span className="material-symbols-rounded cursor-pointer">
-        arrow_forward_ios
-      </span>
-    </Link>
-  )
-}
 
 export default SideNavbar;

@@ -6,6 +6,7 @@ interface ICartProduct {
 }
 
 interface ICartState{
+    cartPageActiveTab: 1 | 2;
     productCustomization: ICartProduct;
     cartProducts: ICartProduct[];
     totalAmount: number;

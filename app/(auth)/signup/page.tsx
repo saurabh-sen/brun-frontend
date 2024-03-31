@@ -5,38 +5,34 @@ import Link from 'next/link'
 
 import MyTextInput from '@components/common/MyTextInput'
 import MyCheckBox from '@components/common/MyCheckBox'
-import { singupValidationSchema } from '@services'
+import { signupApi, singupValidationSchema, useMakeUnauthenticatedAPICall } from '@services'
 import { signupInitialValues } from '@contants/signupConstant'
 import MyButton from '@components/common/MyButton'
 import { ButtonType } from '@modals/common/common.types'
 import { ISignupValues } from '@modals/login/login.types'
-import { useSignMeUpMutation } from '@services/signup/signup.service'
 import { useRouter } from 'next/navigation'
 import MyError from '@components/common/MyError'
+import { saveUserIdToStorage } from '@services/tokens/tokens.service'
+import { ISignupApiResponse } from '@modals/tokens/tokens.types'
 
 const Signup = () => {
 
-  const router = useRouter()
-  const [error, setError] = React.useState(false);
-  const [mutation, {
-    isError: signupError
-  }] = useSignMeUpMutation();
+  const router = useRouter();
+  const { callApi, error } = useMakeUnauthenticatedAPICall();
 
   const handleSignupSubmit = async (values: ISignupValues) => {
-    const data = {
+    const payload = {
       first_name: values.firstName,
       last_name: values.lastName,
       email: values.email,
       password: values.password
     }
     try {
-      await mutation(data);
+      const result: ISignupApiResponse = await callApi(signupApi(payload));
+      saveUserIdToStorage(result.data.id)
       router.push('/login')
     } catch (error) {
-      console.error("An error occurred", signupError);
-    }
-    if (signupError) {
-      setError(true);
+      console.error("An error occurred", error);
     }
   };
 
@@ -50,7 +46,7 @@ const Signup = () => {
             </span>
           </Link>
           {
-            error && <MyError errorMessage='Something went wrong!' />
+            error.isError && <MyError errorMessage={error.message} />
           }
           <h5>CREATE AN ACCOUNT</h5>
           <p className="invisible">.</p>

@@ -1,134 +1,34 @@
+"use client"
+import { RootState } from '@libs/store';
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 function AboutPage() {
-  return (
-    <section className="w-[79.375rem] flex flex-row flex-wrap justify-center px-[1.25rem] gap-[0rem_11.063rem]  text-[1rem] text-black font-urbanist  m-auto mt-14">
-    <div className="w-[15.875rem] flex flex-col items-start justify-start gap-[1.25rem_0rem]">
-      <button className="cursor-pointer p-[0.375rem] bg-white w-[4.188rem] box-border flex flex-row items-center justify-center border-[1px] border-solid border-black hover:bg-gainsboro hover:box-border hover:border-[1px] hover:border-solid hover:border-darkslategray">
-        <div className="relative text-[0.875rem] uppercase font-urbanist text-black text-left">
-        <a href='#about'> ABOUT</a>
-        </div>
-      </button>
-      <button className="cursor-pointer [border:none] py-[0.375rem] pr-[0.438rem] pl-[0.625rem] bg-black flex flex-row items-center justify-center whitespace-nowrap hover:bg-darkslategray">
-        <div className="relative text-[0.875rem] uppercase font-urbanist text-white text-left">
-          <a href='#privacypolicy'>PRIVACY POLICY</a>
-        </div>
-      </button>
-      <button className="cursor-pointer p-[0.375rem] bg-white self-stretch flex flex-row items-center justify-center whitespace-nowrap border-[1px] border-solid border-black hover:bg-gainsboro hover:box-border hover:border-[1px] hover:border-solid hover:border-darkslategray">
-        <div className="relative text-[0.875rem] uppercase font-urbanist text-black text-left">
-          <a href='#refund'>REFUND AND CANCELLATION POLICY</a>
-        </div>
-      </button>
-      <button className="cursor-pointer p-[0.375rem] bg-white w-[3.438rem] box-border flex flex-row items-center justify-center border-[1px] border-solid border-black hover:bg-gainsboro hover:box-border hover:border-[1px] hover:border-solid hover:border-darkslategray">
-        <div className="relative text-[0.875rem] uppercase font-urbanist text-black text-left">
-          <a href='#faqs'>FAQS</a>
-        </div>
-      </button>
-      <button className="cursor-pointer py-[0.375rem] pr-[0.375rem] pl-[0.563rem] bg-white flex flex-row items-center justify-center whitespace-nowrap border-[1px] border-solid border-black hover:bg-gainsboro hover:box-border hover:border-[1px] hover:border-solid hover:border-darkslategray">
-        <div className="relative text-[0.875rem] uppercase font-urbanist text-black text-left">
-        <a href='#customer'> CUSTOMER CARE</a>
-        </div>
-      </button>
-    </div>
-    <div className="flex-1 flex flex-col items-start justify-start gap-[4.375rem_0rem] min-w-[32.438rem] max-w-full mq750:min-w-full mq450:gap-[4.375rem_0rem] mq1050:gap-[4.375rem_0rem]">
-      <div className="self-stretch flex flex-col items-start justify-start gap-[3.125rem_0rem] mq450:gap-[3.125rem_0rem]">
-        <div className="relative uppercase font-medium">Privacy Policy</div>
-        <div className="self-stretch relative text-[0.875rem] tracking-[0.1em]">
-          <p className="m-0">{`High waisted blue relaxed mom fit jeans with a zip fly. The melt jean is made using deadstock fabric and old curtains. We collected the old curtains from charity shops and textile waste plants and gave them a new life by using them on this particular jean. `}</p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">
-            The inspiration behind the pattern on this jean follows the idea
-            that is constant throughout these new jeans which relates to
-            nature taking its own path, creating natural formations and taking
-            over the land it touches. The melt jean is a representation of the
-            sap that is released from the bark of trees which is a very
-            necessary and important part of the trees survival.
-          </p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">{`High waisted blue relaxed mom fit jeans with a zip fly. The melt jean is made using deadstock fabric and old curtains. `}</p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">{`We collected the old curtains from charity shops and textile waste plants and gave them a new life by using them on this particular jean. `}</p>
-        </div>
-      </div>
-      <div className="self-stretch flex flex-col items-start justify-start gap-[3.125rem_0rem] mq450:gap-[3.125rem_0rem]">
-        <div className="relative uppercase">Privacy Policy</div>
-        <div className="self-stretch relative text-[0.875rem] tracking-[0.1em]">
-          <p className="m-0">{`High waisted blue relaxed mom fit jeans with a zip fly. The melt jean is made using deadstock fabric and old curtains. We collected the old curtains from charity shops and textile waste plants and gave them a new life by using them on this particular jean. `}</p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">
-            The inspiration behind the pattern on this jean follows the idea
-            that is constant throughout these new jeans which relates to
-            nature taking its own path, creating natural formations and taking
-            over the land it touches. The melt jean is a representation of the
-            sap that is released from the bark of trees which is a very
-            necessary and important part of the trees survival.
-          </p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">{`High waisted blue relaxed mom fit jeans with a zip fly. The melt jean is made using deadstock fabric and old curtains. `}</p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">{`We collected the old curtains from charity shops and textile waste plants and gave them a new life by using them on this particular jean. `}</p>
-        </div>
-      </div>
-      <div className="self-stretch flex flex-col items-start justify-start gap-[3.125rem_0rem] mq450:gap-[3.125rem_0rem]">
-        <div className="relative uppercase">Privacy Policy</div>
-        <div className="self-stretch relative text-[0.875rem] tracking-[0.1em]">
-          <p className="m-0">{`High waisted blue relaxed mom fit jeans with a zip fly. The melt jean is made using deadstock fabric and old curtains. We collected the old curtains from charity shops and textile waste plants and gave them a new life by using them on this particular jean. `}</p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">
-            The inspiration behind the pattern on this jean follows the idea
-            that is constant throughout these new jeans which relates to
-            nature taking its own path, creating natural formations and taking
-            over the land it touches. The melt jean is a representation of the
-            sap that is released from the bark of trees which is a very
-            necessary and important part of the trees survival.
-          </p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">{`High waisted blue relaxed mom fit jeans with a zip fly. The melt jean is made using deadstock fabric and old curtains. `}</p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">{`We collected the old curtains from charity shops and textile waste plants and gave them a new life by using them on this particular jean. `}</p>
-        </div>
-      </div>
-      <div className="self-stretch flex flex-col items-start justify-start gap-[3.125rem_0rem] mq450:gap-[3.125rem_0rem]">
-        <div className="relative uppercase">Privacy Policy</div>
-        <div className="self-stretch relative text-[0.875rem] tracking-[0.1em]">
-          <p className="m-0">{`High waisted blue relaxed mom fit jeans with a zip fly. The melt jean is made using deadstock fabric and old curtains. We collected the old curtains from charity shops and textile waste plants and gave them a new life by using them on this particular jean. `}</p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">
-            The inspiration behind the pattern on this jean follows the idea
-            that is constant throughout these new jeans which relates to
-            nature taking its own path, creating natural formations and taking
-            over the land it touches. The melt jean is a representation of the
-            sap that is released from the bark of trees which is a very
-            necessary and important part of the trees survival.
-          </p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">{`High waisted blue relaxed mom fit jeans with a zip fly. The melt jean is made using deadstock fabric and old curtains. `}</p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">{`We collected the old curtains from charity shops and textile waste plants and gave them a new life by using them on this particular jean. `}</p>
-        </div>
-      </div>
-      <div className="self-stretch flex flex-col items-start justify-start gap-[3.125rem_0rem] mq450:gap-[3.125rem_0rem]">
-        <div className="relative uppercase">Privacy Policy</div>
-        <div className="self-stretch relative text-[0.875rem] tracking-[0.1em]">
-          <p className="m-0">{`High waisted blue relaxed mom fit jeans with a zip fly. The melt jean is made using deadstock fabric and old curtains. We collected the old curtains from charity shops and textile waste plants and gave them a new life by using them on this particular jean. `}</p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">
-            The inspiration behind the pattern on this jean follows the idea
-            that is constant throughout these new jeans which relates to
-            nature taking its own path, creating natural formations and taking
-            over the land it touches. The melt jean is a representation of the
-            sap that is released from the bark of trees which is a very
-            necessary and important part of the trees survival.
-          </p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">{`High waisted blue relaxed mom fit jeans with a zip fly. The melt jean is made using deadstock fabric and old curtains. `}</p>
-          <p className="m-0">&nbsp;</p>
-          <p className="m-0">{`We collected the old curtains from charity shops and textile waste plants and gave them a new life by using them on this particular jean. `}</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
+  const isSearchBarOpen = useSelector((state: RootState) => state.homepage.isSearchBarOpen)
+
+  return (
+    <section className={`aboutpage mx-auto max-w-7xl px-2 md:px-0 flex flex-col gap-3 md:flex-row min-h-screen ${isSearchBarOpen ? 'mt-52' : 'mt-28'}`}>
+      <div className="aboutpage__contactus w-full md:w-1/3">
+        <p className="contactus__heading">CONTACT US</p>
+      </div>
+      <div className="aboutpage__content w-full md:w-2/3 flex flex-col gap-3">
+        <AboutPageContentItem />
+        <AboutPageContentItem />
+        <AboutPageContentItem />
+        <AboutPageContentItem />
+        <AboutPageContentItem />
+      </div>
+    </section>
+  )
+}
+
+const AboutPageContentItem = () => {
+  return (
+    <div className="content__1">
+      <p className="contactus__heading">PRIVACY POLICY</p>
+      <p className="contactus__subheading">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ipsa alias quisquam aliquid aut recusandae aspernatur rerum! Eos facere ipsa qui magnam sunt fuga molestiae, assumenda consequatur! Pariatur numquam eveniet porro iste! Accusantium sit doloremque perferendis et aperiam est ullam ab quo nostrum quam voluptate odit quis voluptates, maiores omnis fugiat corrupti repellendus nesciunt hic a id sapiente nam. Accusamus porro atque dolores quod quasi quia voluptatum sint totam voluptas distinctio tenetur, sunt delectus dignissimos corrupti, quos fugit ipsa adipisci reprehenderit quae ipsam maiores necessitatibus quas molestiae voluptatem. Temporibus eaque dolores eveniet nobis mollitia eligendi, dolor obcaecati recusandae ad odio doloribus cumque dolorum tempora voluptatibus fugit cum voluptate eos doloremque molestias laborum? Assumenda voluptatum repudiandae, illum, doloribus eos repellat ipsa ea quidem quos quae inventore minima consequuntur aliquid. Beatae, totam molestiae, quod sequi ratione odit minima ipsa non iure officiis, eaque cum deleniti nostrum perspiciatis et est reprehenderit perferendis.</p>
+    </div>
   )
 }
 
