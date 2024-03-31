@@ -13,7 +13,7 @@ import { ISignupValues } from '@modals/login/login.types'
 import { useRouter } from 'next/navigation'
 import MyError from '@components/common/MyError'
 import { saveUserIdToStorage } from '@services/tokens/tokens.service'
-import { ISignupApiResponse } from '@modals/tokens/tokens.types'
+import { ISignupApiResponse } from '@modals/signup/signup.types'
 
 const Signup = () => {
 

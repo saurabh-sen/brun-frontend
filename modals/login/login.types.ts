@@ -69,4 +69,15 @@ interface IFetchQueryUnauthenticated {
   (): Promise<Response>;
 }
 
-export type { IMyTextInput, IMyCheckBox, ISignupValues, ILoginValues, ISignupValuesDB, IFetchQuery, IApiError, IApiHeaders, IMakeAutheticatedAPICall, IFetchQueryUnauthenticated, IMakeUnautheticatedAPICall }
+interface ILoginApiResponse{
+  statusCode: number;
+  data: {
+    accessToken: string;
+    refreshToken: string;
+    userId: string;
+  };
+  message: string;
+  success: boolean;
+}
+
+export type { IMyTextInput, IMyCheckBox, ISignupValues, ILoginValues, ISignupValuesDB, IFetchQuery, IApiError, IApiHeaders, IMakeAutheticatedAPICall, IFetchQueryUnauthenticated, IMakeUnautheticatedAPICall, ILoginApiResponse }

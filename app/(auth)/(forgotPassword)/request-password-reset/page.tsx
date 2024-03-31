@@ -3,7 +3,9 @@ import MyButton from '@components/common/MyButton'
 import MyError from '@components/common/MyError'
 import MyTextInput from '@components/common/MyTextInput'
 import { ButtonType } from '@modals/common/common.types'
-import { useRequestResetPasswordMutation } from '@services/resetPassword/resetPassword.service'
+import { useMakeUnauthenticatedAPICall } from '@services'
+import { requestResetPasswordApi } from '@services/resetPassword/resetPassword.service'
+// import { useRequestResetPasswordMutation } from '@services/resetPassword/resetPassword.service'
 import { Form, Formik } from 'formik'
 import React from 'react'
 
@@ -18,8 +20,10 @@ const validationSchema = Yup.object({
 });
 
 const RequestPasswordReset = () => {
-    
-    const [requestPasswordReset, { isError }] = useRequestResetPasswordMutation();
+
+    // const [requestPasswordReset, { isError }] = useRequestResetPasswordMutation();
+
+    const { callApi, error } = useMakeUnauthenticatedAPICall();
 
     const handleSubmit = async (values: { email: string }) => {
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -28,7 +32,9 @@ const RequestPasswordReset = () => {
         if (!isValidEmail) return;
 
         try {
-            const response = await requestPasswordReset(values).unwrap();
+            // const response = await requestPasswordReset(values).unwrap();
+            const result = await callApi(requestResetPasswordApi(values));
+            console.log(result)
         } catch (error) {
             console.log('something went wrong while resetting password.', error)
         }
@@ -39,10 +45,10 @@ const RequestPasswordReset = () => {
             <section className="request-password-reset w-64 sm:w-80 md:w-[649px]" id='RequestPasswordReset'>
                 <legend className='flex flex-col justify-center items-center mb-11 '>
                     <h5>REQUEST PASSWORD RESET</h5>
-                            <p className='text-[#767676] text-sm my-2 text-center'>RECOVERY EMAIL WILL BE SENT TO YOUR REGISTERED EMAIL ADDRESS.</p>
-                        
+                    <p className='text-[#767676] text-sm my-2 text-center'>RECOVERY EMAIL WILL BE SENT TO YOUR REGISTERED EMAIL ADDRESS.</p>
+
                     {
-                        isError && <MyError errorMessage='An error occurred. Please try again later.' />
+                        error.isError && <MyError errorMessage={error.message} />
                     }
                 </legend>
                 <Formik
@@ -56,7 +62,7 @@ const RequestPasswordReset = () => {
                             label="Email Address"
                             name="email"
                             type="email"
-                            onFocus={() => {}}
+                            onFocus={() => { }}
                         />
 
                         <MyButton label='CONTINUE' type={ButtonType.SUBMIT} />

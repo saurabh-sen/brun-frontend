@@ -9,9 +9,9 @@ import { loginInitialValues } from '@contants/loginConstant'
 import MyButton from '@components/common/MyButton'
 import { ButtonType } from '@modals/common/common.types'
 import { useRouter } from 'next/navigation'
-import { ILoginValues } from '@modals/login/login.types'
+import { ILoginApiResponse, ILoginValues } from '@modals/login/login.types'
 import MyError from '@components/common/MyError'
-import { IRefreshTokenResponse } from '@modals/tokens/tokens.types'
+import { saveUserIdToStorage } from '@services/tokens/tokens.service'
 
 const Login = () => {
 
@@ -24,10 +24,11 @@ const Login = () => {
       password: values.password
     }
     try {
-      const result: IRefreshTokenResponse = await callApi(loginApi(payload));
-      const { accessToken, refreshToken } = result.data;
+      const result: ILoginApiResponse = await callApi(loginApi(payload));
+      const { accessToken, refreshToken, userId } = result.data;
       saveAccessTokenToStorage(accessToken);
       saveRefreshTokenToStorage(refreshToken);
+      saveUserIdToStorage(userId)
       router.push('/');
     } catch (err) {
       console.error(err, error);
