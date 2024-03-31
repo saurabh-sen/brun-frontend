@@ -1,8 +1,7 @@
 'use client'
 import { INewArrivals } from "@modals/home/home.types";
 import React, { useRef } from "react";
-import SwiperCore from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import Image from "next/image";
 import { IProductListing } from "@modals/productListing/productListing.types";
@@ -10,7 +9,7 @@ import { IProductListing } from "@modals/productListing/productListing.types";
 const NewArrivals: React.FC<INewArrivals> = ({
   data
 }) => {
-  const swiperRef = useRef<SwiperCore>(null);
+  const swiperRef = useRef<SwiperRef | null>(null);
 
   const handlePrev = () => {
     if (swiperRef.current && swiperRef.current.swiper) {
