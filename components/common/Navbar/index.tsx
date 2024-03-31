@@ -2,7 +2,7 @@
 
 import React from 'react';
 import SideNavbar from './SideNav';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import SearchBox from '../SearchBox';
 import Link from 'next/link';
@@ -14,12 +14,14 @@ import useScrollDirection from '@services/customHooks/useScrollDirection';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@libs/store';
 import { setIsHomepageRoute, setIsSearchBarOpen, setIsSidebarOpen } from '@libs/features/homepage/homepageSlice';
+import { setCartPageActiveTab } from '@libs/features/cart/cartSlice';
 
 const Navbar = () => {
 
   const { isHomepageRoute, isSearchBarOpen, isSidebarOpen } = useSelector((state: RootState) => state.homepage);
   const dispatch = useDispatch();
   const path = usePathname();
+  const router = useRouter();
   const scrollDirection = useScrollDirection();
 
   const toggleSideNavbar = () => {
@@ -28,6 +30,11 @@ const Navbar = () => {
 
   const toogleSearchBar = () => {
     dispatch(setIsSearchBarOpen(!isSearchBarOpen));
+  }
+
+  const handleRouteToCart = (tab: 1 | 2) => {
+    dispatch(setCartPageActiveTab(tab));
+    router.push('/account/cart');
   }
 
   useEffect(() => {
@@ -62,13 +69,15 @@ const Navbar = () => {
                   </span>
                 </div>
               )}
-            <span className={`material-symbols-rounded ${isHomepageRoute ? "text-white" : "text-black"} cursor-pointer`}>
-              person
-            </span>
-            <span className={`material-symbols-rounded ${isHomepageRoute ? "text-white" : "text-black"} cursor-pointer`}>
+            <Link href='/account'>
+              <span className={`material-symbols-rounded ${isHomepageRoute ? "text-white" : "text-black"} cursor-pointer`}>
+                person
+              </span>
+            </Link>
+            <span className={`material-symbols-rounded ${isHomepageRoute ? "text-white" : "text-black"} cursor-pointer`} onClick={() => handleRouteToCart(2)}>
               favorite
             </span>
-            <span className={`material-symbols-rounded ${isHomepageRoute ? "text-white" : "text-black"} cursor-pointer`}>
+            <span className={`material-symbols-rounded ${isHomepageRoute ? "text-white" : "text-black"} cursor-pointer`} onClick={() => handleRouteToCart(1)}>
               shopping_bag
             </span>
           </div>

@@ -1,32 +1,48 @@
 import { ILoginValues } from "@modals/login/login.types";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import * as Yup from "yup";
 
-const getCharacterValidationError = (str: string) => {
-  return `Your password must have at least 1 ${str} character`;
-};
-
 export const loginValidationSchema = Yup.object({
-  email: Yup.string()
-    .required("Email is required"),
-  password: Yup.string()
-    .required("Please enter a password")
+  email: Yup.string().required("Email is required"),
+  password: Yup.string().required("Please enter a password"),
 });
 
-const loginApi = createApi({
-  reducerPath: "loginApi",
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_BASE_URL }),
-  endpoints: (builder) => ({
-    loginMe: builder.mutation<ILoginValues, ILoginValues>({
-      query: (body) => ({
-        url: "/user/login",
+// export const loginApi = (payload: ILoginValues) => async (headers: IApiHeaders) => {
+//   const response = await fetch(
+//     `${process.env.NEXT_PUBLIC_BASE_URL}/user/login`,
+//     {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(payload),
+//     }
+//   );
+
+//   return response;
+// };
+
+export const loginApi = (payload: ILoginValues) => async () => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}user/login`,
+      {
         method: "POST",
-        body,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    return response;
+  } catch (error) {
+    return {
+      ok: false,
+      status: 500,
+      statusText: "Internal Server Error",
+      json: async () => ({
+        message: "An unexpected error occurred.",
       }),
-    }),
-  }),
-});
-
-const { useLoginMeMutation } = loginApi;
-
-export { useLoginMeMutation, loginApi };
+    } as Response;
+  }
+};

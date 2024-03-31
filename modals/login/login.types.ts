@@ -1,4 +1,5 @@
 import { RoleEnum } from "@modals/common/common.types";
+import { IRefreshTokenResponse } from "@modals/tokens/tokens.types";
 
 interface IMyTextInput {
   label: string;
@@ -37,4 +38,35 @@ interface ILoginValues {
   password: string;
 }
 
-export type { IMyTextInput, IMyCheckBox, ISignupValues, ILoginValues, ISignupValuesDB }
+interface IFetchQuery {
+  (headers: IApiHeaders): Promise<Response>;
+}
+
+interface IApiHeaders {
+  Authorization: string;
+}
+
+interface IApiError {
+  isError: boolean;
+  message: string;
+  status: number;
+}
+
+interface IMakeAutheticatedAPICall {
+  callApi: (fetchQuery: IFetchQuery, retryCount?: number) => Promise<void>;
+  data: any;
+  error: IApiError;
+  loading: boolean;
+}
+
+interface IMakeUnautheticatedAPICall {
+  callApi: (fetchQuery: IFetchQueryUnauthenticated) => Promise<any>;
+  error: IApiError;
+  loading: boolean;
+}
+
+interface IFetchQueryUnauthenticated {
+  (): Promise<Response>;
+}
+
+export type { IMyTextInput, IMyCheckBox, ISignupValues, ILoginValues, ISignupValuesDB, IFetchQuery, IApiError, IApiHeaders, IMakeAutheticatedAPICall, IFetchQueryUnauthenticated, IMakeUnautheticatedAPICall }

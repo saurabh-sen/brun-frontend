@@ -4,7 +4,7 @@ import React from 'react'
 
 interface ICartNavbar {
   activeTab: number,
-  setActiveTab: (tab: number) => void
+  setActiveTab: (tab: 1 | 2) => void
 }
 
 const CartNavbar = ({activeTab, setActiveTab} : ICartNavbar) => {

@@ -1,12 +1,11 @@
 import { ISignupValuesDB } from "@modals/login/login.types";
 import * as Yup from "yup";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const getCharacterValidationError = (str: string) => {
   return `Your password must have at least 1 ${str} character`;
 };
 
-const singupValidationSchema = Yup.object({
+export const singupValidationSchema = Yup.object({
   firstName: Yup.string()
     .max(15, "Must be 3 characters or less")
     .required("First name is required"),
@@ -34,20 +33,28 @@ const singupValidationSchema = Yup.object({
     .oneOf([true], "You must accept the privacy statement."),
 });
 
-const signupApi = createApi({
-  reducerPath: "signupApi",
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_BASE_URL }),
-  endpoints: (builder) => ({
-    signMeUp: builder.mutation<ISignupValuesDB, ISignupValuesDB>({
-      query: (body) => ({
-        url: "/user/register",
+export const signupApi = (payload: ISignupValuesDB) => async () => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}user/register`,
+      {
         method: "POST",
-        body,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    return response;
+  } catch (error) {
+    return {
+      ok: false,
+      status: 500,
+      statusText: "Internal Server Error",
+      json: async () => ({
+        message: "An unexpected error occurred.",
       }),
-    }),
-  }),
-});
-
-const { useSignMeUpMutation } = signupApi;
-
-export { singupValidationSchema, signupApi, useSignMeUpMutation };
+    } as Response;
+  }
+};
