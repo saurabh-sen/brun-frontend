@@ -6,7 +6,7 @@ import cartReducer from "./features/cart/cartSlice";
 import homepageReducer from "./features/homepage/homepageSlice";
 import tabsReducer from "./features/tabs/tabsSlice";
 // import { requestResetPasswordApi } from "@services/resetPassword/resetPassword.service";
-import { productDetailApi } from "@services/productDetailedView/productDetailedView.service";
+// import { productDetailApi } from "@services/productDetailedView/productDetailedView.service";
 
 export const makeStore = () => {
   return configureStore({
@@ -18,12 +18,12 @@ export const makeStore = () => {
       cart: cartReducer,
       tabs: tabsReducer,
       // [requestResetPasswordApi.reducerPath]: requestResetPasswordApi.reducer,
-      [productDetailApi.reducerPath]: productDetailApi.reducer,
+      // [productDetailApi.reducerPath]: productDetailApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(
         // requestResetPasswordApi.middleware,
-        productDetailApi.middleware
+        // productDetailApi.middleware
       ),
   });
 };

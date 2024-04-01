@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
   IApiError,
   IFetchQueryUnauthenticated,
@@ -13,7 +13,7 @@ const useMakeAutheticatedAPICall = (): IMakeUnautheticatedAPICall => {
   });
   const [loading, setLoading] = useState<boolean>(false);
 
-  const callApi = async (fetchQuery: IFetchQueryUnauthenticated) => {
+  const callApi = useCallback(async (fetchQuery: IFetchQueryUnauthenticated) => {
     return new Promise<any>(async (resolve, reject) => {
       // reset the states before making a new request
       setError({ isError: false, message: "", status: 0 });
@@ -40,7 +40,7 @@ const useMakeAutheticatedAPICall = (): IMakeUnautheticatedAPICall => {
         reject();
       }
     });
-  };
+  }, []);
 
   return { callApi, error, loading };
 };

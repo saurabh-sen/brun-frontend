@@ -5,11 +5,15 @@ import React, { useEffect } from 'react'
 
 import product from '@public/assets/product.jpg'
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
-import { useGetProductDetailsQuery } from '@services'
+import {
+    // useGetProductDetailsQuery, 
+    useMakeUnauthenticatedAPICall
+} from '@services'
 import { useDispatch, useSelector } from 'react-redux'
 import { setProductDetails } from '@libs/features/productDetailedView/ProductDetailedViewSlice'
 import { RootState } from '@libs/store'
 import { setProductCustomization } from '@libs/features/cart/cartSlice'
+import { productDetailApiFetch } from '@services/productDetailedView/productDetailedView.service'
 
 const COLORS = [
     {
@@ -48,22 +52,36 @@ const ProductDetailedView = ({ productSlug }: IProductDetailedView) => {
     const dispatch = useDispatch();
     const { productDetails } = useSelector((state: RootState) => state.productDetailedView);
 
-    const { data, isLoading, isError } = useGetProductDetailsQuery('dark-shenron-t-shirt1');
+    // const { data, isLoading, isError } = useGetProductDetailsQuery('dark-shenron-t-shirt1');
+
+    // TODO MAKE THIS APP INTEGRATE WITH APIS
+
+    const { callApi } = useMakeUnauthenticatedAPICall();
+
     const [selectedColor, setSelectedColor] = React.useState<string>('');
     const [selectedSize, setSelectedSize] = React.useState<string>('');
 
-
     useEffect(() => {
-        if (data) {
-            dispatch(setProductDetails(data.data));
-            setSelectedColor(data.data.colours[0].color);
-            setSelectedSize(data.data.sizes[0].size);
+        // if (data) {
+        //     dispatch(setProductDetails(data.data));
+        //     setSelectedColor(data.data.colours[0].color);
+        //     setSelectedSize(data.data.sizes[0].size);
+        // }
+        const fetchData = async () => {
+            const result = await callApi(productDetailApiFetch('dark-shenron-t-shirt1'));
+            console.log(result);
+            dispatch(setProductDetails(result.data));
+            setSelectedColor(result.data.colours[0].color);
+            setSelectedSize(result.data.sizes[0].size);
         }
-    }, [data, dispatch])
+        fetchData();
+        // }, [data, dispatch])
+    }, [])
 
-    if (isLoading) return <p>Loading...</p>;
+    // if (isLoading) return <p>Loading...</p>;
 
-    if (isError) return <p>Error...</p>;
+    // if (error.isError) return <p>{error.message}...</p>;
+    // if (isError) return <p>Error...</p>;
 
     const handleSetProduct = () => {
         const product = {
