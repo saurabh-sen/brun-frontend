@@ -1,6 +1,6 @@
 import { loginValidationSchema, loginApi } from "./login/login.service";
 import { singupValidationSchema, signupApi } from "./signup/signup.service";
-import { useGetProductDetailsQuery } from "./productDetailedView/productDetailedView.service";
+// import { useGetProductDetailsQuery } from "./productDetailedView/productDetailedView.service";
 import {
   getAccessTokenFromStorage,
   getRefreshTokenFromStorage,
@@ -21,7 +21,7 @@ export {
   loginValidationSchema,
   singupValidationSchema,
   signupApi,
-  useGetProductDetailsQuery,
+  // useGetProductDetailsQuery,
   deliveryInitialValues,
   deliveryValidationSchema,
   handleDeliverySubmit,
