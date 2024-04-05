@@ -52,9 +52,9 @@ interface IApiError {
   status: number;
 }
 
-interface IMakeAutheticatedAPICall {
-  callApi: (fetchQuery: IFetchQuery, retryCount?: number) => Promise<void>;
-  data: any;
+interface IMakeAutheticatedAPICall<T> {
+  callApi: (fetchQuery: IFetchQuery, retryCount?: number) => Promise<any>;
+  data: T | null;
   error: IApiError;
   loading: boolean;
 }

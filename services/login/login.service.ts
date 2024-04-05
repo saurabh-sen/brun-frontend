@@ -6,25 +6,10 @@ export const loginValidationSchema = Yup.object({
   password: Yup.string().required("Please enter a password"),
 });
 
-// export const loginApi = (payload: ILoginValues) => async (headers: IApiHeaders) => {
-//   const response = await fetch(
-//     `${process.env.NEXT_PUBLIC_BASE_URL}/user/login`,
-//     {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(payload),
-//     }
-//   );
-
-//   return response;
-// };
-
 export const loginApi = (payload: ILoginValues) => async () => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}user/login`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/user/login`,
       {
         method: "POST",
         headers: {

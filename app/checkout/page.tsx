@@ -5,6 +5,7 @@ import CheckoutOrder from '@components/Checkout/CheckoutOrder'
 import CheckoutForm from '@components/Checkout/CheckoutForm'
 import ThanksForYourOrder from '@components/Checkout/ThanksForYourOrder'
 
+// TODO: ADD CHECKOUT APIS AND INTEGRATE RAZORPAY
 const Checkout = () => {
 
     const [showThankyou, setShowThankyou] = useState<boolean>(false);

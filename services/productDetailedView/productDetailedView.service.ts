@@ -19,7 +19,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const productDetailApiFetch = (payload: string) => async () => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}product/${payload}`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/product/${payload}`
       ,{
         referrerPolicy: 'unsafe-url'
       }
