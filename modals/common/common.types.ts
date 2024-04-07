@@ -1,12 +1,20 @@
 // export a enum for button type 'submit' and 'button'
 enum ButtonType {
-    SUBMIT = "submit",
-    BUTTON = "button"
+  SUBMIT = "submit",
+  BUTTON = "button",
 }
 
 enum RoleEnum {
-    ADMIN = "admin",
-    USER = "user"
+  ADMIN = "admin",
+  USER = "user",
 }
 
-export { ButtonType, RoleEnum }
+export interface IMyOutlinedButton {
+  active: boolean;
+  type: ButtonType;
+  handleClick?: () => void;
+  className?: string;
+  children: React.ReactNode;
+}
+
+export { ButtonType, RoleEnum };

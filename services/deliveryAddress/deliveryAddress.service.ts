@@ -1,3 +1,4 @@
+import { ICheckoutAddress } from "@modals/checkout/checkout.types";
 import * as Yup from "yup";
 
 const deliveryValidationSchema = Yup.object({
@@ -20,8 +21,8 @@ const deliveryInitialValues = {
 }
 
 
-const handleDeliverySubmit = () => {
-
+const handleDeliverySubmit = (values : ICheckoutAddress, isBillingAddressDifferent : boolean) => {
+  console.log('values', values)
 }
 
 export { deliveryValidationSchema, deliveryInitialValues, handleDeliverySubmit }

@@ -1,4 +1,4 @@
-import { ICartProduct, ICartState } from "@modals/cart/cart.types";
+import { ICartProduct, ICartState, IUpdateCartPayload } from "@modals/cart/cart.types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: ICartState = {
@@ -71,9 +71,9 @@ const productListingSlice = createSlice({
         state.totalAmount += quantityDifference * productPrice;
       }
     },
-    updateCartFromDB: (state, action: PayloadAction<ICartProduct[]>) => {
-      state.cartProducts = action.payload;
-      state.totalAmount = action.payload.reduce((acc, product) => acc + product.price * product.quantity, 0);
+    updateCartFromDB: (state, action: PayloadAction<IUpdateCartPayload>) => {
+      state.cartProducts = action.payload.fetchProducts;
+      state.totalAmount = action.payload.totalAmount;
     }
   },
 });

@@ -3,6 +3,7 @@
 import type { NextPage } from "next";
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
 import { IHeroCTA } from "@modals/home/home.types";
+import { ButtonType } from "@modals/common/common.types";
 
 const HeroCTA: NextPage<IHeroCTA> = ({ heading, description, route }) => {
 
@@ -14,7 +15,7 @@ const HeroCTA: NextPage<IHeroCTA> = ({ heading, description, route }) => {
       <p className="text-xs md:text-sm max-w-[681px]">
         {description}
       </p>
-      <MyOutlinedButton handleClick={() => console.log("clicked"+route)} active={false} className="!py-3 !px-20 font-bold ">SHOP NOW</MyOutlinedButton>
+      <MyOutlinedButton handleClick={() => console.log("clicked"+route)} active={false} className="!py-3 !px-20 font-bold " type={ButtonType.BUTTON}>SHOP NOW</MyOutlinedButton>
     </div>
   );
 };

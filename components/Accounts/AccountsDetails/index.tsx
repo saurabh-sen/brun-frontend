@@ -4,6 +4,7 @@ import { RootState } from "@libs/store";
 
 import MyOutlinedButton from "@components/common/MyOutlinedButton";
 import DetailsItem from "../DetailsItem";
+import { ButtonType } from "@modals/common/common.types";
 
 const AccountsDetails = () => {
 
@@ -20,7 +21,7 @@ const AccountsDetails = () => {
                 <DetailsItem label='FIRST NAME' value={userDetails.first_name} />
                 <DetailsItem label='LAST NAME' value={userDetails.last_name} />
                 <DetailsItem label='EMAIL' value={userDetails.email} />
-                <MyOutlinedButton active={false} handleClick={handleSignout} className='!w-max !py-2 !px-8 md:!py-4 md:!px-16 m-auto md:m-0 !font-semibold'>SIGN OUT</MyOutlinedButton>
+                <MyOutlinedButton active={false} handleClick={handleSignout} className='!w-max !py-2 !px-8 md:!py-4 md:!px-16 m-auto md:m-0 !font-semibold' type={ButtonType.BUTTON}>SIGN OUT</MyOutlinedButton>
             </div>
         </div>
     )

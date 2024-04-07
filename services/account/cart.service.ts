@@ -1,11 +1,10 @@
-import { IAccountPayload } from "@modals/account/account.types";
 import { IApiHeaders } from "@modals/login/login.types";
 
-export const cartApi = (payload: IAccountPayload) =>
+export const cartApi = () =>
   async (headers: IApiHeaders): Promise<Response> => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/cart/fetch-items/${payload.userId}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/cart/fetch-items`,
         {
           method: "GET",
           headers: {
