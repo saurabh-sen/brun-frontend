@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import "./globalicons.css";
+import "../globals.css";
+import "../globalicons.css";
 
 import ServiceProvider from "@components/Providers/ServiceProvider";
 import AdminSideNav from "@components/admin/common/AdminSideNav";
