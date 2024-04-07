@@ -1,4 +1,4 @@
-import { getAccessTokenFromStorage, getRefreshTokenFromStorage, getUserIdToStorage } from '@services/tokens/tokens.service'
+import { getAccessTokenFromStorage, getRefreshTokenFromStorage, getUserIdToStorage } from '@services'
 import { useRouter } from 'next/navigation';
 import React from 'react'
 

@@ -2,10 +2,10 @@ import { useCallback, useState } from "react";
 import {
   IApiError,
   IFetchQueryUnauthenticated,
-  IMakeUnautheticatedAPICall,
+  IMakeUnauthenticatedAPICall,
 } from "@modals/login/login.types";
 
-export const useMakeUnautheticatedAPICall = (): IMakeUnautheticatedAPICall => {
+export const useMakeUnauthenticatedAPICall = (): IMakeUnauthenticatedAPICall => {
   const [error, setError] = useState<IApiError>({
     isError: false,
     message: "",

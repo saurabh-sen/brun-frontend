@@ -4,7 +4,7 @@ import React from 'react'
 import { Formik, Form } from 'formik'
 import Link from 'next/link'
 import MyTextInput from '@components/common/MyTextInput'
-import { loginApi, loginValidationSchema, saveAccessTokenToStorage, saveRefreshTokenToStorage, useMakeUnautheticatedAPICall } from '@services'
+import { loginApi, loginValidationSchema, saveAccessTokenToStorage, saveRefreshTokenToStorage, useMakeUnauthenticatedAPICall } from '@services'
 import { loginInitialValues } from '@contants/login.constant'
 import MyButton from '@components/common/MyButton'
 import { ButtonType } from '@modals/common/common.types'
@@ -16,7 +16,7 @@ import { saveUserIdToStorage } from '@services/tokens/tokens.service'
 const Login = () => {
 
   const router = useRouter();
-  const { callApi, error } = useMakeUnautheticatedAPICall();
+  const { callApi, error } = useMakeUnauthenticatedAPICall();
 
   const handleLoginSubmit = async (values: ILoginValues) => {
     const payload = {

@@ -3,7 +3,7 @@ import {
   IApiError,
   IApiHeaders,
   IFetchQuery,
-  IMakeAutheticatedAPICall,
+  IMakeAuthenticatedAPICall,
 } from "@modals/login/login.types";
 import {
   getAccessTokenFromStorage,
@@ -13,7 +13,7 @@ import {
   saveRefreshTokenToStorage,
 } from "@services/tokens/tokens.service";
 
-export const useMakeAutheticatedAPICall = <T>(): IMakeAutheticatedAPICall<T> => {
+export const useMakeAuthenticatedAPICall = <T>(): IMakeAuthenticatedAPICall<T> => {
   const [data, setData] = useState<T | null>(null);;
   const [error, setError] = useState<IApiError>({
     isError: false,

@@ -52,14 +52,14 @@ interface IApiError {
   status: number;
 }
 
-interface IMakeAutheticatedAPICall<T> {
+interface IMakeAuthenticatedAPICall<T> {
   callApi: (fetchQuery: IFetchQuery, retryCount?: number) => Promise<any>;
   data: T | null;
   error: IApiError;
   loading: boolean;
 }
 
-interface IMakeUnautheticatedAPICall {
+interface IMakeUnauthenticatedAPICall {
   callApi: (fetchQuery: IFetchQueryUnauthenticated) => Promise<any>;
   error: IApiError;
   loading: boolean;
@@ -80,4 +80,4 @@ interface ILoginApiResponse{
   success: boolean;
 }
 
-export type { IMyTextInput, IMyCheckBox, ISignupValues, ILoginValues, ISignupValuesDB, IFetchQuery, IApiError, IApiHeaders, IMakeAutheticatedAPICall, IFetchQueryUnauthenticated, IMakeUnautheticatedAPICall, ILoginApiResponse }
+export type { IMyTextInput, IMyCheckBox, ISignupValues, ILoginValues, ISignupValuesDB, IFetchQuery, IApiError, IApiHeaders, IMakeAuthenticatedAPICall, IFetchQueryUnauthenticated, IMakeUnauthenticatedAPICall, ILoginApiResponse }

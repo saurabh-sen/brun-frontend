@@ -6,11 +6,11 @@ import { RootState } from '@libs/store';
 
 import product from '@public/assets/product.jpg'
 import Delete from '@public/icons/common/Delete';
-import useMakeAutheticatedAPICall from '@services/customHooks/useMakeAutheticatedAPICall';
 import { IAccountDetails, IWishList } from '@modals/account/account.types';
 import { getUserIdToStorage } from '@services/tokens/tokens.service';
 import { accountApi } from '@services/account/account.service';
 import { setOrderHistory, setUserDetails, setWishList } from '@libs/features/account/accountSlice';
+import { useMakeAuthenticatedAPICall } from '@services';
 
 const WishList = () => {
 
@@ -18,7 +18,7 @@ const WishList = () => {
   const dispatch = useDispatch();
   const userDetails = useSelector((state: RootState) => state.account.userDetails);
   const wishlist = useSelector((state: RootState) => state.account.wishList);
-  const { callApi, data, error, loading } = useMakeAutheticatedAPICall<IAccountDetails>();
+  const { callApi, data, error, loading } = useMakeAuthenticatedAPICall<IAccountDetails>();
 
   useEffect(() => {
     const userId = getUserIdToStorage();

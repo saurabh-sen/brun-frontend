@@ -5,7 +5,7 @@ import { RootState } from '@libs/store'
 
 import CartItem from '../CartItem'
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
-import useMakeAutheticatedAPICall from '@services/customHooks/useMakeAutheticatedAPICall'
+import { useMakeAuthenticatedAPICall } from '@services'
 import { getUserIdToStorage } from '@services/tokens/tokens.service'
 import { cartApi } from '@services/account/cart.service'
 import { ICartApiResponse } from '@modals/cart/cart.types'
@@ -18,7 +18,7 @@ const CartBody = () => {
   const dispatch = useDispatch();
   const cartProducts = useSelector((state: RootState) => state.cart.cartProducts)
   const totalAmount = useSelector((state: RootState) => state.cart.totalAmount)
-  const { callApi, data, error, loading } = useMakeAutheticatedAPICall<ICartApiResponse>();
+  const { callApi, data, error, loading } = useMakeAuthenticatedAPICall<ICartApiResponse>();
 
 
   useEffect(() => {
