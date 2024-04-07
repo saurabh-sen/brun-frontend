@@ -1,30 +1,74 @@
 import Image from 'next/image';
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@libs/store';
 
 import product from '@public/assets/product.jpg'
 import Delete from '@public/icons/common/Delete';
+import useMakeAutheticatedAPICall from '@services/customHooks/useMakeAutheticatedAPICall';
+import { IAccountDetails, IWishList } from '@modals/account/account.types';
+import { getUserIdToStorage } from '@services/tokens/tokens.service';
+import { accountApi } from '@services/account/account.service';
+import { setOrderHistory, setUserDetails, setWishList } from '@libs/features/account/accountSlice';
 
 const WishList = () => {
+
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const userDetails = useSelector((state: RootState) => state.account.userDetails);
+  const wishlist = useSelector((state: RootState) => state.account.wishList);
+  const { callApi, data, error, loading } = useMakeAutheticatedAPICall<IAccountDetails>();
+
+  useEffect(() => {
+    const userId = getUserIdToStorage();
+    // if userId is null or error is there then redirect to login
+    if (!userId) {
+      router.replace('/login');
+    } else if (!userDetails.id) callApi(accountApi({ userId: userId }));
+  }, [])
+
+  // setUserDetails from data when it is not null
+  useEffect(() => {
+    if (data) {
+      if (data?.data) dispatch(setUserDetails(data.data));
+      if (data?.data?.wishlist) dispatch(setWishList(data.data.wishlist));
+      if (data?.data?.orders) dispatch(setOrderHistory(data.data.orders));
+    }
+  }, [data])
+
+  if (loading) return <div>Loading...</div>
+  if (error.isError) {
+    router.replace('/login');
+    return <div>Error occured: {error.message}</div>;
+  }
+  if (!data && !userDetails) return null;
+
   return (
     <section className="wishlist flex flex-col gap-4 items-start">
-      <WishListCard />
-      <WishListCard />
-      <WishListCard />
-      <WishListCard />
-      <WishListCard />
+      {
+        wishlist.length > 0
+          ? wishlist.map((item, idx) => <WishListCard key={idx} {...item} />)
+          : <p className="empty__cart">NO ITEMS FOUND IN WISHLIST.</p>
+      }
     </section>
   )
 }
 
-const WishListCard = () => {
+const WishListCard = ({ id, image, title, price }: IWishList) => {
+
+  const handleDelete = () => {
+    console.log('make an api call and delete this id from wishlist', id)
+  }
+
   return (
     <div className="CartItem__text flex gap-6 justify-center items-center">
-      <Image src={product} alt="product image" width={136} height={190} />
+      <Image src={image} alt="product image" width={136} height={190} />
       <div className="text__container max-w-[194px] flex flex-col gap-4">
-        <p className="item__text text-sm">TEXTURED OVERSIZE KNIT POLO SHIRT</p>
-        <p className="item__price ">₹ 2990.00</p>
+        <p className="item__text text-sm">{title}</p>
+        <p className="item__price ">₹ {price}</p>
       </div>
-      <Delete/>
+      <Delete onClick={handleDelete} />
     </div>
   )
 };

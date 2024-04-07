@@ -36,7 +36,7 @@ interface IRequestResetPasswordApi {
 export const requestResetPasswordApi = (payload: IRequestResetPasswordApi) => async () => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}user/forgot-password`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/user/forgot-password`,
       {
         method: "POST",
         headers: {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
   IApiError,
   IApiHeaders,
@@ -13,8 +13,8 @@ import {
   saveRefreshTokenToStorage,
 } from "@services/tokens/tokens.service";
 
-const useMakeAutheticatedAPICall = (): IMakeAutheticatedAPICall => {
-  const [data, setData] = useState<any>(null);
+const useMakeAutheticatedAPICall = <T>(): IMakeAutheticatedAPICall<T> => {
+  const [data, setData] = useState<T | null>(null);;
   const [error, setError] = useState<IApiError>({
     isError: false,
     message: "",
@@ -22,40 +22,55 @@ const useMakeAutheticatedAPICall = (): IMakeAutheticatedAPICall => {
   });
   const [loading, setLoading] = useState<boolean>(false);
 
-  const callApi = async (fetchQuery: IFetchQuery, retryCount: number = 0) => {
-    setLoading(true);
-    try {
-      const accessToken = getAccessTokenFromStorage();
-      if (!accessToken) {
-        throw new Error("Session expired, please login.");
-      }
-
-      const headers: IApiHeaders = {
-        Authorization: `Bearer ${accessToken}`,
-      };
-
-      const response = await fetchQuery(headers);
-      if (!response.ok) {
-        if (response.status === 401) {
-          if (retryCount < 3) {
-            await refreshTokensAndRetry(fetchQuery, retryCount);
-          } else {
-            throw new Error("Maximum retry limit reached.");
-          }
-        } else {
-          throw new Error(response.statusText);
+  const callApi = useCallback(
+    async (fetchQuery: IFetchQuery, retryCount: number = 0) => {
+      setLoading(true);
+      try {
+        const accessToken = getAccessTokenFromStorage();
+        if (!accessToken) {
+          return setError({
+            isError: true,
+            message: "Session expired, please login.",
+            status: 401,
+          });
         }
-      }
 
-      const result = await response.json();
-      setData(result);
-    } catch (err) {
-      const error = err as { message: string; status: number };
-      setError({ isError: true, message: error.message, status: 500 });
-    } finally {
-      setLoading(false);
-    }
-  };
+        const headers: IApiHeaders = {
+          Authorization: `Bearer ${accessToken}`,
+        };
+
+        const response = await fetchQuery(headers);
+        if (!response.ok) {
+          if (response.status === 500) {
+            if (retryCount < 3) {
+              await refreshTokensAndRetry(fetchQuery, retryCount);
+            } else {
+              return setError({
+                isError: true,
+                message: "Session expired, please login.",
+                status: 401,
+              });
+            }
+          } else {
+            return setError({
+              isError: true,
+              message: "Failed to fetch data.",
+              status: 401,
+            });
+          }
+        }
+
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        const error = err as { message: string; status: number };
+        setError({ isError: true, message: error.message, status: 500 });
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
 
   const refreshTokensAndRetry = async (
     fetchQuery: IFetchQuery,

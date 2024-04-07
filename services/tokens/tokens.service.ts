@@ -15,14 +15,19 @@ export const saveRefreshTokenToStorage = (refreshToken: RefreshToken): void => {
   localStorage.setItem("refreshToken", refreshToken);
 };
 
+// Function to retrieve refresh token from localStorage
+export const getRefreshTokenFromStorage = (): RefreshToken | null => {
+  return localStorage.getItem("refreshToken");
+};
+
 // Function to save userId token to localStorage
 export const saveUserIdToStorage = (userId: string): void => {
   localStorage.setItem("userId", userId);
 };
 
-// Function to retrieve refresh token from localStorage
-export const getRefreshTokenFromStorage = (): RefreshToken | null => {
-  return localStorage.getItem("refreshToken");
+// Function to save userId token to localStorage
+export const getUserIdToStorage = (): string | null => {
+  return localStorage.getItem("userId");
 };
 
 // Function to clear tokens from localStorage

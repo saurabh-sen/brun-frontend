@@ -1,8 +1,27 @@
+import { StaticImageData } from "next/image";
+import { MouseEvent, MouseEventHandler } from "react";
+
 interface ICartProduct {
     id: string;
     quantity: number;
     size: string;
     color: string;
+    price: number;
+    title: string;
+    image: string | StaticImageData;
+    slug: string;
+}
+
+interface IDefaultProductState {
+    id: string;
+    quantity: number;
+    size: string;
+    color: string;
+    price: number;
+    title: string;
+    slug: string;
+    image: string;
+
 }
 
 interface ICartState{
@@ -10,10 +29,14 @@ interface ICartState{
     productCustomization: ICartProduct;
     cartProducts: ICartProduct[];
     totalAmount: number;
-    totalItems: number;
     discountPercent: number;
     discountAmount: number;
     discountCoupon: string;
 }
 
-export type { ICartState, ICartProduct };
+interface IDelete {
+    onClick: (e: MouseEvent) => void;
+    className?: string;
+}
+
+export type { ICartState, ICartProduct, IDefaultProductState, IDelete };
