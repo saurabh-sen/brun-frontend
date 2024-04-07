@@ -5,7 +5,7 @@ import {
   IMakeUnautheticatedAPICall,
 } from "@modals/login/login.types";
 
-const useMakeUnautheticatedAPICall = (): IMakeUnautheticatedAPICall => {
+export const useMakeUnautheticatedAPICall = (): IMakeUnautheticatedAPICall => {
   const [error, setError] = useState<IApiError>({
     isError: false,
     message: "",
@@ -44,5 +44,3 @@ const useMakeUnautheticatedAPICall = (): IMakeUnautheticatedAPICall => {
 
   return { callApi, error, loading };
 };
-
-export default useMakeUnautheticatedAPICall;

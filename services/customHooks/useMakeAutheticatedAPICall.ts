@@ -13,7 +13,7 @@ import {
   saveRefreshTokenToStorage,
 } from "@services/tokens/tokens.service";
 
-const useMakeAutheticatedAPICall = <T>(): IMakeAutheticatedAPICall<T> => {
+export const useMakeAutheticatedAPICall = <T>(): IMakeAutheticatedAPICall<T> => {
   const [data, setData] = useState<T | null>(null);;
   const [error, setError] = useState<IApiError>({
     isError: false,
@@ -94,5 +94,3 @@ const useMakeAutheticatedAPICall = <T>(): IMakeAutheticatedAPICall<T> => {
 
   return { callApi, data, error, loading };
 };
-
-export default useMakeAutheticatedAPICall;

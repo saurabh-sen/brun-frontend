@@ -10,11 +10,11 @@ import BrunB from '@public/icons/navbar/BrunB';
 import BrunR from '@public/icons/navbar/BrunR';
 import BrunU from '@public/icons/navbar/BrunU';
 import BrunN from '@public/icons/navbar/BrunN';
-import useScrollDirection from '@services/customHooks/useScrollDirection';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@libs/store';
 import { setIsHomepageRoute, setIsSearchBarOpen, setIsSidebarOpen } from '@libs/features/homepage/homepageSlice';
 import { setCartPageActiveTab } from '@libs/features/cart/cartSlice';
+import { useScrollDirection } from '@services';
 
 const Navbar = () => {
 

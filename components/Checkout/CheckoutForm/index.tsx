@@ -1,31 +1,22 @@
 "use client"
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
 import MyTextInput from '@components/common/MyTextInput'
-import React, { useRef, useState } from 'react'
-import { Formik, Form, FormikProps } from 'formik'
-import { deliveryInitialValues, deliveryValidationSchema, handleDeliverySubmit } from '@services'
+import React, { useEffect, useState } from 'react'
+import { Formik, Form } from 'formik'
+import { deliveryAndBillingValidationSchema, handleDeliverySubmit } from '@services'
 import MyTextArea from '@components/common/MyTextArea'
 import { ButtonType } from '@modals/common/common.types'
+import { deliveryInitialValues } from '@contants/checkout.constant'
 
 const CheckoutForm = () => {
 
-    // TODO DEBUG IT: this form is not submitting
-
     const [isBillingAddressDifferent, setIsBillingAddressDifferent] = useState<boolean>(false);
-    // const formikRef = useRef<FormikProps<any>>(null);
-
-    const handleSubmit = () => {
-        // if (formikRef.current) {
-        //     formikRef.current.submitForm();
-        // }
-    }
 
     return (
         <Formik
             initialValues={deliveryInitialValues}
-            validationSchema={deliveryValidationSchema}
-            onSubmit={(values) => console.log(values)}
-            // innerRef={formikRef}
+            validationSchema={deliveryAndBillingValidationSchema}
+            onSubmit={(values) => handleDeliverySubmit(values, isBillingAddressDifferent)}
         >
             <Form className='flex flex-col text-sm w-full gap-6 md:gap-12 max-w-[649px]'>
                 <p className="input__heading">DELIVERY</p>
@@ -48,7 +39,7 @@ const CheckoutForm = () => {
                         <BillingAddressForm />
                     )
                 }
-                <button type='submit' className='border border-black text-black px-24 py-4 w-max' onClick={handleSubmit}>PAY NOW</button>
+                <button type='submit' className='border border-black text-black px-24 py-4 w-max'>PAY NOW</button>
             </Form>
         </Formik>
     )
