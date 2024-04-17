@@ -3,8 +3,6 @@ import "./globals.css";
 import "./globalicons.css";
 
 import ServiceProvider from "@components/Providers/ServiceProvider";
-import Navbar from "@components/common/Navbar";
-import Footer from "@components/common/Footer";
 
 export default function RootLayout({
   children,
@@ -16,9 +14,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="font-urbanist">
         <ServiceProvider>
-          <Navbar />
-            {children}
-          <Footer />
+          {children}
         </ServiceProvider>
       </body>
     </html>

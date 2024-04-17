@@ -11,12 +11,31 @@ import { deliveryInitialValues } from '@contants/checkout.constant'
 const CheckoutForm = () => {
 
     const [isBillingAddressDifferent, setIsBillingAddressDifferent] = useState<boolean>(false);
+    const [isValidating, setIsValidating] = useState<boolean>(false);
+    const [isValid, setIsValid] = useState<boolean>(false);
+
+    useEffect(() => {
+        setIsValid(!isValidating && isValid);
+    }, [isValidating, isValid]);
 
     return (
         <Formik
             initialValues={deliveryInitialValues}
             validationSchema={deliveryAndBillingValidationSchema}
-            onSubmit={(values) => handleDeliverySubmit(values, isBillingAddressDifferent)}
+            onSubmit={(values, { setSubmitting }) => {
+                handleDeliverySubmit(values, isBillingAddressDifferent);
+                setSubmitting(false);
+            }}
+            validateOnChange={true}
+            validateOnBlur={false}
+            validate={(values) => {
+                setIsValidating(true);
+                deliveryAndBillingValidationSchema.isValid(values)
+                    .then(valid => {
+                        setIsValid(valid);
+                        setIsValidating(false);
+                    });
+            }}
         >
             <Form className='flex flex-col text-sm w-full gap-6 md:gap-12 max-w-[649px]'>
                 <p className="input__heading">DELIVERY</p>
@@ -39,7 +58,7 @@ const CheckoutForm = () => {
                         <BillingAddressForm />
                     )
                 }
-                <button type='submit' className='border border-black text-black px-24 py-4 w-max'>PAY NOW</button>
+                <button type='submit' className={`border border-black text-black px-24 py-4 w-max ${ isValid && 'bg-black text-white'}`}>PAY NOW</button>
             </Form>
         </Formik>
     )

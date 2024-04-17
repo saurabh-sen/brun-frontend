@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import "../globals.css";
 import "../globalicons.css";
 
-import ServiceProvider from "@components/Providers/ServiceProvider";
-import AdminSideNav from "@components/admin/common/AdminSideNav";
+import Navbar from "@components/common/Navbar";
+import Footer from "@components/common/Footer";
 
-export default function RootLayout({
+export default function ClientLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -14,10 +14,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-urbanist">
-        <ServiceProvider>
-          <AdminSideNav />
+          <Navbar />
             {children}
-        </ServiceProvider>
+          <Footer />
       </body>
     </html>
   );

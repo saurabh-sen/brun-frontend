@@ -11,6 +11,7 @@ export const deliveryAndBillingValidationSchema = Yup.object().shape({
   locality: Yup.string().required("locality is required"),
   state: Yup.string().required("state is required"),
   pincode: Yup.string().required("pincode is required"),
+  moreinfo: Yup.string(),
   billingCountry: Yup.string().required("Billing Country/Region is required"),
   billingFirstname: Yup.string().required("Billing First Name is required"),
   billingLastname: Yup.string().required("Billing Last Name is required"),
@@ -27,7 +28,8 @@ export const handleDeliverySubmit = (
   values: ICheckoutAddress,
   isBillingAddressDifferent: boolean
 ) => {
-  // TODO: handle if isBillingAddressDifferent is false then remove billing address fields from values
-  // integrate with API and payment gateway
-  console.log("values", values);
+  // TODO: handle payment and order creation
+  // ADD SOME DUMMY PRODUCTS
+  if (!isBillingAddressDifferent) {
+  }
 };
