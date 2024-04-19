@@ -12,12 +12,10 @@ export default function ClientLayout({
 }>) {
 
   return (
-    <html lang="en">
-      <body className="font-urbanist">
+    <>
           <Navbar />
             {children}
           <Footer />
-      </body>
-    </html>
+    </>
   );
 }

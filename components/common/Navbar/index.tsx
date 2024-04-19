@@ -43,7 +43,7 @@ const Navbar = () => {
       <header className="navbar flex flex-col justify-stretch w-full fixed top-0 transition-all duration-500 z-10 bg-transparent backdrop-blur-[2px]">
         <div className="navbar__container flex items-center md:items-start justify-between pt-3 md:pt-7 px-6 bg-gradient-to-b from-[#00000094] via-[#00000024] to-transparent">
           <Link href="/" className="navbar__logo__container ">
-            <BrunLogo />
+            <BrunLogo isWhiteLogo={false} />
           </Link>
           <nav className="navbar__links__primary hidden md:flex gap-14 text-base font-urbanist font-semibold">
             <Link href="/products">TOPS</Link>

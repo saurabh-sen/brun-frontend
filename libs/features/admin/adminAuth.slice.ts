@@ -3,12 +3,14 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 interface IAdminAuthInitialState {
   isLoading: boolean;
   isAuthenticated: boolean;
+  isAuthError: boolean;
 }
 
 const initialState: IAdminAuthInitialState = {
   isLoading: false,
   isAuthenticated: false,
-}
+  isAuthError: false,
+};
 
 const adminAuthSlice = createSlice({
   name: "adminAuth",
@@ -19,6 +21,9 @@ const adminAuthSlice = createSlice({
     },
     setIsAuthenticated(state, action: PayloadAction<boolean>) {
       state.isAuthenticated = action.payload;
+    },
+    setIsAuthError(state, action: PayloadAction<boolean>) {
+      state.isAuthError = action.payload;
     },
   },
 });

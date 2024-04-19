@@ -1,12 +1,14 @@
+import SideNavList from '@components/admin/SideNavList'
 import BrunLogo from '@components/common/BrunLogo'
 import React from 'react'
 
 const AdminSideNav = () => {
 
   return (
-    <div className='w-72 max-h-screen bg-pink-400 sticky top-0 left-0'>
-      <BrunLogo />
-      <p>admin navbar</p>
+    <div className='w-72 max-h-screen bg-black sticky top-0 left-0 flex flex-col items-center justify-between text-white'>
+      <BrunLogo isWhiteLogo />
+      <SideNavList />
+      <span className='invisible'>.</span>
     </div>
   )
 }
