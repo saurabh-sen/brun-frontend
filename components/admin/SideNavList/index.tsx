@@ -1,5 +1,6 @@
 "use client"
 import { navList } from "@contants/admin.constant";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const SideNavList = () => {
@@ -21,10 +22,10 @@ const SideNavListItem = ({ icon, text, href }: { icon: React.ReactNode, text: st
     const active: boolean = pathname === href && true;
 
     return (
-        <a href={href} className={`navbar__list__item rounded-lg text-center py-3 flex pl-11 items-center hover:bg-[#3C3C3C] gap-5 ${active && 'bg-[#3C3C3C]'}`}>
+        <Link href={href} className={`navbar__list__item rounded-lg text-center py-3 flex pl-11 items-center hover:bg-[#3C3C3C] gap-5 ${active && 'bg-[#3C3C3C]'}`}>
             {icon}
             <span>{text}</span>
-        </a>
+        </Link>
     )
 };
 
