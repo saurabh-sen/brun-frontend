@@ -1,42 +1,36 @@
-import MyOutlinedButton from '@components/common/MyOutlinedButton'
-import { PRODUCTSIZE, ProductAvailabilityEnum, ProductSizeEnum } from '@modals/productListing/productListing.types';
-import { setInStock, setSizeSelected } from '@libs/features/productListing/productListingSlice';
-import { RootState } from '@libs/store';
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { ButtonType } from '@modals/common/common.types';
+
+import React, { useState } from 'react'
+import TabsBody from '@components/common/Tabs/TabsBody/TabsBody';
+import MoreFiltersNav from './MoreFiltersNav';
+import ColorsFilter from './ColorsFilter';
+import SizeFilter from './SizeFilter';
+import PriceFilter from './PriceFilter';
+import FilterCTA from './FilterCTA';
 
 const MoreFilters = () => {
 
-    const dispatch = useDispatch();
-    const { sizeSelected, inStockSelected } = useSelector((state: RootState) => state.productListing);
+    const [activeTab, setActiveTab] = useState(0);
 
-    const handleStockFilter = (stock: ProductAvailabilityEnum) => () => {
-        dispatch(setInStock(stock))
-    }
-
-    const handleSizeFilter = (size: ProductSizeEnum) => () => {
-        dispatch(setSizeSelected(size))
+    const handleSetActiveTab = (tab: number) => {
+        setActiveTab(tab);
     }
 
     return (
-        <div className="more__filters border border-black p-8 absolute top-14 right-0 bg-white">
-            <div className="availability">
-                <h3>AVAILABILITY</h3>
-                <div className="flex gap-2 mt-2">
-                    <MyOutlinedButton handleClick={handleStockFilter(ProductAvailabilityEnum.IN_STOCK)} active={ProductAvailabilityEnum.IN_STOCK === inStockSelected} type={ButtonType.BUTTON} className='whitespace-nowrap'>IN STOCK</MyOutlinedButton>
-                    <MyOutlinedButton handleClick={handleStockFilter(ProductAvailabilityEnum.OUT_OF_STOCK)} active={ProductAvailabilityEnum.OUT_OF_STOCK === inStockSelected} type={ButtonType.BUTTON} className='whitespace-nowrap'>OUT OF STOCK</MyOutlinedButton>
-                </div>
-            </div>
-            <div className="availability mt-4">
-                <h3>SIZE</h3>
-                <div className="flex gap-2 flex-wrap mt-2">
-                    {
-                        PRODUCTSIZE.map((size, index) => (
-                            <MyOutlinedButton key={index} handleClick={handleSizeFilter(size)} active={size === sizeSelected} type={ButtonType.BUTTON}>{size}</MyOutlinedButton>
-                        ))
-                    }
-                </div>
+        <div className="more__filters relative">
+            <MoreFiltersNav activeTab={activeTab} handleSetActiveTab={handleSetActiveTab} />
+            <div className={`filter__body__container absolute top-12 left-0 ${activeTab === null && 'hidden' }`}>
+                <TabsBody show={activeTab === 1}>
+                    <ColorsFilter />
+                </TabsBody>
+                <TabsBody show={activeTab === 2}>
+                    <SizeFilter />
+                </TabsBody>
+                <TabsBody show={activeTab === 3}>
+                    <PriceFilter />
+                </TabsBody>
+                {
+                    activeTab !== 0 && <FilterCTA setActiveTab={setActiveTab} />
+                }
             </div>
         </div>
     )

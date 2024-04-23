@@ -17,11 +17,6 @@ enum ProductCategoryEnum {
   SHIRT = "SHIRT",
 }
 
-enum ProductAvailabilityEnum {
-  IN_STOCK = "In Stock",
-  OUT_OF_STOCK = "Out of Stock",
-}
-
 enum ProductSizeEnum {
   XXXS = "XXXS",
   XXS = "XXS",
@@ -48,10 +43,6 @@ interface IProductListingState {
     | ProductListingLayoutEnum.ONE_COLUMN
     | ProductListingLayoutEnum.TWO_COLUMN
     | ProductListingLayoutEnum.FIVE_COLUMN;
-  inStockSelected:
-    | ProductAvailabilityEnum.IN_STOCK
-    | ProductAvailabilityEnum.OUT_OF_STOCK
-    | null;
   sizeSelected:
     | ProductSizeEnum.XXXS
     | ProductSizeEnum.XXS
@@ -99,7 +90,6 @@ export type { IProductListing, IProductListingState };
 export {
   ProductListingLayoutEnum,
   ProductCategoryEnum,
-  ProductAvailabilityEnum,
   ProductSizeEnum,
   PRODUCTCATEGORIES,
   PRODUCTSIZE,

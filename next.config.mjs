@@ -4,6 +4,9 @@ const nextConfig = {
         remotePatterns: [
             {
                 hostname: 'ik.imagekit.io',
+            },
+            {
+                hostname: 'example.com',
             }
         ]
     }

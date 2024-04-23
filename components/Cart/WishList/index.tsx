@@ -3,8 +3,6 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@libs/store';
-
-import product from '@public/assets/product.jpg'
 import Delete from '@public/icons/common/Delete';
 import { IAccountDetails, IWishList } from '@modals/account/account.types';
 import { getUserIdToStorage } from '@services/tokens/tokens.service';
@@ -45,7 +43,7 @@ const WishList = () => {
   if (!data && !userDetails) return null;
 
   return (
-    <section className="wishlist flex flex-col gap-4 items-start">
+    <section className="wishlist grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
       {
         wishlist.length > 0
           ? wishlist.map((item, idx) => <WishListCard key={idx} {...item} />)
@@ -62,11 +60,13 @@ const WishListCard = ({ id, image, title, price }: IWishList) => {
   }
 
   return (
-    <div className="CartItem__text flex gap-6 justify-center items-center">
-      <Image src={image} alt="product image" width={136} height={190} />
-      <div className="text__container max-w-[194px] flex flex-col gap-4">
-        <p className="item__text text-sm">{title}</p>
-        <p className="item__price ">₹ {price}</p>
+    <div className="CartItem__text flex justify-between items-center md:w-96">
+      <div className="wishlist__image__text flex gap-6 justify-center items-center">
+        <Image src={image} alt="product image" width={136} height={190} />
+        <div className="text__container max-w-[194px] flex flex-col gap-4">
+          <p className="item__text text-sm">{title}</p>
+          <p className="item__price ">₹ {price}</p>
+        </div>
       </div>
       <Delete onClick={handleDelete} />
     </div>

@@ -14,9 +14,7 @@ import BrunLogo from '../BrunLogo';
 
 const Navbar = () => {
 
-  const { 
-    // isHomepageRoute, 
-    isSearchBarOpen, isSidebarOpen } = useSelector((state: RootState) => state.homepage);
+  const { isSearchBarOpen, isSidebarOpen } = useSelector((state: RootState) => state.homepage);
   const dispatch = useDispatch();
   const path = usePathname();
   const router = useRouter();
@@ -36,7 +34,9 @@ const Navbar = () => {
 
   useEffect(() => {
     dispatch(setIsHomepageRoute(path === '/'))
-  }, [path, dispatch])
+  }, [path, dispatch]);
+
+  const isProductListing = path === '/products';
 
   return (
     <>
@@ -45,7 +45,7 @@ const Navbar = () => {
           <Link href="/" className="navbar__logo__container ">
             <BrunLogo isWhiteLogo={false} />
           </Link>
-          <nav className="navbar__links__primary hidden md:flex gap-14 text-base font-urbanist font-semibold">
+          <nav className={`navbar__links__primary hidden md:flex gap-14 text-base font-urbanist ${isProductListing && 'hidden md:hidden'}`}>
             <Link href="/products">TOPS</Link>
             <Link href="/products">BOTTOM</Link>
             <Link href="/about"> ABOUT</Link>
