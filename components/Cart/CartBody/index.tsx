@@ -1,32 +1,38 @@
 import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/navigation'
+import { RootState } from '@libs/store'
+
 import CartItem from '../CartItem'
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
-import { useSelector } from 'react-redux'
-import { RootState } from '@libs/store'
-import useMakeAutheticatedAPICall from '@services/customHooks/useMakeAutheticatedAPICall'
+import { useMakeAuthenticatedAPICall } from '@services'
 import { getUserIdToStorage } from '@services/tokens/tokens.service'
-import { useRouter } from 'next/navigation'
 import { cartApi } from '@services/account/cart.service'
+import { ICartApiResponse } from '@modals/cart/cart.types'
+import { updateCartFromDB } from '@libs/features/cart/cartSlice'
+import { ButtonType } from '@modals/common/common.types'
 
 const CartBody = () => {
 
+  const router = useRouter();
+  const dispatch = useDispatch();
   const cartProducts = useSelector((state: RootState) => state.cart.cartProducts)
   const totalAmount = useSelector((state: RootState) => state.cart.totalAmount)
-  const { callApi, data, error, loading } = useMakeAutheticatedAPICall<any>();
+  const { callApi, data, error, loading } = useMakeAuthenticatedAPICall<ICartApiResponse>();
 
-  const router = useRouter();
 
   useEffect(() => {
     const userId = getUserIdToStorage();
     // if userId is null or error is there then redirect to login
     if (!userId) {
       router.replace('/login');
-    } else if (!cartProducts.length) callApi(cartApi({ userId: userId }));
+    } else if (!cartProducts.length) callApi(cartApi());
   }, [])
 
   useEffect(() => {
     if (data) {
-      console.log("cart data ",data);
+      const { fetchProducts, totalAmount } = data.data;
+      dispatch(updateCartFromDB({ fetchProducts, totalAmount }));
     }
   }, [data])
 
@@ -53,7 +59,7 @@ const CartBody = () => {
                 <p className="">Total</p>
                 <p className="">₹ {totalAmount}</p>
               </div>
-              <MyOutlinedButton active handleClick={() => console.log('checkout')} className='!w-max !py-2 !px-8 md:!py-4 md:!px-16 m-auto'>CHECKOUT</MyOutlinedButton>
+              <MyOutlinedButton active handleClick={() => console.log('checkout')} className='!w-max !py-2 !px-8 md:!py-4 md:!px-16 m-auto' type={ButtonType.BUTTON} >CHECKOUT</MyOutlinedButton>
             </div>
           </>
           : <p className="empty__cart">NO ITEMS FOUND IN CART.</p>

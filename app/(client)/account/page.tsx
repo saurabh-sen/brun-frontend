@@ -5,11 +5,11 @@ import { setOrderHistory, setUserDetails, setWishList } from '@libs/features/acc
 import { RootState } from '@libs/store';
 import { IAccountDetails } from '@modals/account/account.types';
 import { accountApi } from '@services/account/account.service';
-import useMakeAutheticatedAPICall from '@services/customHooks/useMakeAutheticatedAPICall';
 import { getUserIdToStorage } from '@services/tokens/tokens.service';
 import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useMakeAuthenticatedAPICall } from '@services';
 
 const Account = () => {
 
@@ -19,7 +19,7 @@ const Account = () => {
     const router = useRouter();
     const dispatch = useDispatch();
     const userDetails = useSelector((state: RootState) => state.account.userDetails);
-    const { callApi, data, error, loading } = useMakeAutheticatedAPICall<IAccountDetails>();
+    const { callApi, data, error, loading } = useMakeAuthenticatedAPICall<IAccountDetails>();
 
     useEffect(() => {
         const userId = getUserIdToStorage();

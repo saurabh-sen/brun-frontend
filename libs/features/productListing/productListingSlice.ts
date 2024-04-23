@@ -1,4 +1,4 @@
-import { products } from "@contants/productConstant";
+import { products } from "@contants/product.constant";
 import {
   IProductListingState,
   ProductAvailabilityEnum,

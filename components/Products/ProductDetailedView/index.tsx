@@ -13,6 +13,7 @@ import { addProductToCart, removeProductFromCart, setDefaultProductCustomization
 import { productDetailApiFetch } from '@services/productDetailedView/productDetailedView.service'
 import ColorBox from './ColorBox'
 import { IDefaultProductState } from '@modals/cart/cart.types'
+import { ButtonType } from '@modals/common/common.types'
 
 const COLORS = [
     {
@@ -138,7 +139,7 @@ const ProductDetailedView = ({ productSlug }: IProductDetailedView) => {
                     <h5 className="size__heading mb-2">CHOOSE SIZE</h5>
                     <div className="size__container flex flex-wrap gap-2 justify-start items-center">
                         {
-                            productDetails.sizes.map((sizeObj, index) => <MyOutlinedButton key={index} handleClick={() => handleSizeChange(sizeObj.size)} active={sizeObj.size === size} className={sizeObj.is_available ? 'block' : 'hidden'} >{sizeObj.size}</MyOutlinedButton>)
+                            productDetails.sizes.map((sizeObj, index) => <MyOutlinedButton key={index} handleClick={() => handleSizeChange(sizeObj.size)} active={sizeObj.size === size} className={sizeObj.is_available ? 'block' : 'hidden'} type={ButtonType.BUTTON} >{sizeObj.size}</MyOutlinedButton>)
                         }
                     </div>
                 </div>

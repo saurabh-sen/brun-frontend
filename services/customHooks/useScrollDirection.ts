@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
 
-function useScrollDirection() {
+export const useScrollDirection = () => {
   const [scrollDirection, setScrollDirection] = React.useState<null | "down" | "up">(null);
 
   React.useEffect(() => {
@@ -25,5 +25,3 @@ function useScrollDirection() {
 
   return scrollDirection;
 };
-
-export default useScrollDirection;

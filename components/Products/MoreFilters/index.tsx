@@ -4,6 +4,7 @@ import { setInStock, setSizeSelected } from '@libs/features/productListing/produ
 import { RootState } from '@libs/store';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { ButtonType } from '@modals/common/common.types';
 
 const MoreFilters = () => {
 
@@ -23,8 +24,8 @@ const MoreFilters = () => {
             <div className="availability">
                 <h3>AVAILABILITY</h3>
                 <div className="flex gap-2 mt-2">
-                    <MyOutlinedButton handleClick={handleStockFilter(ProductAvailabilityEnum.IN_STOCK)} active={ProductAvailabilityEnum.IN_STOCK === inStockSelected} className='whitespace-nowrap'>IN STOCK</MyOutlinedButton>
-                    <MyOutlinedButton handleClick={handleStockFilter(ProductAvailabilityEnum.OUT_OF_STOCK)} active={ProductAvailabilityEnum.OUT_OF_STOCK === inStockSelected} className='whitespace-nowrap'>OUT OF STOCK</MyOutlinedButton>
+                    <MyOutlinedButton handleClick={handleStockFilter(ProductAvailabilityEnum.IN_STOCK)} active={ProductAvailabilityEnum.IN_STOCK === inStockSelected} type={ButtonType.BUTTON} className='whitespace-nowrap'>IN STOCK</MyOutlinedButton>
+                    <MyOutlinedButton handleClick={handleStockFilter(ProductAvailabilityEnum.OUT_OF_STOCK)} active={ProductAvailabilityEnum.OUT_OF_STOCK === inStockSelected} type={ButtonType.BUTTON} className='whitespace-nowrap'>OUT OF STOCK</MyOutlinedButton>
                 </div>
             </div>
             <div className="availability mt-4">
@@ -32,7 +33,7 @@ const MoreFilters = () => {
                 <div className="flex gap-2 flex-wrap mt-2">
                     {
                         PRODUCTSIZE.map((size, index) => (
-                            <MyOutlinedButton key={index} handleClick={handleSizeFilter(size)} active={size === sizeSelected}>{size}</MyOutlinedButton>
+                            <MyOutlinedButton key={index} handleClick={handleSizeFilter(size)} active={size === sizeSelected} type={ButtonType.BUTTON}>{size}</MyOutlinedButton>
                         ))
                     }
                 </div>

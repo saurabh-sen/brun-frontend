@@ -1,6 +1,7 @@
 import React from 'react'
 import CheckoutOrderItem from '../CheckoutOrderItem'
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
+import { ButtonType } from '@modals/common/common.types'
 
 interface ICheckoutOrder {
     showThankyou: boolean
@@ -18,7 +19,7 @@ const CheckoutOrder = ({ showThankyou }: ICheckoutOrder) => {
             </div>
             <div className="coupon__container flex">
                 <input type="text" placeholder="ENTER COUPON CODE OR GIFT CARD" className='p-2 border border-[#767676] flex-1 outline-none' />
-                <MyOutlinedButton active handleClick={() => console.log('hello')} >APPLY</MyOutlinedButton>
+                <MyOutlinedButton active handleClick={() => console.log('hello')} type={ButtonType.BUTTON} >APPLY</MyOutlinedButton>
             </div>
             <div className="checkout__amount text-sm">
                 <p className="subtotal flex justify-between items-center">

@@ -23,7 +23,7 @@ const MyTextArea = ({ label, id, name, className, onFocus }: IMyTextArea) => {
                 className="block w-full bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
                 onFocus={onFocus}
             />
-            <label htmlFor={id} className="absolute duration-300 -top-1 -z-1 origin-0 text-gray-500">{label}</label>
+            <label htmlFor={id} className="absolute duration-300 -top-4 -z-1 origin-0 text-gray-500">{label}</label>
             {meta.touched && meta.error ? (
                 <div className="error text-[#767676] text-sm flex gap-1 items-center">
                     <span className="material-symbols-rounded text-sm">

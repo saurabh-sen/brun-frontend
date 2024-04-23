@@ -1,5 +1,5 @@
 import React from "react";
-import { SIDENAVBARITEMS } from "@contants/homepage";
+import { SIDENAVBARITEMS } from "@contants/homepage.constant";
 import SideNavbarItem from "./SideNavbarItem";
 
 interface ISideNavbar {

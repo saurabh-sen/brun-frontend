@@ -1,5 +1,20 @@
 import { StaticImageData } from "next/image";
-import { MouseEvent, MouseEventHandler } from "react";
+import { MouseEvent } from "react";
+
+interface IUpdateCartPayload {
+    fetchProducts: ICartProduct[];
+    totalAmount: number;
+}
+
+interface ICartApiResponse {
+    statusCode: number,
+    data: {
+        fetchProducts: ICartProduct[],
+        totalAmount: number
+    },
+    message: string,
+    success: boolean
+}
 
 interface ICartProduct {
     id: string;
@@ -21,7 +36,6 @@ interface IDefaultProductState {
     title: string;
     slug: string;
     image: string;
-
 }
 
 interface ICartState{
@@ -39,4 +53,4 @@ interface IDelete {
     className?: string;
 }
 
-export type { ICartState, ICartProduct, IDefaultProductState, IDelete };
+export type { ICartState, ICartProduct, IDefaultProductState, IDelete, ICartApiResponse, IUpdateCartPayload };

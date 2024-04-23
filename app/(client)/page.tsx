@@ -1,7 +1,7 @@
 import HomepageCarousel from "@components/home/HomepageCarousel";
 import HeroCTA from "@components/home/HeroCTA";
-import { products } from "@contants/productConstant";
-import { newArrival } from "@contants/productConstant";
+import { products } from "@contants/product.constant";
+import { newArrival } from "@contants/product.constant";
 import SingleHeroImage from "@components/home/SingleHeroImage";
 import NewArrivals from "@components/home/NewArrivals";
 

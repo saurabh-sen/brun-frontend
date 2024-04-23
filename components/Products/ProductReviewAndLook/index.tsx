@@ -8,6 +8,7 @@ import TabsBody from '@components/common/Tabs/TabsBody/TabsBody';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@libs/store';
 import { setActiveTab } from '@libs/features/tabs/tabsSlice';
+import { ButtonType } from '@modals/common/common.types';
 
 const ProductReviewAndLook = () => {
 
@@ -22,9 +23,9 @@ const ProductReviewAndLook = () => {
     <section className='flex flex-col justify-center md:flex-row md:justify-between max-w-[980px] mx-auto mt-10 md:mt-20' id='ProductReviewAndLook'>
       <div className="product__details__tab">
         <div className="tabs__header flex items-center gap-3 mb-3">
-          <MyOutlinedButton active={activeTab === 0} handleClick={() => handleClick(0)}>DESCRIPTION</MyOutlinedButton>
-          <MyOutlinedButton active={activeTab === 1} handleClick={() => handleClick(1)}>DELIVERY</MyOutlinedButton>
-          <MyOutlinedButton active={activeTab === 2} handleClick={() => handleClick(2)}>REVIEWS</MyOutlinedButton>
+          <MyOutlinedButton active={activeTab === 0} handleClick={() => handleClick(0)} type={ButtonType.BUTTON}>DESCRIPTION</MyOutlinedButton>
+          <MyOutlinedButton active={activeTab === 1} handleClick={() => handleClick(1)} type={ButtonType.BUTTON}>DELIVERY</MyOutlinedButton>
+          <MyOutlinedButton active={activeTab === 2} handleClick={() => handleClick(2)} type={ButtonType.BUTTON}>REVIEWS</MyOutlinedButton>
         </div>
         <div className="tabs__body text-sm">
           <TabsBody show={activeTab === 0}>

@@ -1,5 +1,6 @@
 "use client";
 import MyOutlinedButton from '@components/common/MyOutlinedButton';
+import { ButtonType } from '@modals/common/common.types';
 import React from 'react'
 
 const ThanksForYourOrder = () => {
@@ -25,8 +26,8 @@ const ThanksForYourOrder = () => {
           <p className="subheading__value font-semibold">42, Ground Floor, M K M Chambers, K H Road, Chennai</p>
         </div>
         <div className="delivery__buttons flex gap-4 items-center">
-          <MyOutlinedButton active handleClick={() => console.log('continue SHOPPING')} className='!px-12 !py-2'>CONTINUE SHOPPING</MyOutlinedButton>
-          <MyOutlinedButton active={false} handleClick={() => console.log('view orders')} className='!px-12 !py-2'>VIEW ORDERS</MyOutlinedButton>
+          <MyOutlinedButton active handleClick={() => console.log('continue SHOPPING')} className='!px-12 !py-2' type={ButtonType.BUTTON}>CONTINUE SHOPPING</MyOutlinedButton>
+          <MyOutlinedButton active={false} handleClick={() => console.log('view orders')} className='!px-12 !py-2' type={ButtonType.BUTTON}>VIEW ORDERS</MyOutlinedButton>
         </div>
       </div>
     </aside>
