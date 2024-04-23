@@ -27,7 +27,7 @@ const Footer = () => {
       </div>
       <div className="footer__input__container">
         <div className="input__container w-full md:max-w-[588px] flex items-center">
-          <input type="email" name="emailnotification" id="emailnotification" placeholder='ENTER EMAIL' className='w-full p-[10px] md:p-2 outline-none border border-black bg-transparent placeholder:text-black text-xs md:text-base' />
+          <input type="email" name="emailnotification" id="emailnotification" placeholder='ENTER EMAIL' className='p-[10px] md:p-2 outline-none border border-black bg-transparent placeholder:text-black text-xs md:text-base w-full md:w-96 ' />
           <MyOutlinedButton active={false} handleClick={() => console.log('SUBSCRIBE')} className='!p-[10px] !px-8' type={ButtonType.BUTTON}>SUBSCRIBE</MyOutlinedButton>
         </div>
       </div>

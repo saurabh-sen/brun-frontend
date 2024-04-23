@@ -1,7 +1,6 @@
 import { products } from "@contants/product.constant";
 import {
   IProductListingState,
-  ProductAvailabilityEnum,
   ProductCategoryEnum,
   ProductListingLayoutEnum,
   ProductSizeEnum,
@@ -12,7 +11,6 @@ const initialState: IProductListingState = {
   productListing: products,
   layout: ProductListingLayoutEnum.TWO_COLUMN,
   categorySelected: ProductCategoryEnum.ALL_PRODUCTS,
-  inStockSelected: null,
   sizeSelected: null,
 };
 
@@ -26,15 +24,12 @@ const productListingSlice = createSlice({
     setProductCategory: (state, action: PayloadAction<ProductCategoryEnum>) => {
       state.categorySelected = action.payload;
     },
-    setInStock: (state, action: PayloadAction<ProductAvailabilityEnum>) => {
-      state.inStockSelected = action.payload;
-    },
     setSizeSelected: (state, action: PayloadAction<ProductSizeEnum>) => {
       state.sizeSelected = action.payload;
     },
   },
 });
 
-export const { setLayout, setProductCategory, setInStock, setSizeSelected } = productListingSlice.actions;
+export const { setLayout, setProductCategory, setSizeSelected } = productListingSlice.actions;
 
 export default productListingSlice.reducer;

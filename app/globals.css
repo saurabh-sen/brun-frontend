@@ -46,3 +46,7 @@ html, body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.rc-slider-handle-dragging {
+  box-shadow: 0 0 0 3px #000 !important;
+}

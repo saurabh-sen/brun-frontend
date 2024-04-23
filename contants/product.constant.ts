@@ -111,3 +111,90 @@ export const newArrival: IProductListing[] = [
     slug: "full-sleeves-polo",
   }
 ];
+
+export const wishistData = [
+  {
+    id: "1",
+    product_id: "p001",
+    title: "Product 1",
+    image: product,
+    price: 19.99,
+    slug: "product-1",
+    user_id: "u001",
+    created_at: "2024-04-23T12:00:00Z",
+    updated_at: "2024-04-23T12:00:00Z"
+  },
+  {
+    id: "2",
+    product_id: "p002",
+    title: "Product 2",
+    image: product,
+    price: 29.99,
+    slug: "product-2",
+    user_id: "u002",
+    created_at: "2024-04-23T12:00:00Z",
+    updated_at: "2024-04-23T12:00:00Z"
+  },
+  {
+    id: "3",
+    product_id: "p003",
+    title: "Product 3",
+    image: product,
+    price: 39.99,
+    slug: "product-3",
+    user_id: "u003",
+    created_at: "2024-04-23T12:00:00Z",
+    updated_at: "2024-04-23T12:00:00Z"
+  }
+];
+
+export const ColorsData = [
+  {
+      color: "#fffeee",
+      name: "White"
+  },
+  {
+      color: "#000000",
+      name: "Black"
+  },
+  {
+      color: "#ff0000",
+      name: "Red"
+  },
+  {
+      color: "#00ff00",
+      name: "Green"
+  },
+  {
+      color: "#0000ff",
+      name: "Blue"
+  },
+  {
+      color: "#ffff00",
+      name: "Yellow"
+  },
+  {
+      color: "#ff00ff",
+      name: "Pink"
+  },
+  {
+      color: "#00ffff",
+      name: "Cyan"
+  },
+  {
+      color: "#ff8000",
+      name: "Orange"
+  },
+  {
+      color: "#8000ff",
+      name: "Purple"
+  },
+  {
+      color: "#0080ff",
+      name: "Sky Blue"
+  },
+  {
+      color: "#ff0080",
+      name: "Magenta"
+  }
+]
