@@ -5,3 +5,5 @@ export * from "./tokens/tokens.service";
 export * from "./deliveryAddress/deliveryAddress.service";
 
 export * from './customHooks'
+
+export * from './productListing/productListing.service'

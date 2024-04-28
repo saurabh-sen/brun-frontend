@@ -1,14 +1,9 @@
-"use client"
-import { RootState } from '@libs/store';
 import React from 'react'
-import { useSelector } from 'react-redux';
 
 function AboutPage() {
 
-  const isSearchBarOpen = useSelector((state: RootState) => state.homepage.isSearchBarOpen)
-
   return (
-    <section className={`aboutpage mx-auto max-w-7xl px-2 md:px-0 flex flex-col gap-3 md:flex-row min-h-screen ${isSearchBarOpen ? 'mt-52' : 'mt-28'}`}>
+    <section className='aboutpage mx-auto max-w-7xl px-2 md:px-0 flex flex-col gap-3 md:flex-row min-h-screen mt-28'>
       <div className="aboutpage__contactus w-full md:w-1/3">
         <p className="contactus__heading">CONTACT US</p>
       </div>

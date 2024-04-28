@@ -19,7 +19,7 @@ const Cart = () => {
     }
 
     return (
-        <main className={`cart__route flex flex-col gap-4 max-w-5xl my-3 px-4 mx-auto min-h-screen ${isSearchBarOpen ? 'mt-52' : 'mt-32'}`}>
+        <main className='cart__route flex flex-col gap-4 max-w-5xl my-3 px-4 mx-auto min-h-screen mt-28'>
             <CartNavbar activeTab={activeTab} setActiveTab={setActiveTab} />
             <div className="account__tabs__body mt-4 md:mt-8">
                 <TabsBody show={activeTab === 1}>

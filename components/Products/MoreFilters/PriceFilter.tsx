@@ -1,14 +1,22 @@
 import React from "react";
 import Slider from "rc-slider";
 import 'rc-slider/assets/index.css';
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@libs/store";
+import { setPriceSelected } from "@libs/features/productListing/productListingSlice";
 
 const PriceFilter = () => {
 
     const [value, setValue] = React.useState<number[]>([0, 2000]);
+    const dispatch = useDispatch();
 
-    const log = (value: number[] | number) => {
+    const log = (value: number | number[]) => {
+        if(!Array.isArray(value))return;
         setValue(value as number[]);
+        dispatch(setPriceSelected([value[0], value[1]] as [number, number]));
     }
+
+    const priceSelected = useSelector((state: RootState) => state.productListing.priceSelected);
 
     return (
         <div className="slider py-4 px-4 border border-black w-max sm:w-96 bg-white">
