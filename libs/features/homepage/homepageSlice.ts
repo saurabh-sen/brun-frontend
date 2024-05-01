@@ -1,14 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface IHomepageState {
-    isSearchBarOpen: boolean;
     isHomepageRoute: boolean;
     isSidebarOpen: boolean;
 }
 
 const initialState: IHomepageState = {
     isHomepageRoute: true,
-    isSearchBarOpen: false,
     isSidebarOpen: false,
 };
 
@@ -16,9 +14,6 @@ const homepageSlice = createSlice({
   name: "homepageSlice",
   initialState: initialState,
   reducers: {
-    setIsSearchBarOpen: (state, action: PayloadAction<boolean>) => {
-      state.isSearchBarOpen = action.payload;
-    },
     setIsHomepageRoute: (state, action: PayloadAction<boolean>) => {
       state.isHomepageRoute = action.payload;
     },
@@ -28,6 +23,6 @@ const homepageSlice = createSlice({
   },
 });
 
-export const { setIsHomepageRoute, setIsSearchBarOpen, setIsSidebarOpen } = homepageSlice.actions;
+export const { setIsHomepageRoute, setIsSidebarOpen } = homepageSlice.actions;
 
 export default homepageSlice.reducer;

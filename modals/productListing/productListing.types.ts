@@ -1,12 +1,12 @@
 import { StaticImageData } from "next/image";
 
-enum ProductListingLayoutEnum {
+enum EProductListingLayoutEnum {
   ONE_COLUMN = 1,
   TWO_COLUMN = 2,
   FIVE_COLUMN = 5,
 }
 
-enum ProductCategoryEnum {
+enum EProductCategoryEnum {
   ALL_PRODUCTS = "ALL PRODUCTS",
   BOTTOMS = "BOTTOMS",
   TOPS = "TOPS",
@@ -17,7 +17,7 @@ enum ProductCategoryEnum {
   SHIRT = "SHIRT",
 }
 
-enum ProductSizeEnum {
+enum EProductSizeEnum {
   XXXS = "XXXS",
   XXS = "XXS",
   XS = "XS",
@@ -31,28 +31,30 @@ enum ProductSizeEnum {
 interface IProductListingState {
   productListing: IProductListing[];
   categorySelected:
-    | ProductCategoryEnum.ALL_PRODUCTS
-    | ProductCategoryEnum.BOTTOMS
-    | ProductCategoryEnum.TOPS
-    | ProductCategoryEnum.CREW_NECKS
-    | ProductCategoryEnum.POLO
-    | ProductCategoryEnum.FULL_SLEEVES_POLO
-    | ProductCategoryEnum.SWEAT
-    | ProductCategoryEnum.SHIRT;
+    | EProductCategoryEnum.ALL_PRODUCTS
+    | EProductCategoryEnum.BOTTOMS
+    | EProductCategoryEnum.TOPS
+    | EProductCategoryEnum.CREW_NECKS
+    | EProductCategoryEnum.POLO
+    | EProductCategoryEnum.FULL_SLEEVES_POLO
+    | EProductCategoryEnum.SWEAT
+    | EProductCategoryEnum.SHIRT;
   layout:
-    | ProductListingLayoutEnum.ONE_COLUMN
-    | ProductListingLayoutEnum.TWO_COLUMN
-    | ProductListingLayoutEnum.FIVE_COLUMN;
-  sizeSelected:
-    | ProductSizeEnum.XXXS
-    | ProductSizeEnum.XXS
-    | ProductSizeEnum.XS
-    | ProductSizeEnum.S
-    | ProductSizeEnum.M
-    | ProductSizeEnum.L
-    | ProductSizeEnum.XL
-    | ProductSizeEnum.XXL
+    | EProductListingLayoutEnum.ONE_COLUMN
+    | EProductListingLayoutEnum.TWO_COLUMN
+    | EProductListingLayoutEnum.FIVE_COLUMN;
+    productListingSizeFilter:
+    | EProductSizeEnum.XXXS
+    | EProductSizeEnum.XXS
+    | EProductSizeEnum.XS
+    | EProductSizeEnum.S
+    | EProductSizeEnum.M
+    | EProductSizeEnum.L
+    | EProductSizeEnum.XL
+    | EProductSizeEnum.XXL
     | null;
+    productListingColorFilter: string | null;
+    productListingPriceFilter: [number, number];
 }
 
 interface IProductListing {
@@ -64,33 +66,33 @@ interface IProductListing {
 }
 
 const PRODUCTCATEGORIES = [
-  ProductCategoryEnum.ALL_PRODUCTS,
-  ProductCategoryEnum.BOTTOMS,
-  ProductCategoryEnum.TOPS,
-  ProductCategoryEnum.CREW_NECKS,
-  ProductCategoryEnum.POLO,
-  ProductCategoryEnum.FULL_SLEEVES_POLO,
-  ProductCategoryEnum.SWEAT,
-  ProductCategoryEnum.SHIRT,
+  EProductCategoryEnum.ALL_PRODUCTS,
+  EProductCategoryEnum.BOTTOMS,
+  EProductCategoryEnum.TOPS,
+  EProductCategoryEnum.CREW_NECKS,
+  EProductCategoryEnum.POLO,
+  EProductCategoryEnum.FULL_SLEEVES_POLO,
+  EProductCategoryEnum.SWEAT,
+  EProductCategoryEnum.SHIRT,
 ];
 
 const PRODUCTSIZE = [
-  ProductSizeEnum.XXXS,
-  ProductSizeEnum.XXS,
-  ProductSizeEnum.XS,
-  ProductSizeEnum.S,
-  ProductSizeEnum.M,
-  ProductSizeEnum.L,
-  ProductSizeEnum.XL,
-  ProductSizeEnum.XXL,
+  EProductSizeEnum.XXXS,
+  EProductSizeEnum.XXS,
+  EProductSizeEnum.XS,
+  EProductSizeEnum.S,
+  EProductSizeEnum.M,
+  EProductSizeEnum.L,
+  EProductSizeEnum.XL,
+  EProductSizeEnum.XXL,
 ];
 
 export type { IProductListing, IProductListingState };
 
 export {
-  ProductListingLayoutEnum,
-  ProductCategoryEnum,
-  ProductSizeEnum,
+  EProductListingLayoutEnum,
+  EProductCategoryEnum,
+  EProductSizeEnum,
   PRODUCTCATEGORIES,
   PRODUCTSIZE,
 };

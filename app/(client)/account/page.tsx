@@ -13,7 +13,6 @@ import { useMakeAuthenticatedAPICall } from '@services';
 
 const Account = () => {
 
-    const isSearchBarOpen = useSelector((state: RootState) => state.homepage.isSearchBarOpen);
     const [activeTab, setActiveTab] = React.useState(1);
 
     const router = useRouter();
@@ -38,7 +37,7 @@ const Account = () => {
         }
     }, [data])
 
-    if (loading) return <div className={`accountsPage__loading min-h-screen ${isSearchBarOpen ? 'mt-52' : 'mt-28'}`}>Loading...</div>
+    if (loading) return <div className='accountsPage__loading min-h-screen mt28'>Loading...</div>
     if (error.isError) {
         router.replace('/login');
         return <div>Error occured: {error.message}</div>;
@@ -46,7 +45,7 @@ const Account = () => {
     if (!data && !userDetails) return null;
 
     return (
-        <main className={`accountsPage min-h-screen ${isSearchBarOpen ? 'mt-52' : 'mt-28'}`}>
+        <main className='accountsPage min-h-screen mt-28'>
             <div className="md:hidden">
                 <MobileTabs activeTab={activeTab} setActiveTab={setActiveTab} />
             </div>
