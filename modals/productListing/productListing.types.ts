@@ -43,7 +43,7 @@ interface IProductListingState {
     | EProductListingLayoutEnum.ONE_COLUMN
     | EProductListingLayoutEnum.TWO_COLUMN
     | EProductListingLayoutEnum.FIVE_COLUMN;
-  sizeSelected:
+    productListingSizeFilter:
     | EProductSizeEnum.XXXS
     | EProductSizeEnum.XXS
     | EProductSizeEnum.XS
@@ -53,8 +53,8 @@ interface IProductListingState {
     | EProductSizeEnum.XL
     | EProductSizeEnum.XXL
     | null;
-    colorSelected: string | null;
-    priceSelected: [number, number] | null;
+    productListingColorFilter: string | null;
+    productListingPriceFilter: [number, number];
 }
 
 interface IProductListing {

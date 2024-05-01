@@ -1,22 +1,22 @@
 import React from "react";
 import Slider from "rc-slider";
 import 'rc-slider/assets/index.css';
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@libs/store";
-import { setPriceSelected } from "@libs/features/productListing/productListingSlice";
+import { PRICERANGE } from "@contants";
 
-const PriceFilter = () => {
+interface IPriceFilter {
+    priceSelected: [number, number];
+    handlePriceSelection: (value: [number, number]) => void;
+}
+
+const PriceFilter = ({priceSelected, handlePriceSelection}: IPriceFilter) => {
 
     const [value, setValue] = React.useState<number[]>([0, 2000]);
-    const dispatch = useDispatch();
 
     const log = (value: number | number[]) => {
         if(!Array.isArray(value))return;
         setValue(value as number[]);
-        dispatch(setPriceSelected([value[0], value[1]] as [number, number]));
+        handlePriceSelection(value as [number, number]);
     }
-
-    const priceSelected = useSelector((state: RootState) => state.productListing.priceSelected);
 
     return (
         <div className="slider py-4 px-4 border border-black w-max sm:w-96 bg-white">
@@ -24,7 +24,7 @@ const PriceFilter = () => {
                 <p className="min__range">₹ {value[0]}</p>
                 <p className="min__range">₹ {value[1]}</p>
             </div>
-            <Slider range step={10} min={0} max={2000} defaultValue={[0, 2000]} onChangeComplete={log} styles={{
+            <Slider range step={10} min={0} max={2000} defaultValue={priceSelected ? [priceSelected[0], priceSelected[1]] : PRICERANGE} onChangeComplete={log} styles={{
                 track: {
                     backgroundColor: '#000',
                     height: 4

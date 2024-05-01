@@ -1,17 +1,16 @@
 'use client'
+import React from 'react'
+import { RootState } from '@libs/store'
+import WishList from '@components/Cart/WishList'
 import CartBody from '@components/Cart/CartBody'
 import CartNavbar from '@components/Cart/CartNavbar'
-import WishList from '@components/Cart/WishList'
+import { useDispatch, useSelector } from 'react-redux'
 import TabsBody from '@components/common/Tabs/TabsBody/TabsBody'
 import { setCartPageActiveTab } from '@libs/features/cart/cartSlice'
-import { RootState } from '@libs/store'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
 const Cart = () => {
 
     const activeTab = useSelector((state: RootState) => state.cart.cartPageActiveTab)
-    const isSearchBarOpen = useSelector((state: RootState) => state.homepage.isSearchBarOpen);
     const dispatch = useDispatch();
 
     const setActiveTab = (tab: 1 | 2) => {

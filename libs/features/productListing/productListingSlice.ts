@@ -1,4 +1,4 @@
-import { products } from "@contants/product.constant";
+import { PRICERANGE, products } from "@contants/product.constant";
 import {
   IProductListingState,
   EProductCategoryEnum,
@@ -11,9 +11,9 @@ const initialState: IProductListingState = {
   productListing: products,
   layout: EProductListingLayoutEnum.TWO_COLUMN,
   categorySelected: EProductCategoryEnum.ALL_PRODUCTS,
-  sizeSelected: null,
-  colorSelected: null,
-  priceSelected: null,
+  productListingSizeFilter: null,
+  productListingColorFilter: null,
+  productListingPriceFilter: PRICERANGE,
 };
 
 const productListingSlice = createSlice({
@@ -26,18 +26,18 @@ const productListingSlice = createSlice({
     setProductCategory: (state, action: PayloadAction<EProductCategoryEnum>) => {
       state.categorySelected = action.payload;
     },
-    setSizeSelected: (state, action: PayloadAction<EProductSizeEnum>) => {
-      state.sizeSelected = action.payload;
+    setProductListingSizeSelected: (state, action: PayloadAction<EProductSizeEnum | null>) => {
+      state.productListingSizeFilter = action.payload;
     },
-    setColorSelected: (state, action: PayloadAction<string>) => {
-      state.colorSelected = action.payload;
+    setProductListingColorSelected: (state, action: PayloadAction<string | null>) => {
+      state.productListingColorFilter = action.payload;
     },
-    setPriceSelected: (state, action: PayloadAction<[number, number]>) => {
-      state.priceSelected = action.payload;
+    setProductListingPriceSelected: (state, action: PayloadAction<[number, number]>) => {
+      state.productListingPriceFilter = action.payload;
     },
   },
 });
 
-export const { setLayout, setProductCategory, setSizeSelected, setColorSelected, setPriceSelected } = productListingSlice.actions;
+export const { setLayout, setProductCategory, setProductListingSizeSelected, setProductListingColorSelected, setProductListingPriceSelected } = productListingSlice.actions;
 
 export default productListingSlice.reducer;

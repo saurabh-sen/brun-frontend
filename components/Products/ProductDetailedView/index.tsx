@@ -53,7 +53,7 @@ const ProductDetailedView = ({ productSlug }: IProductDetailedView) => {
     const { productDetails } = useSelector((state: RootState) => state.productDetailedView);
     const productCustomization = useSelector((state: RootState) => state.cart.productCustomization);
     const cartProducts = useSelector((state: RootState) => state.cart.cartProducts);
-    const isSearchBarOpen = useSelector((state: RootState) => state.homepage.isSearchBarOpen)
+    // const isSearchBarOpen = useSelector((state: RootState) => state.homepage.isSearchBarOpen)
 
     const { color, id, quantity, size } = productCustomization;
 
@@ -124,7 +124,7 @@ const ProductDetailedView = ({ productSlug }: IProductDetailedView) => {
                 <Image src={product} alt='product' width={500} height={700} />
                 <Image src={product} alt='product' width={500} height={700} />
             </div>
-            <div className={`product__content w-max md:sticky md:left-0 flex flex-col h-max ${isSearchBarOpen ? 'md:top-52' : 'md:top-28'}`}>
+            <div className="product__content w-max md:sticky md:left-0 flex flex-col h-max md:top-28 ">
                 <p className="product__name text-lg sm:text-3xl whitespace-normal">{productDetails.name}</p>
                 <p className="product__price mt-2">₹ {productDetails.price}</p>
                 <div className="product__colors mt-6">

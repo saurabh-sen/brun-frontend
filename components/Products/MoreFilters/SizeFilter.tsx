@@ -1,20 +1,14 @@
-import { useSelector, useDispatch } from "react-redux";
 import FilterBox from "./FilterBox";
-import { RootState } from "@libs/store";
-import { setSizeSelected } from "@libs/features/productListing/productListingSlice";
 import { EProductSizeEnum } from "@modals/productListing/productListing.types";
 
 const SIZES: EProductSizeEnum[] = [EProductSizeEnum.XS, EProductSizeEnum.S, EProductSizeEnum.M, EProductSizeEnum.L, EProductSizeEnum.XL, EProductSizeEnum.XXL];
 
-const SizeFilter = () => {
+interface ISizeFilter {
+    sizeSelected: EProductSizeEnum | null;
+    handleSizeSelection: (size: EProductSizeEnum) => void;
+}
 
-    const sizeSelected = useSelector((state: RootState) => state.productListing.sizeSelected);
-
-    const dispatch = useDispatch();
-
-    const handleSizeSelection = (size: EProductSizeEnum) => {
-        dispatch(setSizeSelected(size));
-    }
+const SizeFilter = ({ sizeSelected, handleSizeSelection }: ISizeFilter) => {
 
     return (
         <div className="size__filter grid grid-cols-3 sm:grid-cols-6 gap-0 w-max bg-white">

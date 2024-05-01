@@ -198,3 +198,5 @@ export const ColorsData = [
       name: "Magenta"
   }
 ]
+
+export const PRICERANGE: [number, number] = [0, 10000];

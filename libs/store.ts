@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/auth/authSlice";
 import productListingReducer from "./features/productListing/productListingSlice";
+import productSearchReducer from "./features/productSearch/productSearchSlice";
 import productDetailedViewReducer from "./features/productDetailedView/ProductDetailedViewSlice";
 import cartReducer from "./features/cart/cartSlice";
 import homepageReducer from "./features/homepage/homepageSlice";
@@ -18,7 +19,8 @@ export const makeStore = () => {
       cart: cartReducer,
       tabs: tabsReducer,
       account: accountReducer,
-      adminAuth: adminAuthReducer
+      adminAuth: adminAuthReducer,
+      productSearch: productSearchReducer,
     }
   });
 };
