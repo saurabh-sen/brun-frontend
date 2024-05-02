@@ -1,3 +1,4 @@
+import { EOrderStatus, EPaymentStatus, IOrderHistory } from "@modals/account/account.types";
 import { IProductListing } from "@modals/productListing/productListing.types";
 import newarrivals from "@public/assets/homepage/new-arrivals-1.png";
 import product from "@public/assets/product.jpg";
@@ -200,3 +201,29 @@ export const ColorsData = [
 ]
 
 export const PRICERANGE: [number, number] = [0, 10000];
+
+export const RETURNDAYSLEFT: number = 15;
+
+export const ORDERHISTORY: IOrderHistory[] = [
+];
+
+const dummyProducts: IProductListing[] = []
+
+for (let i = 1; i <= 5; i++) {
+  ORDERHISTORY.push({
+    id: i.toString(),
+    user_id: "user_" + i.toString(),
+    address_id: "address_" + i.toString(),
+    razorpay_order_id: "order_" + i.toString(),
+    razorpay_payment_id: "payment_" + i.toString(),
+    razorpay_signature: "signature_" + i.toString(),
+    payment_time: "2024-05-01T12:00:00Z",
+    products: dummyProducts,
+    amount: 295.95, // Total amount of all products
+    coupon_id: "coupon_" + i.toString(),
+    invoice_no: "INV12345_" + i.toString(),
+    status: EPaymentStatus.SUCCESS,
+    order_status: EOrderStatus.DELIVERED,
+    created_at: "2024-04-30T12:00:00Z"
+  });
+}

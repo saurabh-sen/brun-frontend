@@ -31,7 +31,8 @@ const WishList = () => {
     if (data) {
       if (data?.data) dispatch(setUserDetails(data.data));
       if (data?.data?.wishlist) dispatch(setWishList(data.data.wishlist));
-      if (data?.data?.orders) dispatch(setOrderHistory(data.data.orders));
+      // undo this after new UI is completed
+      // if (data?.data?.orders) dispatch(setOrderHistory(data.data.orders));
     }
   }, [data])
 

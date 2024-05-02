@@ -1,3 +1,4 @@
+import { IProductListing } from "@modals/productListing/productListing.types";
 import { StaticImageData } from "next/image";
 
 interface IAccountPayload {
@@ -7,6 +8,21 @@ interface IAccountPayload {
 enum RoleEnum {
   ADMIN = "admin",
   USER = "user",
+}
+
+export enum EPaymentStatus {
+  PENDING = "pending",
+  SUCCESS = "success",
+  FAILED = "failed",
+}
+
+export enum EOrderStatus {
+  INITIATED = "initiated",
+  ACCEPTED = "accepted",
+  SHIPPED = "shipped",
+  DELIVERED = "delivered",
+  CANCELLED = "cancelled",
+  RETURNED = "returned",
 }
 
 interface IWishList {
@@ -23,13 +39,19 @@ interface IWishList {
 
 interface IOrderHistory {
   id: string;
-  product_id: string;
-  title: string;
-  image: string | StaticImageData;
-  slug: string;
   user_id: string;
+  address_id: string;
+  razorpay_order_id: string;
+  razorpay_payment_id: string;
+  razorpay_signature: string;
+  payment_time: string;
+  products: IProductListing[];
+  amount: number;
+  coupon_id: string;
+  invoice_no: string;
+  status: EPaymentStatus;
+  order_status: EOrderStatus;
   created_at: string;
-  updated_at: string;
 }
 
 interface IUserDetails {
