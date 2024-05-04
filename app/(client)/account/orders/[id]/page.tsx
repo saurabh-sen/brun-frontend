@@ -1,4 +1,4 @@
-import CheckoutOrderItem from '@components/Checkout/CheckoutOrderItem'
+import CheckoutOrderItem from '@components/client/Checkout/CheckoutOrderItem'
 import React from 'react'
 
 const Order = ({ params }: { params: { id: string } }) => {

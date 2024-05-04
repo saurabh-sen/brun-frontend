@@ -3,8 +3,8 @@ import React, { ReactNode } from 'react'
 
 const AdminTopBar = () => {
   return (
-    <div className='topbar w-full sticky top-0 flex justify-end items-center h-14'>
-      <div className="topbar__container flex items-center gap-4 pr-6">
+    <div className='topbar w-full flex justify-end items-center h-14'>
+      <div className="topbar__container flex items-center gap-4">
         <Link href='/notifications' className='h-6'>
           <span className="material-symbols-rounded">
             notifications

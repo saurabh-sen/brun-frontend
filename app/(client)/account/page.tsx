@@ -1,6 +1,6 @@
 "use client"
-import DesktopTabs from '@components/Accounts/DesktopTabs';
-import MobileTabs from '@components/Accounts/MobileTabs';
+import DesktopTabs from '@components/client/Accounts/DesktopTabs';
+import MobileTabs from '@components/client/Accounts/MobileTabs';
 import { setOrderHistory, setUserDetails, setWishList } from '@libs/features/account/accountSlice';
 import { RootState } from '@libs/store';
 import { IAccountDetails } from '@modals/account/account.types';

@@ -1,6 +1,6 @@
-import LoadMoreProducts from '@components/Products/LoadMoreProducts'
-import ProductCategory from '@components/Products/ProductCategory'
-import ProductList from '@components/Products/ProductList'
+import LoadMoreProducts from '@components/client/Products/LoadMoreProducts'
+import ProductCategory from '@components/client/Products/ProductCategory'
+import ProductList from '@components/client/Products/ProductList'
 import React from 'react'
 
 const Products = () => {

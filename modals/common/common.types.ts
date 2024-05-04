@@ -10,8 +10,8 @@ enum RoleEnum {
 }
 
 export interface IMyOutlinedButton {
-  active: boolean;
-  type: ButtonType;
+  active?: boolean;
+  type?: ButtonType;
   handleClick?: () => void;
   className?: string;
   children: React.ReactNode;
