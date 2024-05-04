@@ -1,6 +1,6 @@
-import ProductDetailedView from '@components/Products/ProductDetailedView'
-import ProductRecommendation from '@components/Products/ProductRecommendation'
-import ProductReviewAndLook from '@components/Products/ProductReviewAndLook'
+import ProductDetailedView from '@components/client/Products/ProductDetailedView'
+import ProductRecommendation from '@components/client/Products/ProductRecommendation'
+import ProductReviewAndLook from '@components/client/Products/ProductReviewAndLook'
 import React from 'react'
 
 const ProductDetails = ({ params }: { params: { slug: string } }) => {

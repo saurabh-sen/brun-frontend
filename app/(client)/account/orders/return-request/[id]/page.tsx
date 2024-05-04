@@ -1,5 +1,5 @@
 "use client"
-import CheckoutOrderItem from '@components/Checkout/CheckoutOrderItem'
+import CheckoutOrderItem from '@components/client/Checkout/CheckoutOrderItem'
 import MyTextArea from '@components/common/MyTextArea';
 import MyTextInput from '@components/common/MyTextInput';
 import { returnInitialValues } from '@contants/orders.constant';

@@ -3,9 +3,9 @@ import React from 'react'
 import { RootState } from '@libs/store';
 import { useSelector } from 'react-redux';
 import SearchBox from '@components/common/SearchBox'
-import SearchFilter from '@components/Products/Search/SearchFilter';
-import SearchResults from '@components/Products/Search/SearchResults';
-import ProductRecommendation from '@components/Products/ProductRecommendation';
+import SearchFilter from '@components/client/Products/Search/SearchFilter';
+import SearchResults from '@components/client/Products/Search/SearchResults';
+import ProductRecommendation from '@components/client/Products/ProductRecommendation';
 
 const Search = () => {
 

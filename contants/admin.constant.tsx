@@ -20,7 +20,7 @@ export const navList: INavList[] = [
     {
         icon: <span className="material-symbols-rounded">
             group
-        </span>, text: 'Customers', href: '/admin/users'
+        </span>, text: 'Customers', href: '/admin/customers'
     },
     {
         icon: <span className="material-symbols-rounded">

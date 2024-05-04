@@ -1,5 +1,5 @@
 "use client"
-import CheckoutOrderItem from '@components/Checkout/CheckoutOrderItem'
+import CheckoutOrderItem from '@components/client/Checkout/CheckoutOrderItem'
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
 import { ButtonType } from '@modals/common/common.types'
 import { useRouter } from 'next/navigation'

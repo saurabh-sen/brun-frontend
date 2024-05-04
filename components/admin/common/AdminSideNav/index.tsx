@@ -5,7 +5,7 @@ import React from 'react'
 const AdminSideNav = () => {
 
   return (
-    <div className='w-72 max-h-screen bg-black sticky top-0 left-0 flex flex-col items-center justify-between text-white'>
+    <div className='w-64 max-h-screen bg-black sticky top-0 left-0 flex flex-col items-center justify-between text-white'>
       <BrunLogo isWhiteLogo />
       <SideNavList />
       <span className='invisible'>.</span>

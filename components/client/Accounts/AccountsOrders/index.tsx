@@ -1,6 +1,6 @@
 import { RootState } from "@libs/store";
 import { useSelector } from "react-redux";
-import OrderCard from "@components/Cart/OrderCard";
+import OrderCard from "@components/client/Cart/OrderCard";
 import { ORDERHISTORY } from "@contants";
 
 const AccountsOrders = () => {

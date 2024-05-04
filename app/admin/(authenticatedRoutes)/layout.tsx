@@ -28,7 +28,7 @@ export default function RootLayout({
             : (
               <main className="flex w-full min-h-screen relative">
                 <AdminSideNav />
-                <section className="dashboard__outlet flex-1 min-h-[200vh] bg-green-400">
+                <section className="dashboard__outlet flex-1 px-8">
                   <AdminTopBar />
                   {children}
                 </section>

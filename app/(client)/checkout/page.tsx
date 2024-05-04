@@ -1,9 +1,9 @@
 'use client'
 import React, { useState } from 'react'
 
-import CheckoutOrder from '@components/Checkout/CheckoutOrder'
-import CheckoutForm from '@components/Checkout/CheckoutForm'
-import ThanksForYourOrder from '@components/Checkout/ThanksForYourOrder'
+import CheckoutOrder from '@components/client/Checkout/CheckoutOrder'
+import CheckoutForm from '@components/client/Checkout/CheckoutForm'
+import ThanksForYourOrder from '@components/client/Checkout/ThanksForYourOrder'
 
 // TODO: ADD CHECKOUT APIS AND INTEGRATE RAZORPAY
 const Checkout = () => {
