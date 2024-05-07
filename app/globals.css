@@ -35,6 +35,30 @@ input:focus ~ label {
   left: 0px;
 }
 
+.myboxinput:focus ~ label,
+.myboxinputlabel:not(:placeholder-shown) ~ label {
+  /* @apply transform; scale-75; -translate-y-6; */
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y));
+    /* scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-scale-x: 0.75;
+  --tw-scale-y: 0.75; */
+  --tw-translate-y: -2rem;
+}
+
+.myboxinputlabel:focus ~ label {
+  /* @apply text-black; left-0; */
+  --tw-text-opacity: 1;
+  color: rgba(0, 0, 0, var(--tw-text-opacity));
+  left: 0px;
+}
+
+
 html, body {
   height: 100%;
   margin: 0;
