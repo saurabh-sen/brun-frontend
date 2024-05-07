@@ -6,7 +6,7 @@ import ProductFilters from '@components/admin/products/ProductFilters'
 
 const ProductListings = () => {
   return (
-    <section id='product-listings' className='product-listing space-y-3'>
+    <section id='product-listings' className='product-listing space-y-6'>
       <ProductHeader />
       <ProductSearch />
       <ProductFilters />

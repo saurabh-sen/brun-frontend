@@ -1,13 +1,15 @@
 "use client"
 import React from 'react'
+import { useRouter } from 'next/navigation'
 import { ButtonType } from '@modals/common/common.types'
 import MyOutlinedButton from '@components/common/MyOutlinedButton'
 
 const ProductHeader = () => {
 
+  const router = useRouter();
+
   const handleNewProduct = () => {
-    console.log('Add new product')
-    // route it to the new product page
+    router.push('/admin/products/add-product');
   }
 
   return (

@@ -57,7 +57,7 @@ const AccountDropDown = () => {
       </span>
       {
         isOpen && (
-          <div className="account__container border border-black absolute z-10 top-12 right-1 w-max">
+          <div className="account__container border border-black absolute z-10 top-12 right-1 w-max bg-white">
             <IconText icon={accountData[0].Icon} title={accountData[0].title} />
             <IconText icon={accountData[1].Icon} title={accountData[1].title} />
             <IconText icon={accountData[2].Icon} title={accountData[2].title} />
