@@ -11,16 +11,18 @@ const CheckoutOrder = ({ showThankyou }: ICheckoutOrder) => {
     return (
         <div className="checkout__items border border-[#767676] p-5 md:p-10 max-w-[512px] h-max hidden md:flex flex-col gap-6 text-sm">
             {
-                showThankyou && <p>YOUR ORDER</p> 
+                showThankyou && <p>YOUR ORDER</p>
             }
             <div className="items__container flex flex-col gap-6 ">
                 <CheckoutOrderItem />
                 <CheckoutOrderItem />
             </div>
-            <div className="coupon__container flex">
-                <input type="text" placeholder="ENTER COUPON CODE OR GIFT CARD" className='p-2 border border-[#767676] flex-1 outline-none' />
-                <MyOutlinedButton active handleClick={() => console.log('hello')} type={ButtonType.BUTTON} >APPLY</MyOutlinedButton>
-            </div>
+            {
+                !showThankyou && (<div className="coupon__container flex">
+                    <input type="text" placeholder="ENTER COUPON CODE OR GIFT CARD" className='p-2 border border-[#767676] flex-1 outline-none' />
+                    <MyOutlinedButton active handleClick={() => console.log('hello')} type={ButtonType.BUTTON} >APPLY</MyOutlinedButton>
+                </div>)
+            }
             <div className="checkout__amount text-sm">
                 <p className="subtotal flex justify-between items-center">
                     <span className="subtotal__text">SUBTOTAL</span>
