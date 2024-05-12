@@ -1,22 +1,24 @@
+"use client"
 import React from 'react'
+import { EActiveStatus } from '@modals/admin';
 import MyOutlinedButton from '@components/common/MyOutlinedButton';
-import { AnalyticsDuration } from '@modals/admin';
 
-interface IAnalyticsFilter {
-    analyticsFilter: string;
-    setAnalyticsFilter: (color: string) => void;
+export const activeTextColors = {
+    ACTIVE: 'text-green-400',
+    INACTIVE: 'text-yellow-400',
 }
 
-const AnalyticsFilter = ({analyticsFilter, setAnalyticsFilter}: IAnalyticsFilter) => {
+const CustomerActiveFilter = () => {
     const [isFilterOpen, setIsFilterOpen] = React.useState<boolean>(false);
+    const [statusFilter, setStatusFilter] = React.useState<string>(EActiveStatus.ACTIVE);
 
-    const handleSelect = (color: string) => {
-        setAnalyticsFilter(color);
+    const handleSelect = (status: EActiveStatus) => {
+        setStatusFilter(status);
     }
 
     return (
         <MyOutlinedButton handleClick={() => setIsFilterOpen(!isFilterOpen)} className='w-36 h-10 flex justify-between items-center gap-1 relative !px-4'>
-            <span>{analyticsFilter}</span>
+            <span>{statusFilter}</span>
             <span className={`material-symbols-rounded transition-all duration-200 w-5 h-5 ${isFilterOpen && 'rotate-180'}`}>
                 expand_more
             </span>
@@ -24,19 +26,19 @@ const AnalyticsFilter = ({analyticsFilter, setAnalyticsFilter}: IAnalyticsFilter
                 isFilterOpen &&
                 <div className="colors__list absolute right-0 top-9 w-full py-2 space-y-2 bg-white border border-black">
                     {
-                        Object.values(AnalyticsDuration).map((color, index) => (
+                        Object.values(EActiveStatus).map((item, index) => (
                             <>
-                                <label key={index} className="flex items-center gap-3 px-3 cursor-pointer" htmlFor={`filters-${index}`} onClick={() => handleSelect(color)}>
+                                <label key={index} className={`flex items-center gap-3 px-3 cursor-pointer ${activeTextColors[item]}`} htmlFor={`filters-${index}`} onClick={() => handleSelect(item)}>
                                     <input
                                         type="checkbox"
                                         className="mr-2 accent-black cursor-pointer"
                                         id={`filters-${index}`}
-                                        checked={color === analyticsFilter}
+                                        checked={item === statusFilter}
                                     />
-                                    {color}
+                                    {item}
                                 </label>
                                 {
-                                    index !== Object.values(AnalyticsDuration).length - 1 &&
+                                    index !== Object.values(EActiveStatus).length - 1 &&
                                     <hr className='border-t border-black' />
                                 }
                             </>
@@ -47,4 +49,5 @@ const AnalyticsFilter = ({analyticsFilter, setAnalyticsFilter}: IAnalyticsFilter
         </MyOutlinedButton>
     )
 }
-export default AnalyticsFilter
+
+export default CustomerActiveFilter

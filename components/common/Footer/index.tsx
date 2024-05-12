@@ -11,7 +11,7 @@ import Link from 'next/link'
 const Footer = () => {
   return (
     <footer className="footer bg-[#F1F1F1] py-10 px-3 md:px-6 flex flex-wrap gap-5 items-center justify-center md:justify-between">
-      <div className="footer__navlinks hidden md:flex flex-col">
+      <div className="footer__navlinks hidden md:flex flex-col text-sm">
         <Link href='/'>
           ABOUT
         </Link>

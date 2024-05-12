@@ -9,3 +9,7 @@ export interface IAddProductValues {
   productSellPrice: string;
   productDiscount: string;
 }
+
+export interface IAddButtons {
+  handleCancel: () => void;
+}

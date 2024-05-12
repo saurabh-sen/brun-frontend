@@ -12,8 +12,8 @@
   transform-origin: 0%;
 }
 
-input:focus ~ label,
-input:not(:placeholder-shown) ~ label {
+.simpleinput:focus ~ label,
+.simpleinput:not(:placeholder-shown) ~ label {
   /* @apply transform; scale-75; -translate-y-6; */
   --tw-translate-x: 0;
   --tw-translate-y: 0;
@@ -28,7 +28,7 @@ input:not(:placeholder-shown) ~ label {
   --tw-translate-y: -1rem;
 }
 
-input:focus ~ label {
+.simpleinput:focus ~ label {
   /* @apply text-black; left-0; */
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, var(--tw-text-opacity));
@@ -36,7 +36,7 @@ input:focus ~ label {
 }
 
 .myboxinput:focus ~ label,
-.myboxinputlabel:not(:placeholder-shown) ~ label {
+.myboxinput:not(:placeholder-shown) ~ label {
   /* @apply transform; scale-75; -translate-y-6; */
   --tw-translate-x: 0;
   --tw-translate-y: 0;
@@ -49,9 +49,10 @@ input:focus ~ label {
   --tw-scale-x: 0.75;
   --tw-scale-y: 0.75; */
   --tw-translate-y: -2rem;
+  left: 0px;
 }
 
-.myboxinputlabel:focus ~ label {
+.myboxinput:focus ~ label {
   /* @apply text-black; left-0; */
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, var(--tw-text-opacity));

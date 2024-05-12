@@ -6,7 +6,7 @@ const OrdersDetails = ({ params }: { params: { id: string } }) => {
   return (
     <section className='ordersdetails'>
       <h2>Order: #{params.id}</h2>
-      <div className="order_items__and__details flex gap-8 mt-7">
+      <div className="order_items__and__details flex gap-8 my-7">
         <OrderInfo />
         <OrderItems />
       </div>

@@ -3,7 +3,7 @@ import React from 'react'
 
 const OrderItems = () => {
     return (
-      <div className="checkout__items border border-[#767676] p-5 md:p-10 max-w-[512px] h-max hidden md:flex flex-col gap-6 text-sm">
+      <div className="orders__items border border-[#767676] p-5 md:p-10 max-w-[512px] h-max hidden md:flex flex-col gap-6 text-sm">
         <p>ORDER BILLING</p>
         <p className='max-w-[384px] break-words'>Billing Address : Xyz , flat no 04, austin heights, mumbai, Mh- 440089</p>
         <div className="items__container flex flex-col gap-6 ">
