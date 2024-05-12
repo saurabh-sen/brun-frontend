@@ -2,7 +2,7 @@ import React from 'react'
 import { useField } from 'formik';
 import { IMyTextInput } from '@modals/login/login.types';
 
-const MyBoxInput = ({ label, id, name, type, className, onFocus  }: IMyTextInput) => {
+const MyBoxInput = ({ label, id, name, type, className, onFocus }: IMyTextInput) => {
 
     const [field, meta] = useField({ name, type });
 
@@ -14,10 +14,10 @@ const MyBoxInput = ({ label, id, name, type, className, onFocus  }: IMyTextInput
                 {...field}
                 placeholder=""
                 autoComplete="off"
-                className="block w-full bg-transparent border appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200 p-2 myboxinput"
+                className="myboxinput block w-full bg-transparent border appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200 p-2 myboxinput"
                 onFocus={onFocus}
             />
-            <label htmlFor={id} className="absolute duration-300 top-2 left-2 -z-1 origin-0 text-gray-500 myboxinputlabel">{label}</label>
+            <label htmlFor={id} className="myboxinputlabel absolute duration-300 top-2 left-2 -z-1 origin-0 text-gray-500 myboxinputlabel">{label}</label>
             {meta.touched && meta.error ? (
                 <div className="error text-[#767676] text-sm flex gap-1 items-center">
                     <span className="material-symbols-rounded text-sm">

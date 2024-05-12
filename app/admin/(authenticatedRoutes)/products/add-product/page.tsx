@@ -17,6 +17,10 @@ const AddProduct = () => {
   const [isValid, setIsValid] = useState(false)
   const [isValidating, setIsValidating] = useState(false)
 
+  const handleCancel = () => {
+    console.log('cancel')
+  }
+
   return (
     <section id='addproduct'>
       <Formik
@@ -45,7 +49,7 @@ const AddProduct = () => {
           <AddSize />
           <AddPrice />
           <AddCompleteTheLook />
-          <AddButtons />
+          <AddButtons handleCancel={handleCancel} />
         </Form>
       </Formik>
     </section>

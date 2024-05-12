@@ -22,7 +22,7 @@ const ProductCategory = () => {
     }
 
     return (
-        <nav className='products__category max-w-7xl flex flex-col gap-3 m-auto select-none'>
+        <nav className='products__category max-w-7xl flex flex-col gap-3 m-auto select-none pt-14'>
             <div className="quick__filters flex justify-between flex-col-reverse gap-7 sm:flex-row">
                 <div className="Products__categories flex items-center gap-2 flex-wrap">
                     {
