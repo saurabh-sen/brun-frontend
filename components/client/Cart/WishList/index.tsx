@@ -6,7 +6,7 @@ import { RootState } from '@libs/store';
 import Delete from '@public/icons/common/Delete';
 import { IAccountDetails, IWishList } from '@modals/account/account.types';
 import { getUserIdToStorage } from '@services/tokens/tokens.service';
-import { accountApi } from '@services/account/account.service';
+import { accountApi } from '@services/client/account/account.service';
 import { setOrderHistory, setUserDetails, setWishList } from '@libs/features/account/accountSlice';
 import { useMakeAuthenticatedAPICall } from '@services';
 

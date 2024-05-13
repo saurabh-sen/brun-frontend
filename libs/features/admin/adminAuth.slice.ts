@@ -7,7 +7,7 @@ interface IAdminAuthInitialState {
 }
 
 const initialState: IAdminAuthInitialState = {
-  isLoading: false,
+  isLoading: true,
   isAuthenticated: false,
   isAuthError: false,
 };

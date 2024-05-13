@@ -5,13 +5,13 @@ import MyOutlinedButton from '@components/common/MyOutlinedButton';
 
 const AddCompleteTheLook = () => {
   return (
-    <section id="addcompletethelook">
+    <div id="addcompletethelook">
       <h2 className="mb-6 mt-8">COMPLETE THE LOOK RECOMMENDATIONs</h2>
       <div className="dropdown__container flex items-center gap-4">
       <MyBoxSelect title='COMPLETE THE LOOK' options={['top', 'bottom']} />
       <MyOutlinedButton className='!py-[6px] !px-4 !text-xl'>+</MyOutlinedButton>
       </div>
-    </section>
+    </div>
   )
 }
 

@@ -3,7 +3,7 @@ import CheckoutOrderItem from '@components/client/Checkout/CheckoutOrderItem'
 import MyTextArea from '@components/common/MyTextArea';
 import MyTextInput from '@components/common/MyTextInput';
 import { returnInitialValues } from '@contants/orders.constant';
-import { returnValidationSchema } from '@services/orders/orders.service';
+import { returnValidationSchema } from '@services/client/orders/orders.service';
 import { Form, Formik } from 'formik';
 import React, { useState } from 'react'
 

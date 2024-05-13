@@ -1,8 +1,6 @@
-'use client'
-
-import AdminLogin from '@components/admin/AdminLogin'
-import BrunLogo from '@components/common/BrunLogo'
 import React from 'react'
+import BrunLogo from '@components/common/BrunLogo'
+import AdminLogin from '@components/admin/AdminLogin'
 
 const Login = () => {
   return (

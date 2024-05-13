@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { IAddProductValues } from '@modals/admin';
+import { EProductHomepageFlags, IAddProductValues, IProductSize } from '@modals/admin';
 
 export const addProductValidationSchema = yup.object({
     slugurl: yup.string().required('Required'),
@@ -13,6 +13,14 @@ export const addProductValidationSchema = yup.object({
     productDiscount: yup.string().required('Required'),
 })
 
-export const handleAddProduct = async (values: IAddProductValues) => {
-    console.log(values);
+interface IRestOfTheFields {
+    selectedCategory: string;
+    selectedSubCategory: string;
+    sizes: IProductSize[];
+    homepageProduct: EProductHomepageFlags[];
+    completeTheLookProductId: string;
+}
+
+export const handleAddProduct = async (values: IAddProductValues, restOfTheFields: IRestOfTheFields) => {
+    console.log(values, restOfTheFields);
 }

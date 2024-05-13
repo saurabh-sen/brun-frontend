@@ -11,7 +11,7 @@ const AddProductImages = () => {
   const [imageDataFour, setImageDataFour] = React.useState<string | null>(null)
 
   return (
-    <section id="addproductimages">
+    <div id="addproductimages">
       <h2 className='mb-6 mt-8'>IMAGES</h2>
       <div className="addproductimages__container border border-gray-200">
         <p className="text-gray-500 p-2">Images will appear in the store front of your website.</p>
@@ -23,7 +23,7 @@ const AddProductImages = () => {
           <InputImage key={5} imageData={imageDataFour} setImageData={setImageDataFour} index={4} />
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

@@ -1,14 +1,13 @@
 "use client";
 
-import type { Metadata } from "next";
 import "../../globals.css";
 import "../../globalicons.css";
+import type { Metadata } from "next";
 
-import AdminSideNav from "@components/admin/common/AdminSideNav";
-import AdminTopBar from "@components/admin/common/AdminTopBar";
-import { useSelector } from "react-redux";
 import { RootState } from "@libs/store";
-import FullScreenLoader from "@components/common/FullScreenLoader";
+import { useSelector } from "react-redux";
+import AdminTopBar from "@components/admin/common/AdminTopBar";
+import AdminSideNav from "@components/admin/common/AdminSideNav";
 
 export default function RootLayout({
   children,
@@ -16,24 +15,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const { isLoading, isAuthError } = useSelector((state: RootState) => state.adminAuth);
+  const { isAuthError } = useSelector((state: RootState) => state.adminAuth);
 
   return (
     <>
       {
         isAuthError
           ? <AuthError />
-          : isLoading
-            ? <FullScreenLoader />
-            : (
-              <main className="flex w-full min-h-screen relative">
-                <AdminSideNav />
-                <section className="dashboard__outlet flex-1 px-8">
-                  <AdminTopBar />
-                  {children}
-                </section>
-              </main>
-            )
+          : (
+            <main className="flex w-full min-h-screen relative">
+              <AdminSideNav />
+              <section className="dashboard__outlet flex-1 px-8">
+                <AdminTopBar />
+                {children}
+              </section>
+            </main>
+          )
       }
     </>
   );

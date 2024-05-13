@@ -11,41 +11,31 @@ import { addProductValidationSchema, handleAddProduct } from '@services'
 import AddBasicDetails from '@components/admin/AddProduct/AddBasicDetails'
 import AddProductImages from '@components/admin/AddProduct/AddProductImages'
 import AddCompleteTheLook from '@components/admin/AddProduct/AddCompleteTheLook'
+import { useCategory } from './usecategory.hook'
+import FullScreenLoader from '@components/common/FullScreenLoader'
 
 const AddProduct = () => {
 
-  const [isValid, setIsValid] = useState(false)
-  const [isValidating, setIsValidating] = useState(false)
+  const { handleGetSubCategories, isSubCategoryLoading, isLoading, restOfTheFields } = useCategory();
 
   const handleCancel = () => {
     console.log('cancel')
   }
+
+  if(isLoading) return <FullScreenLoader />
 
   return (
     <section id='addproduct'>
       <Formik
         initialValues={addProductInitialValues}
         validationSchema={addProductValidationSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          handleAddProduct(values);
-          setSubmitting(false);
-        }}
-        validateOnChange={true}
-        validateOnBlur={false}
-        validate={(values) => {
-          setIsValidating(true);
-          addProductValidationSchema.isValid(values)
-            .then(valid => {
-              setIsValid(valid);
-              setIsValidating(false);
-            });
-        }}
+        onSubmit={(values) => handleAddProduct(values, restOfTheFields)}
       >
         <Form className='flex flex-col text-sm w-full gap-6 max-w-[1048px] mb-12'>
           <AddMetaData />
           <AddBasicDetails />
           <AddProductImages />
-          <AddCategory />
+          <AddCategory handleGetSubCategories={handleGetSubCategories} isSubCategoryLoading={isSubCategoryLoading} />
           <AddSize />
           <AddPrice />
           <AddCompleteTheLook />
