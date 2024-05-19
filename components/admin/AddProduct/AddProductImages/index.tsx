@@ -1,54 +1,87 @@
-import React, { ChangeEvent } from 'react'
 import Image from 'next/image'
+import React, { ChangeEvent, memo } from 'react'
 import upload from '@public/assets/uploadimage.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@libs/store';
+import { setProductDefaultImage, setProductImageFour, setProductImageOne, setProductImageThree, setProductImageTwo } from '@libs/features/admin/addproduct.slice';
 
 const AddProductImages = () => {
+  
+  const { productDefaultImage, productImageOne, productImageTwo, productImageThree, productImageFour } = useSelector((state: RootState) => state.adminAddProductSlice);
 
-  const [imageDataDefault, setImageDataDefault] = React.useState<string | null>(null)
-  const [imageDataOne, setImageDataOne] = React.useState<string | null>(null)
-  const [imageDataTwo, setImageDataTwo] = React.useState<string | null>(null)
-  const [imageDataThree, setImageDataThree] = React.useState<string | null>(null)
-  const [imageDataFour, setImageDataFour] = React.useState<string | null>(null)
+  const dispatch = useDispatch();
+  const setImageDataDefault = (value: File | null) => {
+    dispatch(setProductDefaultImage(value));
+  }
+
+  const setImageDataOne = (value: File | null) => {
+    dispatch(setProductImageOne(value));
+  }
+
+  const setImageDataTwo = (value: File | null) => {
+    dispatch(setProductImageTwo(value));
+  }
+
+  const setImageDataThree = (value: File | null) => {
+    dispatch(setProductImageThree(value));
+  }
+
+  const setImageDataFour = (value: File | null) => {
+    dispatch(setProductImageFour(value));
+  }
 
   return (
-    <section id="addproductimages">
+    <div id="addproductimages">
       <h2 className='mb-6 mt-8'>IMAGES</h2>
       <div className="addproductimages__container border border-gray-200">
         <p className="text-gray-500 p-2">Images will appear in the store front of your website.</p>
         <div className="images__container grid gap-3 grid-cols-4 grid-rows-2 p-5" style={{ gridTemplateRows: 'repeat(2, 230px)', gridTemplateColumns: 'repeat(4, 1fr)' }} >
-          <InputImage key={1} heading='Click to upload or drag and drop' subHeading='(JPG 0r PNG  maximum 500x689)' className="col-span-2 row-span-2" imageData={imageDataDefault} setImageData={setImageDataDefault} index={0} />
-          <InputImage key={2} imageData={imageDataOne} setImageData={setImageDataOne} index={1} />
-          <InputImage key={3} imageData={imageDataTwo} setImageData={setImageDataTwo} index={2} />
-          <InputImage key={4} imageData={imageDataThree} setImageData={setImageDataThree} index={3} />
-          <InputImage key={5} imageData={imageDataFour} setImageData={setImageDataFour} index={4} />
+          <InputImage key={1} heading='Click to upload or drag and drop' subHeading='(JPG 0r PNG  maximum 500x689)' className="col-span-2 row-span-2" imageData={productDefaultImage} setImageData={setImageDataDefault} index={0} />
+          <InputImage key={2} imageData={productImageOne} setImageData={setImageDataOne} index={1} />
+          <InputImage key={3} imageData={productImageTwo} setImageData={setImageDataTwo} index={2} />
+          <InputImage key={4} imageData={productImageThree} setImageData={setImageDataThree} index={3} />
+          <InputImage key={5} imageData={productImageFour} setImageData={setImageDataFour} index={4} />
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 
-export default AddProductImages
+export default memo(AddProductImages)
 
 
 interface IInputImage {
   className?: string;
   heading?: string;
   subHeading?: string;
-  imageData: string | null;
+  imageData: File | null;
   index: number;
-  setImageData: (value: string | null) => void;
+  setImageData: (value: File | null) => void;
 }
 
 const InputImage = ({ className, heading, subHeading, imageData, setImageData, index }: IInputImage) => {
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return console.log('No files');
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImageData(reader.result as string);
+    if (!e.target.files) {
+      console.log('No files selected');
+      return;
     }
-    reader.readAsDataURL(file);
+
+    const file = e.target.files[0];
+    // Convert file to base64 format for FormData
+    // const reader = new FileReader();
+    // reader.onloadend = async () => {
+    //   if (reader.result) {
+    //     const blob = await new File([reader.result as string], { type: file.type })
+    //     setImageData(blob); // Set state as File (converted data)
+    //   } else {
+    //     console.error('Failed to read image file');
+    //   }
+    // };
+    // reader.readAsDataURL(file);
+
+    // setImage(file)
+    setImageData(file);
   }
 
   const handleRemoveImage = () => {
@@ -61,7 +94,7 @@ const InputImage = ({ className, heading, subHeading, imageData, setImageData, i
         imageData
           ? (
             <div className="image__preview__container w-full h-full relative cursor-pointer ">
-              <Image src={imageData} alt='image' fill className='rounded-md object-cover' />
+              <Image src={URL.createObjectURL(imageData)} alt='image' fill className='rounded-md object-cover' />
               <span className="material-symbols-rounded absolute z-10 right-2 top-2" onClick={handleRemoveImage}>
                 close
               </span>

@@ -1,27 +1,28 @@
 import React from 'react'
+import { RootState } from '@libs/store';
+import { useDispatch, useSelector } from 'react-redux';
 import AdminSizeMultiSelect from './AdminSizeMultiSelect';
+import { EProductSizeKeys, IProductSize } from '@modals/admin';
 import { EProductSizeEnum } from '@modals/productListing/productListing.types';
+import { setSelectedSizes, setSizeSpecs } from '@libs/features/admin/addproduct.slice';
 
 const AddSize = () => {
 
-  const [sizeSelected, setSizeSelected] = React.useState<EProductSizeEnum[]>([]);
+  // const [sizeSelected, setSizeSelected] = React.useState<EProductSizeEnum[]>([]);
+  const { sizes } = useSelector((state: RootState) => state.adminAddProductSlice)
+  const dispatch = useDispatch();
 
   const handleSizeSelection = (size: EProductSizeEnum) => {
-    if (sizeSelected.includes(size)) {
-      const filtered = sizeSelected.filter(item => item !== size);
-      setSizeSelected(filtered);
-    } else {
-      setSizeSelected([...sizeSelected, size]);
-    }
+    dispatch(setSelectedSizes(size))
   }
 
   return (
     <section id='addsize'>
       <h2 className="mb-6 mt-8">CHOOSE SIZES AVAILABLE FOR THIS PRODUCT</h2>
-      <AdminSizeMultiSelect sizeSelected={sizeSelected} handleSizeSelection={handleSizeSelection} />
+      <AdminSizeMultiSelect sizeSelected={sizes} handleSizeSelection={handleSizeSelection} />
       {
-        sizeSelected.length > 0 && (
-          <GetSizeDetails sizeSelected={sizeSelected} />
+        sizes.length > 0 && (
+          <GetSizeDetails sizeSelected={sizes} />
         )
       }
     </section>
@@ -31,7 +32,7 @@ const AddSize = () => {
 export default AddSize;
 
 
-const GetSizeDetails = ({ sizeSelected }: { sizeSelected: EProductSizeEnum[] }) => {
+const GetSizeDetails = ({ sizeSelected }: { sizeSelected: IProductSize[] }) => {
   return (
     <div className="getsizedetails border border-gray-200 p-4 mt-4">
       <GetSizeDetailshHeader />
@@ -53,7 +54,7 @@ const GetSizeDetailshHeader = () => {
   )
 }
 
-const GetSizeDetailsBody = ({ sizeSelected }: { sizeSelected: EProductSizeEnum[] }) => {
+const GetSizeDetailsBody = ({ sizeSelected }: { sizeSelected: IProductSize[] }) => {
   return (
     <div className="grid grid-cols-1 gap-2">
       {
@@ -65,25 +66,32 @@ const GetSizeDetailsBody = ({ sizeSelected }: { sizeSelected: EProductSizeEnum[]
   )
 }
 
-const GetSizeDetailsRow = ({ size }: { size: string }) => {
+const GetSizeDetailsRow = ({ size }: { size: IProductSize }) => {
+
+  const dispatch = useDispatch();
+  const handleOnChange = (sizeValue: EProductSizeEnum ,key: EProductSizeKeys, e: React.ChangeEvent<HTMLInputElement>) => {
+    const value  = e.target.value;
+    dispatch(setSizeSpecs({size: sizeValue, key, value}))
+  }
+
   return (
     <div className="grid grid-cols-5 gap-2">
       <div className="flex items-center">
-        <p className='border border-gray-200 p-2 w-full'>{size}</p>
+        <p className='border border-gray-200 p-2 w-full'>{size.size}</p>
       </div>
       <div className="flex items-center">
-        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='00' />
+        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='00' value={size.quantity} onChange={(e) => handleOnChange(size.size, EProductSizeKeys.QUANTITY, e)} />
       </div>
       <div className="flex items-center">
-        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='00' />
+        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='00' value={size.weight} onChange={(e) => handleOnChange(size.size, EProductSizeKeys.WEIGHT, e)} />
       </div>
       <div className="flex items-center gap-2">
-        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='L' />
-        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='W' />
-        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='H' />
+        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='L' value={size.length} onChange={(e) => handleOnChange(size.size, EProductSizeKeys.LENGTH, e)} />
+        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='W' value={size.breadth} onChange={(e) => handleOnChange(size.size, EProductSizeKeys.BREADTH, e)} />
+        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='H' value={size.height} onChange={(e) => handleOnChange(size.size, EProductSizeKeys.HEIGHT, e)} />
       </div>
       <div className="flex items-center">
-        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='00' />
+        <input type="text" className="border border-gray-200 p-2 w-full" placeholder='00' value={size.sku} onChange={(e) => handleOnChange(size.size, EProductSizeKeys.SKU, e)} />
       </div>
     </div>
   )

@@ -1,13 +1,13 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface IAdminAuthInitialState {
-  isLoading: boolean;
+  isLoadingFullScreenLoader: boolean;
   isAuthenticated: boolean;
   isAuthError: boolean;
 }
 
 const initialState: IAdminAuthInitialState = {
-  isLoading: false,
+  isLoadingFullScreenLoader: true,
   isAuthenticated: false,
   isAuthError: false,
 };
@@ -16,8 +16,8 @@ const adminAuthSlice = createSlice({
   name: "adminAuth",
   initialState: initialState,
   reducers: {
-    setIsLoading(state, action: PayloadAction<boolean>) {
-      state.isLoading = action.payload;
+    setIsLoadingFullScreenLoader(state, action: PayloadAction<boolean>) {
+      state.isLoadingFullScreenLoader = action.payload;
     },
     setIsAuthenticated(state, action: PayloadAction<boolean>) {
       state.isAuthenticated = action.payload;
@@ -28,6 +28,6 @@ const adminAuthSlice = createSlice({
   },
 });
 
-export const { setIsAuthenticated, setIsLoading } = adminAuthSlice.actions;
+export const { setIsAuthenticated, setIsLoadingFullScreenLoader } = adminAuthSlice.actions;
 
 export default adminAuthSlice.reducer;

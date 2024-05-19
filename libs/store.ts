@@ -9,9 +9,17 @@ import tabsReducer from "./features/tabs/tabsSlice";
 import accountReducer from "./features/account/accountSlice";
 import adminAuthReducer from './features/admin/adminAuth.slice';
 import adminProductListingReducer from './features/admin/adminProductListing.slice';
+import adminAddProductReducer from './features/admin/addproduct.slice';
 
 export const makeStore = () => {
   return configureStore({
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['adminAddProduct/setProductDefaultImage', 'adminAddProduct/setProductImageOne', 'adminAddProduct/setProductImageTwo', 'adminAddProduct/setProductImageThree', 'adminAddProduct/setProductImageFour'],
+        ignoredPaths: ['adminAddProductSlice.productDefaultImage', 'adminAddProductSlice.productImageOne', 'adminAddProductSlice.productImageTwo', 'adminAddProductSlice.productImageThree', 'adminAddProductSlice.productImageFour'],
+      },
+    }),
     reducer: {
       homepage: homepageReducer,
       auth: authReducer,
@@ -23,6 +31,7 @@ export const makeStore = () => {
       productSearch: productSearchReducer,
       adminAuth: adminAuthReducer,
       adminProductListing: adminProductListingReducer,
+      adminAddProductSlice: adminAddProductReducer,
     }
   });
 };

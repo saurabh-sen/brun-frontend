@@ -4,11 +4,11 @@ import React from 'react'
 
 const AddBasicDetails = () => {
   return (
-    <section id="addbasicdetails">
+    <div id="addbasicdetails">
       <h1 className="mb-6 mt-8">BASIC DETAILS</h1>
-      <MyBoxInput id="slugurl" label="SLUG URL" name="slugurl" type="url" className="mb-6" />
-      <MyBoxTextArea id="writedescription" label="WRTIE DESCRIPTION" name="writedescription" className="mb-6" />
-    </section>
+      <MyBoxInput id="productname" label="PRODUCT NAME" name="productName" type="text" className="mb-10" />
+      <MyBoxTextArea id="writeproductdescription" label="WRTIE DESCRIPTION" name="productDescription" className="mb-6" />
+    </div>
   )
 }
 

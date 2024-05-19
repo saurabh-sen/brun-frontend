@@ -22,7 +22,7 @@
   --tw-skew-y: 0;
   transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y));
-    /* scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  /* scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   --tw-scale-x: 0.75;
   --tw-scale-y: 0.75; */
   --tw-translate-y: -1rem;
@@ -45,7 +45,7 @@
   --tw-skew-y: 0;
   transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y));
-    /* scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  /* scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   --tw-scale-x: 0.75;
   --tw-scale-y: 0.75; */
   --tw-translate-y: -2rem;
@@ -59,8 +59,8 @@
   left: 0px;
 }
 
-
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   overflow-x: hidden;
@@ -74,4 +74,9 @@ html, body {
 
 .rc-slider-handle-dragging {
   box-shadow: 0 0 0 3px #000 !important;
+}
+
+.dropdown-container:focus-within {
+  box-shadow: none !important;
+  border-color: rgb(229 231 235) !important;
 }

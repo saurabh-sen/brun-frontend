@@ -7,6 +7,9 @@ const nextConfig = {
             },
             {
                 hostname: 'example.com',
+            },
+            {
+                hostname: 'res.cloudinary.com',
             }
         ]
     }

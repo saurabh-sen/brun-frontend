@@ -4,7 +4,7 @@ import MobileTabs from '@components/client/Accounts/MobileTabs';
 import { setOrderHistory, setUserDetails, setWishList } from '@libs/features/account/accountSlice';
 import { RootState } from '@libs/store';
 import { IAccountDetails } from '@modals/account/account.types';
-import { accountApi } from '@services/account/account.service';
+import { accountApi } from '@services/client/account/account.service';
 import { getUserIdToStorage } from '@services/tokens/tokens.service';
 import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
