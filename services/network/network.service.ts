@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAccessTokenFromStorage, getRefreshTokenFromStorage, saveAccessTokenToStorage } from "@services";
+import { getAccessTokenFromStorage, getRefreshTokenFromStorage, saveAccessTokenToStorage, saveRefreshTokenToStorage } from "@services";
 
 const network = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -28,25 +28,27 @@ network.interceptors.response.use(
 
     // If the error status is 401 and there is no originalRequest._retry flag,
     // it means the token has expired and we need to refresh it
-    if (error?.response?.status === 401) {
+    if (error?.response?.data?.statusCode === 401 || error?.response?.data?.message === "invalid token") {
+      try {
+        const refreshToken = getRefreshTokenFromStorage();
+        if(!refreshToken) {
+          return Promise.reject(error);
+        }
+        // const response = await axios.post("/user/refresh", { refresh_token: refreshToken });
+        const response = await network.post("/user/refresh", { refresh_token: refreshToken })
+        const newAccessToken = response.data?.data?.accessToken;
+        const newRefreshToken = response.data?.data?.refreshToken;
+        saveAccessTokenToStorage(newAccessToken);
+        saveRefreshTokenToStorage(newRefreshToken);
 
-      // try {
-      //   const refreshToken = getRefreshTokenFromStorage();
-      //   if(!refreshToken) {
-      //     return Promise.reject(error);
-      //   }
-      //   const response = await axios.post("/user/refresh", { refresh_token: refreshToken });
-      //   const { token } = response.data;
-      //   console.log(response)
-      //   saveAccessTokenToStorage(token);
-
-      //   // Retry the original request with the new token
-      //   originalRequest.headers.Authorization = `Bearer ${token}`;
-      //   return axios(originalRequest);
-      // } catch (error) {
-      //   // Handle refresh token error or redirect to login
-      //   console.log("refresh token error", error);
-      // }
+        // Retry the original request with the new token
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        return axios(originalRequest);
+      } catch (error) {
+        // Handle refresh token error or redirect to login
+        console.log("refresh token error", error);
+        return Promise.reject(error);
+      }
     }
 
     return Promise.reject(error);

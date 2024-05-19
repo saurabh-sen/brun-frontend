@@ -1,28 +1,31 @@
 'use client'
+import React from 'react'
 import { Form, Formik } from 'formik'
-import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useAddProduct } from './useaddproduct.hook'
 import { addProductInitialValues } from '@contants'
+import { addProductValidationSchema } from '@services'
 import AddSize from '@components/admin/AddProduct/AddSize'
 import AddPrice from '@components/admin/AddProduct/AddPrice'
 import AddButtons from '@components/admin/AddProduct/AddButtons'
 import AddCategory from '@components/admin/AddProduct/AddCategory'
+import FullScreenLoader from '@components/common/FullScreenLoader'
 import AddMetaData from '@components/admin/AddProduct/AddMetaData'
-import { addProductValidationSchema, handleAddProduct } from '@services'
 import AddBasicDetails from '@components/admin/AddProduct/AddBasicDetails'
 import AddProductImages from '@components/admin/AddProduct/AddProductImages'
 import AddCompleteTheLook from '@components/admin/AddProduct/AddCompleteTheLook'
-import { useCategory } from './usecategory.hook'
-import FullScreenLoader from '@components/common/FullScreenLoader'
 
 const AddProduct = () => {
 
-  const { handleGetSubCategories, isSubCategoryLoading, isLoading, restOfTheFields } = useCategory();
+  const router = useRouter();
+  const { handleGetSubCategories, isSubCategoryLoading, isLoadingFullScreenLoader, restOfTheFields, handleAddProduct, isSubmitting } = useAddProduct();
 
   const handleCancel = () => {
-    console.log('cancel')
+    router.refresh();
+    window.location.reload();
   }
 
-  if(isLoading) return <FullScreenLoader />
+  if(isLoadingFullScreenLoader) return <FullScreenLoader />
 
   return (
     <section id='addproduct'>
@@ -39,7 +42,7 @@ const AddProduct = () => {
           <AddSize />
           <AddPrice />
           <AddCompleteTheLook />
-          <AddButtons handleCancel={handleCancel} />
+          <AddButtons handleCancel={handleCancel} isLoading={isSubmitting} />
         </Form>
       </Formik>
     </section>

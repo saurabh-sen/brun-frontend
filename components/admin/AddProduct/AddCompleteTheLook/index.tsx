@@ -1,15 +1,21 @@
 import React from 'react'
 import Image from 'next/image';
-import product from '@public/assets/product.jpg'
+import { RootState } from '@libs/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { ICompleteTheLookRecommendation } from '@modals/admin';
 import MyOutlinedButton from '@components/common/MyOutlinedButton';
+import { setCompleteTheLook } from '@libs/features/admin/addproduct.slice';
 
 const AddCompleteTheLook = () => {
+
+  const { products } = useSelector((state: RootState) => state.adminAddProductSlice);
+
   return (
     <div id="addcompletethelook">
       <h2 className="mb-6 mt-8">COMPLETE THE LOOK RECOMMENDATIONs</h2>
       <div className="dropdown__container flex items-center gap-4">
-      <MyBoxSelect title='COMPLETE THE LOOK' options={['top', 'bottom']} />
-      <MyOutlinedButton className='!py-[6px] !px-4 !text-xl'>+</MyOutlinedButton>
+        <SelectCompleteTheLook title='COMPLETE THE LOOK' options={products} />
+        <MyOutlinedButton className='!py-[6px] !px-4 !text-xl'>+</MyOutlinedButton>
       </div>
     </div>
   )
@@ -17,15 +23,26 @@ const AddCompleteTheLook = () => {
 
 export default AddCompleteTheLook
 
-interface IMyBoxSelect {
+interface ISelectCompleteTheLook {
   title: string;
-  options: any[]
+  options: ICompleteTheLookRecommendation[];
 }
 
-const MyBoxSelect = ({ title, options }: IMyBoxSelect) => {
+const SelectCompleteTheLook = ({ title, options }: ISelectCompleteTheLook) => {
 
   const [value, setValue] = React.useState('');
   const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
+
+  const handleSelect = (option: ICompleteTheLookRecommendation) => {
+    setValue(option.product_name);
+    setOpen(false);
+    const payload = {
+      id: option.id,
+      product_name: option.product_name,
+    }
+    dispatch(setCompleteTheLook(payload))
+  }
 
   return (
     <div className='flex-1 flex flex-col gap-4 border border-gray-200 p-2'>
@@ -35,16 +52,21 @@ const MyBoxSelect = ({ title, options }: IMyBoxSelect) => {
           expand_more
         </span>
       </div>
-      <div className={`select-body flex-col gap-2 ${open ? 'flex' : 'hidden'}`}>
-        {options.map((option, index) => (
-          <div key={index} className='select-option flex items-center gap-3' onClick={() => {
-            setValue(option);
-            setOpen(false);
-          }}>
-            <Image src={product} alt='product' width={30} height={30} />
-            <p>{option}</p>
-          </div>
-        ))}
+      <div className={`select-body flex-col gap-2 pt-2 ${open ? 'flex' : 'hidden'}`}>
+        {
+          options.length === 0
+            ? <p className='text-gray-500 text-sm'>No products found</p>
+            : options.map((option, index) => (
+              <div key={index} className='select-option flex items-center gap-3 cursor-pointer' onClick={() => handleSelect(option)}>
+                {
+                  option.image && option.image.image_url
+                    ? <Image src={option.image.image_url} alt='product' width={30} height={30} className='rounded-full bg-cover aspect-square' />
+                    : <div className='w-8 h-8 bg-gray-200 rounded-full text-black flex justify-center items-center'>NA</div>
+                }
+                <p>{option.product_name}</p>
+              </div>
+            ))
+        }
       </div>
     </div>
   )

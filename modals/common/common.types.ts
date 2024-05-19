@@ -15,6 +15,7 @@ export interface IMyOutlinedButton {
   handleClick?: () => void;
   className?: string;
   children: React.ReactNode;
+  disabled?: boolean
 }
 
 export { ButtonType, RoleEnum };

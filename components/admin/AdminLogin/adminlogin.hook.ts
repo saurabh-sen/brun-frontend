@@ -1,13 +1,16 @@
-import { useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { IAdminLoginValues } from "@modals/admin";
 import network from "@services/network/network.service";
+import { setIsLoadingFullScreenLoader } from "@libs/features/admin/adminAuth.slice";
 import { EndpointService, saveAccessTokenToStorage, saveRefreshTokenToStorage, saveUserIdToStorage } from "@services";
 
 export const useAdminLogin = () => {
 
     const router = useRouter();
+    const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const handleAdminLoginSubmit = async (values: IAdminLoginValues) => {
@@ -36,6 +39,13 @@ export const useAdminLogin = () => {
             setIsLoading(false);
         }
     }
+
+    useEffect(() => {
+        dispatch(setIsLoadingFullScreenLoader(false));
+        return () => {
+            dispatch(setIsLoadingFullScreenLoader(true));
+        }
+    }, [])
 
     return {
         handleAdminLoginSubmit,

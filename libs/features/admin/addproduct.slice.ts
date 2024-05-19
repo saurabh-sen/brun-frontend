@@ -1,6 +1,8 @@
 import {
-  EProductHomepageFlags,
   IAdminAddProductInitialState,
+  ICompleteTheLook,
+  ICompleteTheLookRecommendation,
+  IFeatured,
   IProductCategory,
   IProductSubCategory,
   ISizeSpecsAction,
@@ -14,8 +16,17 @@ const initialState: IAdminAddProductInitialState = {
   selectedCategory: "",
   selectedSubCategory: "",
   sizes: [],
-  completeTheLookProductId: "",
+  completeTheLook: {
+    id: "",
+    product_name: "",
+  },
   homepageProduct: [],
+  products: [],
+  productDefaultImage: null,
+  productImageOne: null,
+  productImageTwo: null,
+  productImageThree: null,
+  productImageFour: null,
 };
 
 const adminAddProductSlice = createSlice({
@@ -58,22 +69,33 @@ const adminAddProductSlice = createSlice({
       const index = state.sizes.findIndex((s) => s.size === size);
       state.sizes[index][key] = value;
     },
-    setCompleteTheLookProductId(state, action: PayloadAction<string>) {
-      state.completeTheLookProductId = action.payload;
+    setCompleteTheLook(state, action: PayloadAction<ICompleteTheLook>) {
+      state.completeTheLook= action.payload;
     },
-    setHomepageProduct(state, action: PayloadAction<EProductHomepageFlags>) {
-      const index = state.homepageProduct.findIndex(
-        (flag) => flag === action.payload
-      );
-      if (index !== -1) {
-        state.homepageProduct.splice(index, 1);
-      } else {
-        state.homepageProduct.push(action.payload);
-      }
+    setHomepageProduct(state, action: PayloadAction<IFeatured[]>) {
+      state.homepageProduct = action.payload;
     },    
+    setCompleteTheLookRecommendations(state, action: PayloadAction<ICompleteTheLookRecommendation[]>) {
+      state.products = action.payload;
+    },
+    setProductDefaultImage(state, action: PayloadAction<File | null>) {
+      state.productDefaultImage = action.payload;
+    },
+    setProductImageOne(state, action: PayloadAction<File | null>) {
+      state.productImageOne = action.payload;
+    },
+    setProductImageTwo(state, action: PayloadAction<File | null>) {
+      state.productImageTwo = action.payload;
+    },
+    setProductImageThree(state, action: PayloadAction<File | null>) {
+      state.productImageThree = action.payload;
+    },
+    setProductImageFour(state, action: PayloadAction<File | null>) {
+      state.productImageFour = action.payload;
+    },
   },
 });
 
-export const { setCategories, setSubCategories, setSelectedCategory, setCompleteTheLookProductId, setHomepageProduct, setSelectedSizes, setSelectedSubCategory, setSizeSpecs } = adminAddProductSlice.actions;
+export const { setCategories, setSubCategories, setSelectedCategory, setCompleteTheLook, setHomepageProduct, setSelectedSizes, setSelectedSubCategory, setSizeSpecs, setCompleteTheLookRecommendations, setProductDefaultImage, setProductImageOne, setProductImageTwo, setProductImageThree, setProductImageFour } = adminAddProductSlice.actions;
 
 export default adminAddProductSlice.reducer;

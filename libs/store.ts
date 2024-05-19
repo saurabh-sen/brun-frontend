@@ -13,6 +13,13 @@ import adminAddProductReducer from './features/admin/addproduct.slice';
 
 export const makeStore = () => {
   return configureStore({
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['adminAddProduct/setProductDefaultImage', 'adminAddProduct/setProductImageOne', 'adminAddProduct/setProductImageTwo', 'adminAddProduct/setProductImageThree', 'adminAddProduct/setProductImageFour'],
+        ignoredPaths: ['adminAddProductSlice.productDefaultImage', 'adminAddProductSlice.productImageOne', 'adminAddProductSlice.productImageTwo', 'adminAddProductSlice.productImageThree', 'adminAddProductSlice.productImageFour'],
+      },
+    }),
     reducer: {
       homepage: homepageReducer,
       auth: authReducer,
