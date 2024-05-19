@@ -31,7 +31,7 @@ export default function Home() {
           heading="TOP PICKS"
           data={products}
         />
-        <SingleHeroImage heading='TRANDING' image='/assets/homepage/tranding-img.png' route='/products' />
+        <SingleHeroImage heading='TRENDING' image='/assets/homepage/tranding-img.png' route='/products' />
         <HeroCTA
           heading="No formulas, just fearless creativity"
           description="Discover a world of fearless creativity in clothing, where there are no formulas, only endless possibilities"

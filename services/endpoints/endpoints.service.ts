@@ -7,5 +7,6 @@ export const EndpointService = {
     getAllProducts: '/product',
     addProduct: '/product',
     addProductImages: '/product/image',
-    completeTheLook: 'product/recommend',
+    completeTheLook: '/product/recommend',
+    addCustomer: '/user/register',
 };
