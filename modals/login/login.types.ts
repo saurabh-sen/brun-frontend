@@ -1,5 +1,4 @@
 import { RoleEnum } from "@modals/common/common.types";
-import { IRefreshTokenResponse } from "@modals/tokens/tokens.types";
 
 interface IMyTextInput {
   label: string;

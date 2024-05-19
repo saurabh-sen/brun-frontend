@@ -5,7 +5,7 @@ interface IAccountPayload {
   userId: string;
 }
 
-enum RoleEnum {
+export enum RoleEnum {
   ADMIN = "admin",
   USER = "user",
 }
@@ -67,11 +67,11 @@ interface IUserDetails {
   Address: any[];
   wishlist: IWishList[];
   orders: IOrderHistory[];
-};
+}
 
 interface IAccountDetails {
   statusCode: number;
-  data: IUserDetails
+  data: IUserDetails;
   message: string;
   success: boolean;
 }
@@ -82,4 +82,11 @@ interface IAccountInitialState {
   orderHistory: IOrderHistory[];
 }
 
-export type { IAccountPayload, IAccountDetails, IAccountInitialState, RoleEnum, IUserDetails, IWishList, IOrderHistory };
+export type {
+  IAccountPayload,
+  IAccountDetails,
+  IAccountInitialState,
+  IUserDetails,
+  IWishList,
+  IOrderHistory,
+};
