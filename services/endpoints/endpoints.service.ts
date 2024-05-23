@@ -9,4 +9,6 @@ export const EndpointService = {
     addProductImages: '/product/image',
     completeTheLook: '/product/recommend',
     addCustomer: '/user/register',
+    getCategoryList: '/category/all',
+    getSubCategoriesList: '/sub-category/list',
 };

@@ -1,4 +1,5 @@
 import { RootState } from "@libs/store";
+import UpIcon from "@public/icons/admin/up.icon";
 import { useSelector } from "react-redux";
 
 const ProductTableHeader = () => {
@@ -18,7 +19,13 @@ const ProductTableHeader = () => {
       </div>
       <p className="product__table-item">CATEGORY</p>
       <p className="product__table-item">QUANTITY</p>
-      <p className="product__table-item">PRICE</p>
+      <p className="product__table-item flex items-center">
+        <span>PRICE</span>
+        <div className="flex flex-col gap-1">
+          <UpIcon />
+          <UpIcon className="rotate-180" />
+        </div>
+      </p>
       <p className="product__table-item">SALE</p>
       <p className="product__table-item">STOCK</p>
       <p className="product__table-item">SKU</p>
