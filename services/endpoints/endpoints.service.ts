@@ -10,4 +10,5 @@ export const EndpointService = {
     completeTheLook: '/product/recommend',
     addCustomer: '/user/register',
     getCategoryList: '/category/all',
+    getSubCategoriesList: '/sub-category/list',
 };

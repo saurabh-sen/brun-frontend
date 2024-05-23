@@ -58,7 +58,7 @@ const adminAuthSlice = createSlice({
       state.page = action.payload;
     },
     setAdminCategoryList(state, action: PayloadAction<IProductCategory[]>) {
-      state.categoryList = action.payload;
+      state.categoryList = [...state.categoryList, ...action.payload];
     }
   },
 });

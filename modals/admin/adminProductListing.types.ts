@@ -9,9 +9,22 @@ interface ProductCategory {
   category_name: string;
 }
 
+interface ProductSubCategory {
+  id: string;
+  subcategory_name: string;
+  category_id: string;
+}
+
 export interface IGetProductCategoriesResponse {
   statusCode: number;
   data: ProductCategory[];
+  message: string;
+  success: boolean;
+}
+
+export interface IGetProductSubCategoriesResponse {
+  statusCode: number;
+  data: ProductSubCategory[];
   message: string;
   success: boolean;
 }

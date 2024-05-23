@@ -1,4 +1,4 @@
-import { IGetProductCategoriesResponse, IUrlParams } from "@modals/admin";
+import { IGetProductCategoriesResponse, IGetProductSubCategoriesResponse, IUrlParams } from "@modals/admin";
 import { EndpointService } from "@services";
 import network from "@services/network/network.service";
 
@@ -44,12 +44,12 @@ export const getAllCategoriesAPI = async (abortController: AbortController) => {
 
 export const getAllSubCategoriesAPI = async (abortController: AbortController) => {
   try {
-    const response = await network.get(EndpointService.getSubCategoriesOfCategory,
+    const response = await network.get(EndpointService.getSubCategoriesList,
       {
         signal: abortController.signal,
       }
     );
-    return response.data;
+    return response.data as IGetProductSubCategoriesResponse;
   } catch (error) {
     throw error;
   }

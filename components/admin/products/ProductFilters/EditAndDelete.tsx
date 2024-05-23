@@ -19,24 +19,22 @@ const EditAndDelete = () => {
 
 
     return (
-        <div className="flex items-center gap-3">
+        <div className="flex items-start gap-3 ">
             {
                 isEditAllOpen ?
                     <>
-                        <MyOutlinedButton handleClick={() => handleSetEditAll(false)}>
-                            <span className="flex items-center gap-1 text-sm">
-                                <span className="material-symbols-rounded scale-50">
-                                    arrow_back_ios
-                                </span>
-                                <span>BACK</span>
+                        <MyOutlinedButton handleClick={() => handleSetEditAll(false)} className="!flex !items-center !gap-1 !text-sm !w-20 !p-2" >
+                            <span className="material-symbols-rounded scale-50">
+                                arrow_back_ios
                             </span>
+                            <span>BACK</span>
                         </MyOutlinedButton>
-                        <MyOutlinedButton handleClick={handleDelete}>
+                        <MyOutlinedButton handleClick={handleDelete} className="!w-28">
                             DELETE ALL
                         </MyOutlinedButton>
                     </>
                     :
-                    <MyOutlinedButton handleClick={() => handleSetEditAll(true)}>
+                    <MyOutlinedButton handleClick={() => handleSetEditAll(true)} className="!w-20">
                         EDIT ALL
                     </MyOutlinedButton>
             }

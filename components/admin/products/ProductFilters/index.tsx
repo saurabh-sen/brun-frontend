@@ -20,7 +20,7 @@ const ProductFilters = () => {
 
   return (
     <div className="adminproduct__filters flex justify-between">
-      <div className="filters__container flex items-center gap-3">
+      <div className="filters__container flex items-center gap-3 flex-wrap">
         <MyOutlinedButton active={!categoryFilter} handleClick={handleSelectedCategory(null)}>ALL PRODUCTS</MyOutlinedButton>
         {
           categoryList.map((category) => (

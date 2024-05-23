@@ -2,7 +2,7 @@ import { setIsLoadingFullScreenLoader } from "@libs/features/admin/adminAuth.sli
 import { setAdminCategoryList, setProducts } from "@libs/features/admin/adminProductListing.slice";
 import { RootState } from "@libs/store";
 import { IUrlParams, TPaginationLimit, TSortPrice } from "@modals/admin";
-import { EndpointService, getAllCategoriesAPI, getProductListingAPI } from "@services";
+import { EndpointService, getAllCategoriesAPI, getAllSubCategoriesAPI, getProductListingAPI } from "@services";
 import network from "@services/network/network.service";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -19,6 +19,7 @@ export const useAdminProductListing = () => {
   const isLoadingFullScreenLoader = useSelector(
     (state: RootState) => state.adminAuth.isLoadingFullScreenLoader
   );
+  const categoryList = useSelector((state: RootState) => state.adminProductListing.categoryList);
   const {searchQuery, categoryFilter,colorFilters, sortByPrice, limit, page} = useSelector((state: RootState) => state.adminProductListing)
 
 
@@ -31,7 +32,7 @@ export const useAdminProductListing = () => {
         if(page) params['page'] = page;
 
         const response = await getProductListingAPI(abortController, params);
-        console.log("admin product listings ",response)
+        // console.log("admin product listings ",response)
         // dispatch(setProducts(response.data));
     } catch (error) {
       if (!axios.isCancel(error)) {
@@ -60,6 +61,22 @@ export const useAdminProductListing = () => {
     }
   }
 
+  const getAllSubCategories = async (abortController: AbortController) => {
+    try {
+      const response = await getAllSubCategoriesAPI(abortController);
+      const payload = response.data.map((subCategory) => ({ id: subCategory.id, category_name: subCategory.subcategory_name }));
+      dispatch(setAdminCategoryList([...categoryList, ...payload]));
+    } catch (error) {
+      if (!axios.isCancel(error)) {
+        console.log("get all sub-categories error", error);
+        toast.error("Session expired, please login again");
+        router.replace("/admin/login");
+      } else {
+        console.log("get all sub-categories cancelled", error);
+      }
+    }
+  }
+
   const authenticateAdmin = async (abortController: AbortController) => {
     dispatch(setIsLoadingFullScreenLoader(true));
     try {
@@ -76,16 +93,17 @@ export const useAdminProductListing = () => {
       setAuthenticated(true);
       dispatch(setIsLoadingFullScreenLoader(false));
       getAllCategories(abortController);
+      getAllSubCategories(abortController);
     } catch (error) {
       if (!axios.isCancel(error)) {
         console.log("admin authorization failed", error);
         toast.error("Admin authentication failed, please login again");
         router.replace("/admin/login");
       } else {
-        console.log(
-          "admin authorization cancelled by abort AbortController",
-          error
-        );
+        // console.log(
+        //   "admin authorization cancelled by abort AbortController",
+        //   error
+        // );
       }
     }
   };
@@ -95,14 +113,13 @@ export const useAdminProductListing = () => {
     const abortController = new AbortController();
     if (!authenticated) return;
 
-    console.log("fetching product listing data", searchQuery);
+    // console.log("fetching product listing data", searchQuery);
     getProductListingData(abortController, searchQuery, categoryFilter, colorFilters, sortByPrice, limit, page);
 
     return () => {
       abortController.abort();
     };
   }, [categoryFilter, colorFilters, limit, page, searchQuery, sortByPrice, authenticated]);
-  
   
   // authenticaion check
   useEffect(() => {  
